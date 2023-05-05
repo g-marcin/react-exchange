@@ -16,7 +16,7 @@ export const Currency: FC<CurrencyProps> = ({ currency, setPresentCurrency }) =>
       <div>{currency.countryCode}</div>
       <div>
         {Object.entries(currency.exchangeRates).map(([key, value]) => {
-          return <div>{`${currency.countryCode} exchange rate to ${key} is ${value}`}</div>;
+          return <div>{`${currency.currencyCode} exchange rate to ${key} is ${value}`}</div>;
         })}
       </div>
       <button

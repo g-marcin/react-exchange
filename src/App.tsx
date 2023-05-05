@@ -2,14 +2,22 @@ import { Wrapper } from "./components/Wrapper";
 import { Header } from "./modules";
 import { CurrencyExchange } from "./modules/CurrencyExchange";
 import { Footer } from "./modules/Footer";
+import { ReactDOM } from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTwitter, faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faCaretDown, faBars } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faFacebook, faTwitter, faInstagram, faCaretDown, faBars);
 
 function App() {
   return (
-    <Wrapper className="main__Wrapper">
+    <>
       <Header />
-      <CurrencyExchange />
-      <Footer />
-    </Wrapper>
+      <Wrapper className="main__Wrapper">
+        <CurrencyExchange />
+        <Footer />
+      </Wrapper>
+    </>
   );
 }
 
