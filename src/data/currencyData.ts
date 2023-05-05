@@ -9,6 +9,7 @@ export const currencyData: CurrencyType[] = [
     exchangeRates: {
       PLN: 4.15,
       EUR: 0.9,
+      JPY: 134.11,
     },
     iconName: "dollar-sign",
   },
@@ -20,6 +21,7 @@ export const currencyData: CurrencyType[] = [
     exchangeRates: {
       USD: 0.24,
       EUR: 0.22,
+      JPY: 32.26,
     },
     iconName: "z",
   },
@@ -31,6 +33,7 @@ export const currencyData: CurrencyType[] = [
     exchangeRates: {
       USD: 1.11,
       PLN: 4.59,
+      JPY: 147.91,
     },
     iconName: "euro-sign",
   },

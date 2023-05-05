@@ -11,8 +11,8 @@ type CurrencyListProps = {
 export const CurrencyList: FC<CurrencyListProps> = ({ currencyData, setPresentCurrency }) => {
   return (
     <Wrapper>
-      {currencyData.map((currency) => {
-        return <Currency currency={currency} setPresentCurrency={setPresentCurrency} />;
+      {currencyData.map((currency, index) => {
+        return <Currency currency={currency} setPresentCurrency={setPresentCurrency} key={index} />;
       })}
     </Wrapper>
   );

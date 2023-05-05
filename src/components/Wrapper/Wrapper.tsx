@@ -1,16 +1,15 @@
-import { FC } from "react";
-import { ReactNode } from "react";
+import { FC, PropsWithChildren } from "react";
+
 import styles from "./wrapper.module.css";
 
-type WrapperProps = {
-  children?: ReactNode | ReactNode[];
+interface WrapperProps extends PropsWithChildren {
   className?: string;
   onClick?: () => void;
-};
+}
 
-export const Wrapper: FC<WrapperProps> = ({ children, className }, { ...delegated }) => {
+export const Wrapper: FC<WrapperProps> = ({ className, children }, { ...delegated }) => {
   return (
-    <div className={`${styles.wrapper} ${className}`} {...delegated}>
+    <div className={`${styles["wrapper-case"]} ${className}`} {...delegated}>
       {children}
     </div>
   );

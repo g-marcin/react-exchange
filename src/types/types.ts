@@ -9,6 +9,7 @@ export type CurrencyType = {
     PLN?: number;
     EUR?: number;
     USD?: number;
+    JPY?: number;
   };
   iconName: IconName;
 };

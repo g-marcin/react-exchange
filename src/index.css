@@ -142,7 +142,7 @@ a:active {
   padding: 15px;
 }
 .wrapper__Footer__Item {
-  width: 180px;
+  width: 200px;
   display: flex;
   justify-content: space-evenly;
   gap: 15px;

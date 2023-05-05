@@ -18,7 +18,7 @@ export const Footer: FC = () => {
         aria-label="link to homepage"
         title="Homepage"
       >
-        Shop-Cart
+        react-exchange
       </a>
       <div className="wrapper__Footer__Item opaque">
         <a
