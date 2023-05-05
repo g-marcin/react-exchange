@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { Wrapper } from "../../components/Wrapper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Header: FC = () => {
@@ -27,11 +26,11 @@ export const Header: FC = () => {
         <button className="dropdown__Account" aria-label="open account menu">
           Account
           <div className="wrapper__Icon"></div>
-          <FontAwesomeIcon icon={"caret-down"} size={"2xs"} />
+          <FontAwesomeIcon icon={["fas", "caret-down"]} size={"2xs"} />
         </button>
       </div>
       <button className="button__Hamburger" title="hamburger-menu" aria-label="open mobile menu">
-        <i className="fa-solid fa-bars fa-xl"></i>
+        <FontAwesomeIcon icon={["fas", "bars"]} size={"lg"} />
       </button>
     </header>
   );

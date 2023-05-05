@@ -5,8 +5,6 @@ import { currencyData } from "../../data";
 import { CurrencyDisplay } from "../CurrencyDisplay";
 import { CurrencyList } from "../CurrencyList";
 import { CurrencyType } from "../../types";
-import { Library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 
 type WrapperProps = {
   children?: ReactNode | ReactNode[];

@@ -151,3 +151,23 @@ a:active {
 .opaque {
   opacity: 0.8;
 }
+
+@media (max-width: 660px) {
+  .navbar {
+    padding: 0 10px;
+  }
+  .wrapper__Navbar {
+    display: none !important;
+  }
+
+  .button__Hamburger {
+    display: block !important;
+    cursor: pointer;
+  }
+  .footer {
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}

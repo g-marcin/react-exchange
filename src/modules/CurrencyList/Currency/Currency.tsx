@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { CurrencyType } from "../../../types";
 import { Wrapper } from "../../../components/Wrapper";
+import styles from "./currency.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type CurrencyProps = {
   currency: CurrencyType;
@@ -9,7 +11,12 @@ type CurrencyProps = {
 
 export const Currency: FC<CurrencyProps> = ({ currency, setPresentCurrency }) => {
   return (
-    <Wrapper>
+    <Wrapper
+      className={styles.currency}
+      onClick={() => {
+        setPresentCurrency(currency);
+      }}
+    >
       <div>{currency.name}</div>
       <div>{currency.currencyCode}</div>
       <div>{currency.country}</div>
@@ -19,6 +26,10 @@ export const Currency: FC<CurrencyProps> = ({ currency, setPresentCurrency }) =>
           return <div>{`${currency.currencyCode} exchange rate to ${key} is ${value}`}</div>;
         })}
       </div>
+      <div>
+        <FontAwesomeIcon icon={["fas", currency.iconName]} />
+      </div>
+
       <button
         onClick={() => {
           setPresentCurrency(currency);

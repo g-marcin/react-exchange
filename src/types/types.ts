@@ -1,3 +1,5 @@
+import { IconName } from "@fortawesome/fontawesome-svg-core";
+
 export type CurrencyType = {
   name: string;
   currencyCode: string;
@@ -8,4 +10,5 @@ export type CurrencyType = {
     EUR?: number;
     USD?: number;
   };
+  iconName: IconName;
 };

@@ -10,6 +10,7 @@ export const currencyData: CurrencyType[] = [
       PLN: 4.15,
       EUR: 0.9,
     },
+    iconName: "dollar-sign",
   },
   {
     name: "zloty",
@@ -20,6 +21,7 @@ export const currencyData: CurrencyType[] = [
       USD: 0.24,
       EUR: 0.22,
     },
+    iconName: "z",
   },
   {
     name: "euro",
@@ -30,5 +32,6 @@ export const currencyData: CurrencyType[] = [
       USD: 1.11,
       PLN: 4.59,
     },
+    iconName: "euro-sign",
   },
 ];
