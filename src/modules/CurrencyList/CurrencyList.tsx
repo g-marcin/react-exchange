@@ -5,14 +5,16 @@ import { Currency } from "./Currency";
 
 type CurrencyListProps = {
   currencyData: CurrencyType[];
-  setPresentCurrency: React.Dispatch<React.SetStateAction<null | CurrencyType>>;
+  currencyButtonHandler: (value: CurrencyType) => void;
 };
 
-export const CurrencyList: FC<CurrencyListProps> = ({ currencyData, setPresentCurrency }) => {
+export const CurrencyList: FC<CurrencyListProps> = ({ currencyData, currencyButtonHandler }) => {
   return (
     <Wrapper>
       {currencyData.map((currency, index) => {
-        return <Currency currency={currency} setPresentCurrency={setPresentCurrency} key={index} />;
+        return (
+          <Currency currency={currency} currencyButtonHandler={currencyButtonHandler} key={index} />
+        );
       })}
     </Wrapper>
   );
