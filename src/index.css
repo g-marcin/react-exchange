@@ -166,8 +166,13 @@ a:active {
   }
   .footer {
     flex-direction: column;
-    gap: 25px;
+    gap: 35px;
     margin-top: 50px;
     margin-bottom: 50px;
   }
+}
+
+.overflow__Scroll {
+  overflow-y: scroll;
+  max-height: 500px;
 }
