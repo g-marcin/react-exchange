@@ -1,0 +1,9 @@
+.container-case {
+  display: flex;
+  min-height: 50px;
+  padding: 5px;
+  margin: 5px 15px;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+}
