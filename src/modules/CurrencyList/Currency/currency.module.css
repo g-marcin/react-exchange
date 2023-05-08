@@ -2,3 +2,19 @@
   background: gainsboro;
   cursor: pointer;
 }
+.currency__Button {
+  display: flex;
+  border: 1px solid black;
+  padding: 5px;
+  justify-content: space-between;
+  width: 620px;
+  justify-self: center;
+  margin: 5px auto;
+  font-size: 24px;
+  min-height: 60px;
+}
+
+.currency__Button:hover {
+  opacity: 0.8;
+  background: gainsboro;
+}

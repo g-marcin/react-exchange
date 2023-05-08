@@ -1,30 +1,38 @@
 import { FC } from "react";
-import { CurrencyType } from "../../../types";
-import { Wrapper } from "../../../components/Wrapper";
+
 import styles from "./currency.module.css";
+import { CurrencyProps } from "../../../types";
 
-type CurrencyProps = {
-  currency: CurrencyType;
-  currencyButtonHandler: (value: CurrencyType) => void;
-};
-
-export const Currency: FC<CurrencyProps> = ({ currency, currencyButtonHandler }) => {
+export const Currency: FC<CurrencyProps> = ({
+  currencyCode,
+  currencyRate,
+  currencyNames,
+  currencyButtonHandler,
+}) => {
   return (
-    <Wrapper
-      className={styles.currency}
+    <button
+      className={styles["currency__Button"]}
       onClick={() => {
-        currencyButtonHandler(currency);
+        currencyButtonHandler(currencyCode);
       }}
     >
-      <div>{currency.currencyCode}</div>
+      {currencyCode !== "EUR" && (
+        <img
+          src={`https://flagsapi.com/${currencyCode.slice(0, 2)}/flat/64.png`}
+          style={{ flex: "1" }}
+        />
+      )}
+      {currencyCode === "EUR" && (
+        <img src={"../../assets/eu.png"} alt="x" style={{ alignSelf: "center", flex: "1" }} />
+      )}
+      <span style={{ alignSelf: "center", padding: "5px", flex: "2" }}>{`${currencyCode} `}</span>
 
-      <button
-        onClick={() => {
-          currencyButtonHandler(currency);
-        }}
-      >
-        Show Currency
-      </button>
-    </Wrapper>
+      <span style={{ alignSelf: "center", padding: "5px", flex: "5" }}>
+        {currencyNames && currencyNames[`${currencyCode}`]}
+      </span>
+      <span style={{ alignSelf: "center", padding: "5px", flex: "2" }}>
+        {currencyRate.toFixed(2)}
+      </span>
+    </button>
   );
 };
