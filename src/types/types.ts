@@ -5,26 +5,22 @@ export type CurrencyType = {
   rate: number;
 };
 
-export type FetchedCurrenciesType = {
+export interface IFetchedCurrencies extends ICurrenciesData {
+  rates: rates;
+}
+export interface IFetchedCurrenciesHistory extends ICurrenciesData {
+  rates: { [date: string]: rates };
+}
+interface ICurrenciesData {
   amount: number;
   base: string;
   date: string;
-  rates: rates;
-} | null;
-
-export type FetchedCurrenciesHistoryType = {
-  amount: number;
-  base: string;
-  start_date?: string;
-  end_date?: string;
-  rates: rates;
-} | null;
-
-export type rates = any;
+}
+export type rates = { [k: string]: number };
 
 export type CurrencyDisplayProps = {
   presentCurrency: CurrencyType | null;
-  fetchedCurrenciesHistory: FetchedCurrenciesHistoryType;
+  fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
 };
 
 export interface CurrencyExchangeProps extends PropsWithChildren {
@@ -33,7 +29,7 @@ export interface CurrencyExchangeProps extends PropsWithChildren {
 
 export type CurrencyProps = {
   currencyCode: string;
-  currencyRate: any;
+  currencyRate: number;
   currencyButtonHandler: (currencyCode: string) => void;
   currencyNames: { [k: string]: string };
   key: string;
@@ -41,6 +37,6 @@ export type CurrencyProps = {
 
 export type CurrencyListProps = {
   currencyButtonHandler: (currencyCode: string) => void;
-  fetchedCurrencies: FetchedCurrenciesType;
+  fetchedCurrencies: IFetchedCurrencies;
   currencyNames: { [k: string]: string };
 };

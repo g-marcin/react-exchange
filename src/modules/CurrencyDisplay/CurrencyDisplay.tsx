@@ -16,14 +16,14 @@ export const CurrencyDisplay: FC<CurrencyDisplayProps> = ({
       </p>
       <Wrapper>
         {fetchedCurrenciesHistory &&
-          Object.entries(fetchedCurrenciesHistory?.rates)
+          Object.entries(fetchedCurrenciesHistory.rates)
             .map(([date, currencyRates], index) => {
               return (
                 <div className={styles["display__History"]} key={index}>
                   <span>{date}</span>
                   <span>
-                    {currencyRates
-                      ? JSON.stringify(currencyRates[presentCurrency?.currencyCode])
+                    {presentCurrency
+                      ? JSON.stringify(currencyRates[presentCurrency.currencyCode])
                       : ""}
                   </span>
                 </div>
