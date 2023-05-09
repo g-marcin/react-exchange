@@ -36,6 +36,7 @@ export type CurrencyProps = {
   currencyRate: any;
   currencyButtonHandler: (currencyCode: string) => void;
   currencyNames: { [k: string]: string };
+  key: string;
 };
 
 export type CurrencyListProps = {

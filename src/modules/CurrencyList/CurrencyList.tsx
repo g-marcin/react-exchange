@@ -19,6 +19,7 @@ export const CurrencyList: FC<CurrencyListProps> = ({
               currencyRate={currencyRate}
               currencyNames={currencyNames}
               currencyButtonHandler={currencyButtonHandler}
+              key={currencyCode}
             />
           );
         })}

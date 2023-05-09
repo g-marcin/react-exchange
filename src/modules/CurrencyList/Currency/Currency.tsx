@@ -1,7 +1,6 @@
 import { FC } from "react";
-
-import styles from "./currency.module.css";
 import { CurrencyProps } from "../../../types";
+import styles from "./currency.module.css";
 
 export const Currency: FC<CurrencyProps> = ({
   currencyCode,

@@ -14,12 +14,12 @@ export const CurrencyDisplay: FC<CurrencyDisplayProps> = ({
           ? `Latest ${presentCurrency?.currencyCode} to USD rate: ${presentCurrency?.rate}`
           : `Please choose your currency...`}
       </p>
-      <p>
+      <Wrapper>
         {fetchedCurrenciesHistory &&
           Object.entries(fetchedCurrenciesHistory?.rates)
-            .map(([date, currencyRates]) => {
+            .map(([date, currencyRates], index) => {
               return (
-                <div className={styles["display__History"]}>
+                <div className={styles["display__History"]} key={index}>
                   <span>{date}</span>
                   <span>
                     {currencyRates
@@ -30,7 +30,7 @@ export const CurrencyDisplay: FC<CurrencyDisplayProps> = ({
               );
             })
             .reverse()}
-      </p>
+      </Wrapper>
     </Wrapper>
   );
 };

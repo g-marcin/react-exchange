@@ -14,7 +14,7 @@ export const Footer: FC = () => {
       </a>
       <a
         className="wrapper__Footer__Item Poppins opaque weight600"
-        href="/index.html"
+        href="/"
         aria-label="link to homepage"
         title="Homepage"
       >
