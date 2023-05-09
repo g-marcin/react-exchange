@@ -18,3 +18,22 @@
   opacity: 0.8;
   background: gainsboro;
 }
+
+.currency__Flag {
+  flex: 2;
+  max-height: 55px;
+  max-width: 55px;
+  margin: 2px;
+}
+
+.currency__ItemSmall {
+  flex: 2;
+  align-self: center;
+  padding: 5px;
+}
+
+.currency__Name {
+  flex: 5;
+  align-self: center;
+  padding: 5px;
+}
