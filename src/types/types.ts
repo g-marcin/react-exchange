@@ -4,7 +4,6 @@ export type CurrencyType = {
   currencyCode: string;
   rate: number;
 };
-
 export interface IFetchedCurrencies extends ICurrenciesData {
   rates: rates;
 }
@@ -45,4 +44,15 @@ export type CurrencyListProps = {
 
 export type CurrencyBaseProps = {
   currencyBaseHandler: (currencyCode: string) => void;
+};
+
+export type CurrencyHistoryProps = {
+  presentCurrency: CurrencyType | null;
+  fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
+};
+
+export type CurrencyLatestProps = {
+  presentCurrency: CurrencyType | null;
+
+  baseCurrency: string;
 };
