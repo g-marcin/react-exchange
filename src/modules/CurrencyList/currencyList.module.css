@@ -1,5 +1,7 @@
 .List__wrapper {
+  border: 1px dotted black;
   width: 650px;
   padding: 10px;
   margin: 15px auto;
+  overflow-y: scroll;
 }
