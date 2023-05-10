@@ -10,7 +10,7 @@ export const CurrencyBase: FC<CurrencyBaseProps> = ({
 }) => {
   return (
     <Container className={styles["display__Wrapper"]}>
-      <p style={{ fontSize: "24px", margin: "auto" }}> Please choose your base currency... </p>
+      <p className={styles["base__Label"]}> Please choose your base currency... </p>
       <select
         className={styles["base__Select"]}
         name="base"

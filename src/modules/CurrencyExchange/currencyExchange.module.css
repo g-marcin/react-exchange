@@ -3,3 +3,11 @@
   height: 700px;
   margin: 50px auto;
 }
+
+@media (max-width: 450px) {
+  .wrapper {
+    max-width: 700px;
+    height: 700px;
+    margin: 0px;
+  }
+}

@@ -38,3 +38,17 @@
   align-self: center;
   padding: 5px;
 }
+
+@media (max-width: 450px) {
+  .currency__Button {
+    display: flex;
+    border: 1px solid black;
+    padding: 2px;
+    justify-content: space-between;
+    width: 340px;
+    justify-self: center;
+    margin: 5px auto;
+    font-size: 12px;
+    min-height: 40px;
+  }
+}

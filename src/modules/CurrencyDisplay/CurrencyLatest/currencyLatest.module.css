@@ -8,3 +8,17 @@
   max-width: 64px;
   max-height: 64px;
 }
+
+@media (max-width: 450px) {
+  .display__Latest {
+    min-width: 320px;
+    font-size: 12px;
+    margin: auto;
+    padding: 3px;
+  }
+
+  .display__Flag {
+    max-width: 48px;
+    max-height: 48px;
+  }
+}

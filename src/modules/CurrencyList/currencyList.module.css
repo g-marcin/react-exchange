@@ -5,3 +5,9 @@
   margin: 15px auto;
   overflow-y: scroll;
 }
+
+@media (max-width: 450px) {
+  .List__wrapper {
+    width: auto;
+  }
+}

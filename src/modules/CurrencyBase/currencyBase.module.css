@@ -14,3 +14,31 @@
   font-size: 24px;
   border: 1px solid black;
 }
+
+.base__Label {
+  font-size: 24px;
+  margin: auto;
+}
+
+@media (max-width: 450px) {
+  .display__History {
+    display: flex;
+  }
+
+  .display__Wrapper {
+    height: 35px;
+  }
+
+  .base__Select {
+    align-self: center;
+    flex: 3;
+    text-align: center;
+    background: white;
+    font-size: 12px;
+    border: 1px solid black;
+  }
+  .base__Label {
+    font-size: 12px;
+    margin: auto;
+  }
+}

@@ -13,7 +13,26 @@
   min-height: 250px;
   border: 1px solid black;
   overflow-y: scroll;
+  max-width: 700px;
+  height: 700px;
+  margin: 50px auto;
 }
 
-.display__History {
+@media (max-width: 450px) {
+  .history__Item {
+    display: flex;
+    border: 1px solid black;
+    padding: 2px;
+    justify-content: space-around;
+    width: 340px;
+    justify-self: center;
+    margin: 2px auto;
+    font-size: 12px;
+  }
+
+  .display__Wrapper {
+    min-height: 350px;
+    border: 1px solid black;
+    overflow-y: scroll;
+  }
 }

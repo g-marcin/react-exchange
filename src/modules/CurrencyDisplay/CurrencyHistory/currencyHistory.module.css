@@ -12,11 +12,19 @@
   min-height: 50px;
 }
 
-.display__Wrapper {
-  min-height: 250px;
-  border: 1px solid black;
-  overflow-y: scroll;
-}
+@media (max-width: 450px) {
+  .history__Item {
+    border: 1px solid black;
+    display: flex;
+    margin: 0px auto;
+    font-size: 18px;
+    align-items: center;
+    width: 100px;
+    height: 75px;
+  }
 
-.display__History {
+  .display__History {
+    min-height: 200px;
+    flex-wrap: wrap;
+  }
 }
