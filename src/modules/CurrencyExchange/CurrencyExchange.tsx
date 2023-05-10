@@ -37,7 +37,10 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
       rates: { date: { code: 0 } },
     });
   const [currencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
-  const [presentCurrency, setPresentCurrency] = useState<CurrencyType | null>(null);
+  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({
+    currencyCode: "?",
+    rate: 0,
+  });
   const [baseCurrency, setBaseCurrency] = useState("USD");
 
   useEffect(() => {
@@ -89,13 +92,11 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
       rate: fetchedCurrencies.rates[`${currencyCode}`],
     });
   }
-  function currencyBaseHandler(currencyCode: string): void {
+  function currencyBaseHandler(currencyCode: string, presentCurrency: CurrencyType): void {
     if (!fetchedCurrencies) {
       return;
     }
-
     setBaseCurrency(currencyCode);
-
-    setPresentCurrency(null);
+    setPresentCurrency(presentCurrency);
   }
 };

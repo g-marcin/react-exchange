@@ -18,9 +18,9 @@ interface ICurrenciesData {
 export type rates = { [k: string]: number };
 
 export type CurrencyDisplayProps = {
-  presentCurrency: CurrencyType | null;
+  presentCurrency: CurrencyType;
   fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
-  currencyBaseHandler: (currencyCode: string) => void;
+  currencyBaseHandler: (currencyCode: string, presentCurrency: CurrencyType) => void;
   baseCurrency: string;
 };
 
@@ -43,7 +43,8 @@ export type CurrencyListProps = {
 };
 
 export type CurrencyBaseProps = {
-  currencyBaseHandler: (currencyCode: string) => void;
+  currencyBaseHandler: (currencyCode: string, presentCurrency: CurrencyType) => void;
+  presentCurrency: CurrencyType;
 };
 
 export type CurrencyHistoryProps = {

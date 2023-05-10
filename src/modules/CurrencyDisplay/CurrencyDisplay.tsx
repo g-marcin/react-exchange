@@ -14,7 +14,7 @@ export const CurrencyDisplay: FC<CurrencyDisplayProps> = ({
 }) => {
   return (
     <Wrapper className={styles["display__Wrapper"]}>
-      <CurrencyBase currencyBaseHandler={currencyBaseHandler} />
+      <CurrencyBase currencyBaseHandler={currencyBaseHandler} presentCurrency={presentCurrency} />
       <CurrencyLatest presentCurrency={presentCurrency} baseCurrency={baseCurrency} />
       <CurrencyHistory
         fetchedCurrenciesHistory={fetchedCurrenciesHistory}

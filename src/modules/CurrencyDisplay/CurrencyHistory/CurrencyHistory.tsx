@@ -14,11 +14,9 @@ export const CurrencyHistory: FC<CurrencyHistoryProps> = ({
           .map(([date, currencyRates], index) => {
             return (
               <Wrapper className={styles["history__Item"]} key={index}>
-                <span>{date}</span>
+                <span style={{ fontWeight: "bold", borderBottom: "1px solid black" }}>{date}</span>
                 <span>
-                  {presentCurrency
-                    ? JSON.stringify(currencyRates[presentCurrency.currencyCode])
-                    : ""}
+                  {presentCurrency && JSON.stringify(currencyRates[presentCurrency.currencyCode])}
                 </span>
               </Wrapper>
             );

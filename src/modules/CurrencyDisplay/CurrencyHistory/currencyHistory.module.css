@@ -1,14 +1,15 @@
 .history__Item {
   display: flex;
-  border: 1px solid black;
-  padding: 5px;
+  border-left: 1px solid black;
+
   justify-content: space-between;
   width: 350px;
   justify-self: center;
-  margin: 5px auto;
+  margin: 0px auto;
   font-size: 18px;
   align-items: center;
-  gap: 5px;
+  gap: 0px;
+  min-height: 50px;
 }
 
 .display__Wrapper {
