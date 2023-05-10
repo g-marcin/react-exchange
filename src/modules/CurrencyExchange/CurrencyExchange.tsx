@@ -67,7 +67,7 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
   }, []);
 
   return (
-    <Wrapper className={`${styles.wrapper} ${className}`}>
+    <Wrapper className={styles["exchange__Wrapper"]}>
       <CurrencyDisplay
         presentCurrency={presentCurrency}
         baseCurrency={baseCurrency}

@@ -1,8 +1,6 @@
-.List__wrapper {
-  border: 1px dotted black;
-  width: 650px;
-  padding: 10px;
-  margin: 15px auto;
+.list__Wrapper {
+  border: 1px solid black;
+  max-height: 450px;
   overflow-y: scroll;
 }
 

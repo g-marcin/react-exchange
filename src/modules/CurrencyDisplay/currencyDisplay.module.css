@@ -13,9 +13,6 @@
   min-height: 250px;
   border: 1px solid black;
   overflow-y: scroll;
-  max-width: 700px;
-  height: 700px;
-  margin: 50px auto;
 }
 
 @media (max-width: 450px) {

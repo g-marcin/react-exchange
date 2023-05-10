@@ -10,7 +10,7 @@ export const CurrencyList: FC<CurrencyListProps> = ({
   currencyNames,
 }) => {
   return (
-    <Wrapper className={styles["List__wrapper"]}>
+    <Wrapper className={styles["list__Wrapper"]}>
       {fetchedCurrencies &&
         Object.entries(fetchedCurrencies.rates).map(([currencyCode, currencyRate]) => {
           return (
