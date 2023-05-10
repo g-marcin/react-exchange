@@ -48,12 +48,12 @@ export type CurrencyBaseProps = {
 };
 
 export type CurrencyHistoryProps = {
-  presentCurrency: CurrencyType | null;
+  presentCurrency: CurrencyType;
   fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
 };
 
 export type CurrencyLatestProps = {
-  presentCurrency: CurrencyType | null;
+  presentCurrency: CurrencyType;
 
   baseCurrency: string;
 };

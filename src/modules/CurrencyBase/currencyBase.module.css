@@ -9,4 +9,8 @@
 .base__Select {
   align-self: center;
   flex: 3;
+  text-align: center;
+  background: white;
+  font-size: 24px;
+  border: 1px solid black;
 }
