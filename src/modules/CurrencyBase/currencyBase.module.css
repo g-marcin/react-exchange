@@ -5,3 +5,8 @@
 .display__Wrapper {
   height: 100px;
 }
+
+.base__Select {
+  align-self: center;
+  flex: 3;
+}
