@@ -21,6 +21,8 @@ export type rates = { [k: string]: number };
 export type CurrencyDisplayProps = {
   presentCurrency: CurrencyType | null;
   fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
+  currencyBaseHandler: (currencyCode: string) => void;
+  baseCurrency: string;
 };
 
 export interface CurrencyExchangeProps extends PropsWithChildren {
@@ -39,4 +41,8 @@ export type CurrencyListProps = {
   currencyButtonHandler: (currencyCode: string) => void;
   fetchedCurrencies: IFetchedCurrencies;
   currencyNames: { [k: string]: string };
+};
+
+export type CurrencyBaseProps = {
+  currencyBaseHandler: (currencyCode: string) => void;
 };

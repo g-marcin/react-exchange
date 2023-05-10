@@ -23,14 +23,12 @@ import {
 import styles from "./currencyExchange.module.css";
 
 export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
-  const [currencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
   const [fetchedCurrencies, setFetchedCurrencies] = useState<IFetchedCurrencies>({
     amount: 0,
     base: "",
     date: "",
     rates: { code: 0 },
   });
-  const [presentCurrency, setPresentCurrency] = useState<CurrencyType | null>(null);
   const [fetchedCurrenciesHistory, setFetchedCurrenciesHistory] =
     useState<IFetchedCurrenciesHistory>({
       amount: 0,
@@ -38,21 +36,26 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
       date: "",
       rates: { date: { code: 0 } },
     });
+  const [currencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
+  const [presentCurrency, setPresentCurrency] = useState<CurrencyType | null>(null);
+  const [baseCurrency, setBaseCurrency] = useState("USD");
 
   useEffect(() => {
-    httpClient.get(`/latest?from=USD`).then((response: AxiosResponse) => {
+    httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
       setFetchedCurrencies(response.data);
     });
-  }, []);
+  }, [baseCurrency]);
 
   useEffect(() => {
     const date = new Date();
     const currentDate = format(date, "yyyy-MM-dd");
     const weekAgoDate = format(subDays(date, 7), "yyyy-MM-dd");
-    httpClient.get(`/${weekAgoDate}..${currentDate}?from=USD`).then((response: AxiosResponse) => {
-      setFetchedCurrenciesHistory(response.data);
-    });
-  }, []);
+    httpClient
+      .get(`/${weekAgoDate}..${currentDate}?from=${baseCurrency}`)
+      .then((response: AxiosResponse) => {
+        setFetchedCurrenciesHistory(response.data);
+      });
+  }, [baseCurrency]);
 
   useEffect(() => {
     httpClient.get(`/currencies`).then((response: AxiosResponse) => {
@@ -64,8 +67,11 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
     <Wrapper className={`${styles.wrapper} ${className}`}>
       <CurrencyDisplay
         presentCurrency={presentCurrency}
+        baseCurrency={baseCurrency}
         fetchedCurrenciesHistory={fetchedCurrenciesHistory}
+        currencyBaseHandler={currencyBaseHandler}
       />
+
       <CurrencyList
         fetchedCurrencies={fetchedCurrencies}
         currencyButtonHandler={currencyButtonHandler}
@@ -82,5 +88,14 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
       currencyCode: currencyCode,
       rate: fetchedCurrencies.rates[`${currencyCode}`],
     });
+  }
+  function currencyBaseHandler(currencyCode: string): void {
+    if (!fetchedCurrencies) {
+      return;
+    }
+
+    setBaseCurrency(currencyCode);
+
+    setPresentCurrency(null);
   }
 };
