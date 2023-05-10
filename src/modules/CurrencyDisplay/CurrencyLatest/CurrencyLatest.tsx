@@ -11,7 +11,7 @@ export const CurrencyLatest: FC<CurrencyLatestProps> = ({ presentCurrency, baseC
   const baseCurrencyFlagImage = `https://flagsapi.com/${baseCurrency.slice(0, 2)}/flat/64.png`;
   return (
     <Container className={styles["display__Latest"]}>
-      <img src={presentCurrencyFlagImage} alt="" />
+      <img src={presentCurrencyFlagImage} alt="?" placeholder="?" />
       {presentCurrency
         ? `Latest ${presentCurrency?.currencyCode} to ${baseCurrency} rate: ${presentCurrency?.rate}`
         : `Please choose currency to compare...`}

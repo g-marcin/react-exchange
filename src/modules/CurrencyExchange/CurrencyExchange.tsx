@@ -73,6 +73,7 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
         baseCurrency={baseCurrency}
         fetchedCurrenciesHistory={fetchedCurrenciesHistory}
         currencyBaseHandler={currencyBaseHandler}
+        currencyNames={currencyNames}
       />
 
       <CurrencyList
@@ -97,6 +98,9 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
       return;
     }
     setBaseCurrency(currencyCode);
-    setPresentCurrency(presentCurrency);
+    setPresentCurrency({
+      currencyCode: presentCurrency.currencyCode,
+      rate: fetchedCurrencies.rates[presentCurrency.currencyCode],
+    });
   }
 };

@@ -1,9 +1,13 @@
 import { FC } from "react";
-import { Container, Wrapper } from "../../components";
+import { Container } from "../../components";
 import { CurrencyBaseProps } from "../../types";
 import styles from "./currencyBase.module.css";
 
-export const CurrencyBase: FC<CurrencyBaseProps> = ({ currencyBaseHandler, presentCurrency }) => {
+export const CurrencyBase: FC<CurrencyBaseProps> = ({
+  currencyBaseHandler,
+  presentCurrency,
+  currencyNames,
+}) => {
   return (
     <Container className={styles["display__Wrapper"]}>
       <p style={{ fontSize: "24px", margin: "auto" }}> Please choose your base currency... </p>
@@ -20,9 +24,14 @@ export const CurrencyBase: FC<CurrencyBaseProps> = ({ currencyBaseHandler, prese
         }}
         style={{ height: "50px" }}
       >
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="PLN">PLN</option>
+        {currencyNames &&
+          Object.keys(currencyNames).map((currencyCode) => {
+            return (
+              <option key={currencyCode} value={currencyCode}>
+                {`${currencyCode} - ${currencyNames[currencyCode]}`}
+              </option>
+            );
+          })}
       </select>
     </Container>
   );
