@@ -1,8 +1,6 @@
 import { FC } from "react";
-import { Wrapper } from "../../components";
 import { CurrencyBase } from "../CurrencyBase";
 import { CurrencyDisplayProps } from "../../types";
-import styles from "./currencyDisplay.module.css";
 import { CurrencyHistory } from "./CurrencyHistory";
 import { CurrencyLatest } from "./CurrencyLatest";
 
