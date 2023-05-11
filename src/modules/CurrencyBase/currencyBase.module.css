@@ -8,13 +8,11 @@
 }
 
 .base__Select {
-  align-self: center;
   flex: 3;
   text-align: center;
   background: gainsboro;
   opacity: 0.6;
   font-size: 24px;
-  border: 1px solid black;
 }
 
 .base__Label {
@@ -26,17 +24,15 @@
   .display__History {
     display: flex;
   }
-
   .display__Wrapper {
     padding: 5px 0;
     gap: 5px;
     flex-direction: column;
   }
-
   .base__Select {
     align-self: center;
     padding: 10px;
-    text-align: center;
+
     background: white;
     font-size: 18px;
     border: 1px solid black;

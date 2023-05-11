@@ -4,11 +4,7 @@ import { Currency } from "./Currency";
 import { CurrencyListProps } from "../../types";
 import styles from "./currencyList.module.css";
 
-export const CurrencyList: FC<CurrencyListProps> = ({
-  currencyButtonHandler,
-  fetchedCurrencies,
-  currencyNames,
-}) => {
+export const CurrencyList: FC<CurrencyListProps> = ({ currencyButtonHandler, fetchedCurrencies, currencyNames }) => {
   return (
     <Wrapper className={styles["list__Wrapper"]}>
       {fetchedCurrencies &&

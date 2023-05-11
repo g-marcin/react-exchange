@@ -1,10 +1,8 @@
 import { PropsWithChildren } from "react";
-
 export type CurrencyType = {
   currencyCode: string;
   rate: number;
 } | null;
-
 interface ICurrenciesData {
   amount: number;
   base: string;
@@ -22,15 +20,14 @@ export interface CurrencyExchangeProps extends PropsWithChildren {
 }
 export type CurrencyDisplayProps = {
   presentCurrency: CurrencyType;
-  fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
+  fetchedCurrenciesHistory: FetchedCurrenciesHistoryProps;
   currencyBaseHandler: (currencyCode: string, presentCurrency: CurrencyType) => void;
   baseCurrency: string;
   currencyNames: { [k: string]: string };
 };
-
 export type CurrencyListProps = {
   currencyButtonHandler: (currencyCode: string) => void;
-  fetchedCurrencies: IFetchedCurrencies;
+  fetchedCurrencies: FetchedCurrenciesProps;
   currencyNames: { [k: string]: string };
 };
 export type CurrencyProps = {
@@ -48,7 +45,7 @@ export type CurrencyLatestProps = {
 };
 export type CurrencyHistoryProps = {
   presentCurrency: CurrencyType;
-  fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
+  fetchedCurrenciesHistory: FetchedCurrenciesHistoryProps;
 };
 export type CurrencyBaseProps = {
   currencyBaseHandler: (currencyCode: string, presentCurrency: CurrencyType) => void;
