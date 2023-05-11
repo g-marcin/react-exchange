@@ -18,20 +18,23 @@ export const CurrencyBase: FC<CurrencyBaseProps> = ({
         onChange={(e) => {
           const baseCurrency = e.target.value;
           if (presentCurrency.currencyCode === baseCurrency) {
-            return;
+            console.log("bug!");
           }
+
           currencyBaseHandler(baseCurrency, presentCurrency);
         }}
         style={{ height: "50px" }}
       >
         {currencyNames &&
-          Object.keys(currencyNames).map((currencyCode) => {
-            return (
-              <option key={currencyCode} value={currencyCode}>
-                {`${currencyCode} - ${currencyNames[currencyCode]}`}
-              </option>
-            );
-          })}
+          Object.keys(currencyNames)
+            .filter((currencyCode) => currencyCode !== presentCurrency.currencyCode)
+            .map((currencyCode) => {
+              return (
+                <option key={currencyCode} value={currencyCode}>
+                  {`${currencyCode} - ${currencyNames[currencyCode]}`}
+                </option>
+              );
+            })}
       </select>
     </Container>
   );
