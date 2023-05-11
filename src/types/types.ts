@@ -1,4 +1,8 @@
 import { PropsWithChildren } from "react";
+export interface WrapperProps extends PropsWithChildren {
+  className?: string;
+  onClick?: () => void;
+}
 export type CurrencyType = {
   currencyCode: string;
   rate: number;
@@ -55,4 +59,8 @@ export type CurrencyBaseProps = {
   currencyBaseHandler: (currencyCode: string, presentCurrency: CurrencyType) => void;
   presentCurrency: CurrencyType;
   currencyNames: { [k: string]: string };
+};
+export type ImageWithFallbackProps = {
+  currencyCode: string;
+  className: string;
 };
