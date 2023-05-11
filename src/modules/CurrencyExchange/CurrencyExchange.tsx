@@ -22,7 +22,7 @@ import {
 } from "../../types";
 import styles from "./currencyExchange.module.css";
 
-export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
+export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
   const [fetchedCurrencies, setFetchedCurrencies] = useState<IFetchedCurrencies>({
     amount: 0,
     base: "",
