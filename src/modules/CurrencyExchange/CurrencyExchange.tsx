@@ -20,7 +20,7 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
     date: "",
     rates: { date: { code: 0 } },
   });
-  const [currencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
+  const [fetchedCurrencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
   const [presentCurrency, setPresentCurrency] = useState<CurrencyType>(null);
   const [baseCurrency, setBaseCurrency] = useState("AUD");
 
@@ -46,16 +46,16 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
   return (
     <Wrapper className={styles["exchange__Wrapper"]}>
       <CurrencyDisplay
+        currencyNames={fetchedCurrencyNames}
+        fetchedCurrenciesHistory={fetchedCurrenciesHistory}
         presentCurrency={presentCurrency}
         baseCurrency={baseCurrency}
-        fetchedCurrenciesHistory={fetchedCurrenciesHistory}
         currencyBaseHandler={currencyBaseHandler}
-        currencyNames={currencyNames}
       />
       <CurrencyList
+        currencyNames={fetchedCurrencyNames}
         fetchedCurrencies={fetchedCurrencies}
         currencyButtonHandler={currencyButtonHandler}
-        currencyNames={currencyNames}
       />
     </Wrapper>
   );
