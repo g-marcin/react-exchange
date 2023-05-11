@@ -45,9 +45,9 @@
     border: 1px solid black;
     padding: 2px;
     justify-content: space-between;
-    width: 340px;
+    width: 320px;
     justify-self: center;
-    margin: 5px auto;
+    margin: 2px auto;
     font-size: 12px;
     min-height: 40px;
   }

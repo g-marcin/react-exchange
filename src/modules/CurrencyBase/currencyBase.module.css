@@ -4,14 +4,15 @@
 
 .display__Wrapper {
   height: 50px;
-  padding: 25px;
+  padding: 5px;
 }
 
 .base__Select {
   align-self: center;
   flex: 3;
   text-align: center;
-  background: white;
+  background: gainsboro;
+  opacity: 0.6;
   font-size: 24px;
   border: 1px solid black;
 }
@@ -21,25 +22,28 @@
   margin: auto;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 660px) {
   .display__History {
     display: flex;
   }
 
   .display__Wrapper {
-    height: 35px;
+    padding: 5px 0;
+    gap: 5px;
+    flex-direction: column;
   }
 
   .base__Select {
     align-self: center;
-    flex: 3;
+
     text-align: center;
     background: white;
-    font-size: 12px;
+    font-size: 18px;
     border: 1px solid black;
+    width: 100%;
   }
   .base__Label {
-    font-size: 12px;
+    font-size: 18px;
     margin: auto;
   }
 }

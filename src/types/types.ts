@@ -3,7 +3,7 @@ import { PropsWithChildren } from "react";
 export type CurrencyType = {
   currencyCode: string;
   rate: number;
-};
+} | null;
 export interface IFetchedCurrencies extends ICurrenciesData {
   rates: rates;
 }

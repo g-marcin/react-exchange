@@ -17,17 +17,13 @@ export const CurrencyBase: FC<CurrencyBaseProps> = ({
         id="base"
         onChange={(e) => {
           const baseCurrency = e.target.value;
-          if (presentCurrency.currencyCode === baseCurrency) {
-            console.log("bug!");
-          }
 
           currencyBaseHandler(baseCurrency, presentCurrency);
         }}
-        style={{ height: "50px" }}
       >
         {currencyNames &&
           Object.keys(currencyNames)
-            .filter((currencyCode) => currencyCode !== presentCurrency.currencyCode)
+            .filter((currencyCode) => currencyCode !== presentCurrency?.currencyCode)
             .map((currencyCode) => {
               return (
                 <option key={currencyCode} value={currencyCode}>

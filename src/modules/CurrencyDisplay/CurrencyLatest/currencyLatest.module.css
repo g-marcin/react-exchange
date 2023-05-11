@@ -1,6 +1,5 @@
 .display__Latest {
-  width: 100%;
-  height: 1000px;
+  padding: 5px;
   font-size: 24px;
   justify-content: center;
   align-items: center;
@@ -8,8 +7,8 @@
 }
 
 .display__Flag {
-  max-width: 64px;
-  max-height: 64px;
+  max-width: 32px;
+  max-height: 32px;
 }
 
 @media (max-width: 450px) {

@@ -37,11 +37,8 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
       rates: { date: { code: 0 } },
     });
   const [currencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
-  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({
-    currencyCode: "?",
-    rate: 0,
-  });
-  const [baseCurrency, setBaseCurrency] = useState("USD");
+  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>(null);
+  const [baseCurrency, setBaseCurrency] = useState("AUD");
 
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
@@ -52,7 +49,7 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
   useEffect(() => {
     const date = new Date();
     const currentDate = format(date, "yyyy-MM-dd");
-    const weekAgoDate = format(subDays(date, 7), "yyyy-MM-dd");
+    const weekAgoDate = format(subDays(date, 12), "yyyy-MM-dd");
     httpClient
       .get(`/${weekAgoDate}..${currentDate}?from=${baseCurrency}`)
       .then((response: AxiosResponse) => {
@@ -97,9 +94,12 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = ({ className }) => {
     if (!fetchedCurrencies) {
       return;
     }
+    if (!presentCurrency) {
+      return;
+    }
     setBaseCurrency(currencyCode);
     setPresentCurrency({
-      currencyCode: presentCurrency.currencyCode,
+      currencyCode: presentCurrency?.currencyCode,
       rate: fetchedCurrencies.rates[presentCurrency.currencyCode],
     });
   }
