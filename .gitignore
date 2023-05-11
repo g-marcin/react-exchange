@@ -13,7 +13,7 @@ dist-ssr
 *.local
 model.js
 data\*
-package-lock.json
+
 
 # Editor directories and files
 .vscode/*
@@ -25,4 +25,4 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
-package-lock.json
+

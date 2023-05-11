@@ -1,0 +1,67 @@
+@font-face {
+  font-family: Inter;
+  src: url(./assets/fonts/Inter/static/Inter-Regular.ttf);
+}
+.Inter {
+  font-family: Inter;
+}
+
+.separator-5 {
+  margin: auto;
+  min-width: 5vw;
+}
+.separator-3 {
+  margin: auto;
+  min-width: 3vw;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3vw;
+  height: 77px;
+  opacity: 0.8;
+}
+.logo {
+  font-size: 26px;
+  font-family: Poppins-SemiBold;
+}
+.wrapper__Navbar {
+  font-family: Inter;
+  font-size: 24px;
+  padding-right: 2vw;
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper__Links {
+  display: flex;
+  margin-right: 1vw;
+}
+.dropdown__Account {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  font-family: Inter;
+  font-size: 24px;
+}
+
+.button__Hamburger {
+  display: none;
+  border: none;
+  background: none;
+}
+
+@media (max-width: 660px) {
+  .navbar {
+    padding: 0 10px;
+  }
+  .wrapper__Navbar {
+    display: none !important;
+  }
+  .button__Hamburger {
+    display: block !important;
+    cursor: pointer;
+  }
+}
