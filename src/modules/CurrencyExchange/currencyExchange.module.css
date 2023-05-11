@@ -1,10 +1,10 @@
 .exchange__Wrapper {
-  max-width: 1000px;
-  max-height: 860px;
-  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-width: 1000px;
+  max-height: 860px;
+  margin: auto;
 }
 
 @media (max-width: 450px) {

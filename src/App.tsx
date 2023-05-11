@@ -1,4 +1,5 @@
 import { Header, CurrencyExchange, Footer } from "./modules";
+import "./common/FontAwesomeLibrary/FontAwesomeLibrary";
 
 function App() {
   return (

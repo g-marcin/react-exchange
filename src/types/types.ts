@@ -4,19 +4,22 @@ export type CurrencyType = {
   currencyCode: string;
   rate: number;
 } | null;
-export interface IFetchedCurrencies extends ICurrenciesData {
-  rates: rates;
-}
-export interface IFetchedCurrenciesHistory extends ICurrenciesData {
-  rates: { [date: string]: rates };
-}
+
 interface ICurrenciesData {
   amount: number;
   base: string;
   date: string;
 }
+export interface FetchedCurrenciesProps extends ICurrenciesData {
+  rates: rates;
+}
+export interface FetchedCurrenciesHistoryProps extends ICurrenciesData {
+  rates: { [date: string]: rates };
+}
 export type rates = { [k: string]: number };
-
+export interface CurrencyExchangeProps extends PropsWithChildren {
+  className?: string;
+}
 export type CurrencyDisplayProps = {
   presentCurrency: CurrencyType;
   fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
@@ -25,10 +28,11 @@ export type CurrencyDisplayProps = {
   currencyNames: { [k: string]: string };
 };
 
-export interface CurrencyExchangeProps extends PropsWithChildren {
-  className?: string;
-}
-
+export type CurrencyListProps = {
+  currencyButtonHandler: (currencyCode: string) => void;
+  fetchedCurrencies: IFetchedCurrencies;
+  currencyNames: { [k: string]: string };
+};
 export type CurrencyProps = {
   currencyCode: string;
   currencyRate: number;
@@ -37,25 +41,17 @@ export type CurrencyProps = {
   key: string;
 };
 
-export type CurrencyListProps = {
-  currencyButtonHandler: (currencyCode: string) => void;
-  fetchedCurrencies: IFetchedCurrencies;
-  currencyNames: { [k: string]: string };
-};
-
-export type CurrencyBaseProps = {
-  currencyBaseHandler: (currencyCode: string, presentCurrency: CurrencyType) => void;
-  presentCurrency: CurrencyType;
-  currencyNames: { [k: string]: string };
-};
-
-export type CurrencyHistoryProps = {
-  presentCurrency: CurrencyType;
-  fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
-};
-
 export type CurrencyLatestProps = {
   presentCurrency: CurrencyType;
 
   baseCurrency: string;
+};
+export type CurrencyHistoryProps = {
+  presentCurrency: CurrencyType;
+  fetchedCurrenciesHistory: IFetchedCurrenciesHistory;
+};
+export type CurrencyBaseProps = {
+  currencyBaseHandler: (currencyCode: string, presentCurrency: CurrencyType) => void;
+  presentCurrency: CurrencyType;
+  currencyNames: { [k: string]: string };
 };
