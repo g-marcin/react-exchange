@@ -1,27 +1,23 @@
 import { FC } from "react";
-import { Wrapper, Container } from "../../../components";
+import { Container } from "../../../components";
+import { HistoryItem } from "./HistoryItem";
 import { CurrencyHistoryProps } from "../../../types";
 import styles from "./currencyHistory.module.css";
 
-export const CurrencyHistory: FC<CurrencyHistoryProps> = ({
-  fetchedCurrenciesHistory,
-  presentCurrency,
-}) => {
+export const CurrencyHistory: FC<CurrencyHistoryProps> = ({ fetchedCurrenciesHistory, presentCurrency }) => {
   return (
-    <Container className={styles["display__History"]}>
-      {fetchedCurrenciesHistory &&
-        Object.entries(fetchedCurrenciesHistory.rates)
-          .map(([date, currencyRates], index) => {
-            return (
-              <Wrapper className={styles["history__Item"]} key={index}>
-                <div style={{ fontWeight: "bold", borderBottom: "1px solid black" }}>{date}</div>
-                <div>
-                  {presentCurrency && JSON.stringify(currencyRates[presentCurrency.currencyCode])}
-                </div>
-              </Wrapper>
-            );
-          })
-          .reverse()}
-    </Container>
+    <>
+      {presentCurrency && (
+        <Container className={styles["display__History"]}>
+          {Object.entries(fetchedCurrenciesHistory.rates)
+            .map(([date, currencyRates], index) => {
+              return (
+                <HistoryItem index={index} date={date} presentCurrency={presentCurrency} currencyRates={currencyRates} />
+              );
+            })
+            .reverse()}
+        </Container>
+      )}
+    </>
   );
 };

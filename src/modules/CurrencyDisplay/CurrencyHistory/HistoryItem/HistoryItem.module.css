@@ -10,9 +10,3 @@
   align-items: center;
   gap: 5px;
 }
-
-.display__Wrapper {
-  min-height: 250px;
-  border: 1px solid black;
-  overflow-y: scroll;
-}

@@ -37,15 +37,19 @@ export type CurrencyProps = {
   currencyNames: { [k: string]: string };
   key: string;
 };
-
 export type CurrencyLatestProps = {
   presentCurrency: CurrencyType;
-
   baseCurrency: string;
 };
 export type CurrencyHistoryProps = {
   presentCurrency: CurrencyType;
   fetchedCurrenciesHistory: FetchedCurrenciesHistoryProps;
+};
+export type HistoryItemProps = {
+  index: number;
+  date: string;
+  presentCurrency: CurrencyType;
+  currencyRates: rates;
 };
 export type CurrencyBaseProps = {
   currencyBaseHandler: (currencyCode: string, presentCurrency: CurrencyType) => void;
