@@ -12,7 +12,7 @@ export const CurrencyBase: FC<CurrencyBaseProps> = ({ currencyBaseHandler, prese
         name="baseCurrency"
         id="baseCurrency"
         onChange={(e) => {
-          currencyBaseHandler(e.target.value, presentCurrency);
+          currencyBaseHandler(e.target.value);
         }}
       >
         {Object.keys(currencyNames)
