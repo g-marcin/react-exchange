@@ -12,7 +12,13 @@ export const CurrencyHistory: FC<CurrencyHistoryProps> = ({ fetchedCurrenciesHis
           {Object.entries(fetchedCurrenciesHistory.rates)
             .map(([date, currencyRates], index) => {
               return (
-                <HistoryItem index={index} date={date} presentCurrency={presentCurrency} currencyRates={currencyRates} />
+                <HistoryItem
+                  index={index}
+                  date={date}
+                  presentCurrency={presentCurrency}
+                  currencyRates={currencyRates}
+                  key={index}
+                />
               );
             })
             .reverse()}

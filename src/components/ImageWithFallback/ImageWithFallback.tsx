@@ -1,6 +1,5 @@
 import { FC, SyntheticEvent } from "react";
 import { ImageWithFallbackProps } from "../../types";
-import styles from "./imageWithFallback.module.css";
 
 export const ImageWithFallback: FC<ImageWithFallbackProps> = ({ currencyCode, className }) => {
   const currencyFlagImage = `https://flagsapi.com/${currencyCode.slice(0, 2)}/flat/64.png`;

@@ -8,27 +8,35 @@ import { FetchedCurrenciesProps, CurrencyExchangeProps, CurrencyType, FetchedCur
 import styles from "./currencyExchange.module.css";
 
 export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
+  const [fetchedCurrencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
   const [fetchedCurrencies, setFetchedCurrencies] = useState<FetchedCurrenciesProps>({
     amount: 0,
     base: "",
     date: "",
-    rates: { code: 0 },
+    rates: { currencyCode: 0 },
   });
   const [fetchedCurrenciesHistory, setFetchedCurrenciesHistory] = useState<FetchedCurrenciesHistoryProps>({
     amount: 0,
     base: "",
     date: "",
-    rates: { date: { code: 0 } },
+    rates: { date: { currencyCode: 0 } },
   });
-  const [fetchedCurrencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
   const [presentCurrency, setPresentCurrency] = useState<CurrencyType>(null);
   const [baseCurrency, setBaseCurrency] = useState("AUD");
 
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
-      setFetchedCurrencies(response.data);
+      const newFetchedCurrencies = response.data;
+      setFetchedCurrencies(newFetchedCurrencies);
+      if (presentCurrency) {
+        setPresentCurrency({
+          currencyCode: presentCurrency.currencyCode,
+          rate: newFetchedCurrencies.rates[`${presentCurrency.currencyCode}`],
+        });
+      }
     });
   }, [baseCurrency]);
+
   useEffect(() => {
     const date = new Date();
     const currentDate = format(date, "yyyy-MM-dd");
@@ -69,7 +77,7 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
       rate: fetchedCurrencies.rates[`${currencyCode}`],
     });
   }
-  function currencyBaseHandler(currencyCode: string, presentCurrency: CurrencyType): void {
+  function currencyBaseHandler(currencyCode: string): void {
     if (!fetchedCurrencies) {
       return;
     }
@@ -77,9 +85,5 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
       return;
     }
     setBaseCurrency(currencyCode);
-    setPresentCurrency({
-      currencyCode: presentCurrency?.currencyCode,
-      rate: fetchedCurrencies.rates[presentCurrency.currencyCode],
-    });
   }
 };

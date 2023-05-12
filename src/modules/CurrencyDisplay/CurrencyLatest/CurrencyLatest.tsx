@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { CurrencyLatestProps } from "../../../types";
 import { Container } from "../../../components";
-import styles from "./currencyLatest.module.css";
 import { ImageWithFallback } from "../../../components/ImageWithFallback";
+import { CurrencyLatestProps } from "../../../types";
+import styles from "./currencyLatest.module.css";
 
 export const CurrencyLatest: FC<CurrencyLatestProps> = ({ presentCurrency, baseCurrency }) => {
   return (
