@@ -1,10 +1,15 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { Container } from "../../../components";
 import { HistoryItem } from "./HistoryItem";
-import { CurrencyHistoryProps } from "../../../types";
+import { CurrencyContext } from "../../../contexts";
 import styles from "./currencyHistory.module.css";
 
-export const CurrencyHistory: FC<CurrencyHistoryProps> = ({ fetchedCurrenciesHistory, presentCurrency }) => {
+export const CurrencyHistory: FC = () => {
+  const currencyContextObject = useContext(CurrencyContext);
+  if (!currencyContextObject) {
+    return <p>No context!</p>;
+  }
+  const { fetchedCurrenciesHistory, presentCurrency } = currencyContextObject;
   return (
     <>
       {presentCurrency && (

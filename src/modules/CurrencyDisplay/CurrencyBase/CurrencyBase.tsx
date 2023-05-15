@@ -1,17 +1,26 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { CurrencyContext } from "../../../contexts";
 import { Container } from "../../../components";
-import { CurrencyBaseProps } from "../../../types";
 import styles from "./currencyBase.module.css";
 
-export const CurrencyBase: FC<CurrencyBaseProps> = ({ currencyBaseHandler, presentCurrency, currencyNames }) => {
+export const CurrencyBase: FC = () => {
+  const contextObject = useContext(CurrencyContext);
+  if (!contextObject) {
+    return <p>No context!</p>;
+  }
+  const { currencyBaseHandler, presentCurrency, fetchedCurrencyNames: currencyNames } = contextObject;
+
   return (
-    <Container className={styles["base__Wrapper"]}>
+    <Container className={styles["display__Wrapper"]}>
       <p className={styles["base__Label"]}> Please choose your base currency... </p>
       <select
         className={styles["base__Select"]}
         name="baseCurrency"
         id="baseCurrency"
         onChange={(e) => {
+          if (!currencyBaseHandler) {
+            return;
+          }
           currencyBaseHandler(e.target.value);
         }}
       >

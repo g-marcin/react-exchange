@@ -1,14 +1,19 @@
-import { FC, useState, useEffect } from "react";
-import { format, subDays } from "date-fns";
-import { AxiosResponse } from "axios";
+import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
 import { httpClient } from "../../common";
-import { Wrapper } from "../../components";
-import { CurrencyDisplay, CurrencyList } from "..";
-import { FetchedCurrenciesType, CurrencyExchangeProps, CurrencyType, FetchedCurrenciesHistoryType } from "../../types";
-import styles from "./currencyExchange.module.css";
+import { AxiosResponse } from "axios";
+import {
+  FetchedCurrenciesType,
+  FetchedCurrenciesHistoryType,
+  CurrencyType,
+  FetchedCurrencyNamesType,
+  CurrencyContextType,
+} from "../../types";
+import { format, subDays } from "date-fns";
 
-export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
-  const [fetchedCurrencyNames, setCurrencyNames] = useState<{ [k: string]: string }>({ currencyCode: "" });
+export const CurrencyContext = createContext<CurrencyContextType>(null);
+
+export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [fetchedCurrencyNames, setCurrencyNames] = useState<FetchedCurrencyNamesType>({ currencyCode: "" });
   const [fetchedCurrencies, setFetchedCurrencies] = useState<FetchedCurrenciesType>({
     amount: 0,
     base: "",
@@ -51,22 +56,20 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
   }, []);
 
   return (
-    <Wrapper className={styles["exchange__Wrapper"]}>
-      <CurrencyDisplay
-        currencyNames={fetchedCurrencyNames}
-        fetchedCurrenciesHistory={fetchedCurrenciesHistory}
-        presentCurrency={presentCurrency}
-        baseCurrency={baseCurrency}
-        currencyBaseHandler={currencyBaseHandler}
-      />
-      <CurrencyList
-        currencyNames={fetchedCurrencyNames}
-        fetchedCurrencies={fetchedCurrencies}
-        currencyButtonHandler={currencyButtonHandler}
-      />
-    </Wrapper>
+    <CurrencyContext.Provider
+      value={{
+        fetchedCurrencies: fetchedCurrencies,
+        fetchedCurrenciesHistory: fetchedCurrenciesHistory,
+        fetchedCurrencyNames: fetchedCurrencyNames,
+        presentCurrency: presentCurrency,
+        baseCurrency: baseCurrency,
+        currencyButtonHandler: currencyButtonHandler,
+        currencyBaseHandler: currencyBaseHandler,
+      }}
+    >
+      {children}
+    </CurrencyContext.Provider>
   );
-
   function currencyButtonHandler(currencyCode: string): void {
     if (!fetchedCurrencies) {
       return;

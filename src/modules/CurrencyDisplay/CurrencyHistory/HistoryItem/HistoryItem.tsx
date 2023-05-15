@@ -8,8 +8,10 @@ export const HistoryItem: FC<HistoryItemProps> = ({ index, date, presentCurrency
     <Wrapper className={styles["history__Item"]} key={index}>
       {presentCurrency && (
         <>
-          <div>{date}</div>
-          <div>{presentCurrency && JSON.stringify(currencyRates[presentCurrency.currencyCode])}</div>
+          <div className={styles["History__date"]}>{date}</div>
+          <div className={styles["History__rate"]}>
+            {presentCurrency && JSON.stringify(currencyRates[presentCurrency.currencyCode])}
+          </div>
         </>
       )}
     </Wrapper>
