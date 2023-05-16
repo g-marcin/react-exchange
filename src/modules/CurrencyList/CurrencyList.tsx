@@ -6,13 +6,15 @@ import { CurrencyContext } from "../../contexts";
 
 export const CurrencyList: FC = () => {
   const currencyContextObject = useContext(CurrencyContext);
-  const fetchedCurrencies = currencyContextObject?.fetchedCurrencies;
+  if (!currencyContextObject) {
+    return <p>No context!</p>;
+  }
+  const latestCurrencyRates = currencyContextObject.latestCurrencyRates;
   return (
     <Wrapper className={styles["list__Wrapper"]}>
-      {fetchedCurrencies &&
-        Object.entries(fetchedCurrencies.rates).map(([currencyCode, currencyRate]) => {
-          return <Currency currencyCode={currencyCode} currencyRate={currencyRate} key={currencyCode} />;
-        })}
+      {Object.entries(latestCurrencyRates).map(([currencyCode, currencyRate]) => {
+        return <Currency currencyCode={currencyCode} currencyRate={currencyRate} key={currencyCode} />;
+      })}
     </Wrapper>
   );
 };

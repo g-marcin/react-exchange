@@ -9,12 +9,12 @@ export const CurrencyHistory: FC = () => {
   if (!currencyContextObject) {
     return <p>No context!</p>;
   }
-  const { fetchedCurrenciesHistory, presentCurrency } = currencyContextObject;
+  const { presentCurrency, pastCurrenciesRates } = currencyContextObject;
   return (
     <>
       {presentCurrency && (
         <Container className={styles["display__History"]}>
-          {Object.entries(fetchedCurrenciesHistory.rates)
+          {Object.entries(pastCurrenciesRates)
             .map(([date, currencyRates], index) => {
               return (
                 <HistoryItem

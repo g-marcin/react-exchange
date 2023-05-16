@@ -12,39 +12,27 @@ interface ICurrenciesData {
   base: string;
   date: string;
 }
-export interface FetchedCurrenciesType extends ICurrenciesData {
-  rates: rates;
+export interface FetchedCurrenciesDTO extends ICurrenciesData {
+  rates: CurrencyRates;
 }
 export interface FetchedCurrenciesHistoryType extends ICurrenciesData {
-  rates: { [date: string]: rates };
+  rates: PastCurrencyRates;
 }
-export type rates = { [k: string]: number };
+export interface FetchedCurrenciesHistoryDTO extends ICurrenciesData {
+  rates: PastCurrencyRates;
+}
+export type CurrencyRates = { [k: string]: number };
+export type PastCurrencyRates = { [date: string]: CurrencyRates };
 export interface CurrencyExchangeProps extends PropsWithChildren {
   className?: string;
 }
-
-export type CurrencyListProps = {
-  currencyButtonHandler: (currencyCode: string) => void;
-  fetchedCurrencies: FetchedCurrenciesType;
-  currencyNames: { [k: string]: string };
-};
 export type CurrencyProps = {
   currencyCode: string;
   currencyRate: number;
 };
-export type CurrencyLatestProps = {
-  presentCurrency: CurrencyType;
-  baseCurrency: string;
-};
 export type CurrencyHistoryProps = {
   presentCurrency: CurrencyType;
   fetchedCurrenciesHistory: FetchedCurrenciesHistoryType;
-};
-export type HistoryItemProps = {
-  index: number;
-  date: string;
-  presentCurrency: CurrencyType;
-  currencyRates: rates;
 };
 export type CurrencyBaseProps = {
   currencyBaseHandler: CurrencyBaseHandlerType;
@@ -61,8 +49,8 @@ export type FetchedCurrencyNamesType = {
 export type CurrencyBaseHandlerType = (currencyCode: string) => void;
 export type CurrencyButtonHandlerType = (currencyCode: string) => void;
 export type CurrencyContextType = {
-  fetchedCurrencies: FetchedCurrenciesType;
-  fetchedCurrenciesHistory: FetchedCurrenciesHistoryType;
+  latestCurrencyRates: CurrencyRates;
+  pastCurrenciesRates: PastCurrencyRates;
   fetchedCurrencyNames: FetchedCurrencyNamesType;
   presentCurrency: CurrencyType;
   baseCurrency: string;

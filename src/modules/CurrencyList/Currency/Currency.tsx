@@ -6,12 +6,12 @@ import styles from "./currency.module.css";
 
 export const Currency: FC<CurrencyProps> = ({ currencyCode, currencyRate }) => {
   const currencyContextObject = useContext(CurrencyContext);
-
-  const currencyButtonHandler = currencyContextObject?.currencyButtonHandler;
-  const currencyNames = currencyContextObject?.fetchedCurrencyNames;
-  if (!currencyNames) {
+  if (!currencyContextObject) {
     return <p>No context!</p>;
   }
+
+  const currencyButtonHandler = currencyContextObject.currencyButtonHandler;
+  const currencyNames = currencyContextObject.fetchedCurrencyNames;
 
   return (
     <button
