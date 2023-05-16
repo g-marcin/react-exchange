@@ -22,7 +22,6 @@ export const Currency: FC<CurrencyProps> = ({ currencyCode, currencyRate }) => {
           return;
         }
         currencyButtonHandler(currencyCode);
-        console.log(presentCurrency);
       }}
     >
       <ImageWithFallback currencyCode={currencyCode} className={styles["currency__Flag"]} />
