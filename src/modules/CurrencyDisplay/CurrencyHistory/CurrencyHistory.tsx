@@ -16,15 +16,7 @@ export const CurrencyHistory: FC = () => {
         <Container className={styles["display__History"]}>
           {Object.entries(pastCurrenciesRates)
             .map(([date, currencyRates], index) => {
-              return (
-                <HistoryItem
-                  index={index}
-                  date={date}
-                  presentCurrency={presentCurrency}
-                  currencyRates={currencyRates}
-                  key={index}
-                />
-              );
+              return <HistoryItem date={date} presentCurrency={presentCurrency} currencyRates={currencyRates} key={index} />;
             })
             .reverse()}
         </Container>

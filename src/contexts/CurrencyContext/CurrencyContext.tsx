@@ -4,7 +4,6 @@ import { AxiosResponse } from "axios";
 import { format, subDays } from "date-fns";
 import {
   FetchedCurrenciesDTO,
-  FetchedCurrenciesHistoryType,
   FetchedCurrenciesHistoryDTO,
   CurrencyType,
   FetchedCurrencyNamesType,
@@ -20,7 +19,6 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
   const [latestCurrencyRates, setLatestCurrencyRates] = useState<CurrencyRates>({
     currencyCode: 0,
   });
-
   const [pastCurrencyRates, setPastCurrencyRates] = useState<PastCurrencyRates>({ "": { currencyCode: 0 } });
   const [presentCurrency, setPresentCurrency] = useState<CurrencyType>(null);
   const [baseCurrency, setBaseCurrency] = useState("AUD");

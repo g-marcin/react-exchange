@@ -1,15 +1,18 @@
 import { FC, useContext } from "react";
 import { ImageWithFallback } from "../../../components/ImageWithFallback";
-import { CurrencyProps } from "../../../types";
 import { CurrencyContext } from "../../../contexts";
 import styles from "./currency.module.css";
+
+export type CurrencyProps = {
+  currencyCode: string;
+  currencyRate: number;
+};
 
 export const Currency: FC<CurrencyProps> = ({ currencyCode, currencyRate }) => {
   const currencyContextObject = useContext(CurrencyContext);
   if (!currencyContextObject) {
     return <p>No context!</p>;
   }
-
   const currencyButtonHandler = currencyContextObject.currencyButtonHandler;
   const currencyNames = currencyContextObject.fetchedCurrencyNames;
 
