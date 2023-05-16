@@ -8,7 +8,6 @@ export const Currency: FC<CurrencyProps> = ({ currencyCode, currencyRate }) => {
   const currencyContextObject = useContext(CurrencyContext);
 
   const currencyButtonHandler = currencyContextObject?.currencyButtonHandler;
-  const presentCurrency = currencyContextObject?.presentCurrency;
   const currencyNames = currencyContextObject?.fetchedCurrencyNames;
   if (!currencyNames) {
     return <p>No context!</p>;

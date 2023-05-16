@@ -3,7 +3,7 @@ import { CurrencyContext } from "../../../contexts";
 import { Container } from "../../../components";
 import styles from "./currencyBase.module.css";
 
-const CurrencyBase: FC = () => {
+const CurrencyBaseMemo: FC = () => {
   const contextObject = useContext(CurrencyContext);
   if (!contextObject) {
     return <p>No context!</p>;
@@ -38,4 +38,4 @@ const CurrencyBase: FC = () => {
   );
 };
 
-export const CurrencyBaseMemo = memo(CurrencyBase);
+export const CurrencyBase = memo(CurrencyBaseMemo);
