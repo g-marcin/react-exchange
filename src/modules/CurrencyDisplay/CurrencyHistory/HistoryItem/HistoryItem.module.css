@@ -1,0 +1,12 @@
+.history__Item {
+  display: flex;
+  border: 1px solid black;
+  padding: 5px;
+  justify-content: space-between;
+  width: 350px;
+  justify-self: center;
+  margin: 5px auto;
+  font-size: 18px;
+  align-items: center;
+  gap: 5px;
+}

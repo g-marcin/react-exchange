@@ -1,42 +1,20 @@
 import { FC } from "react";
-import { CurrencyType } from "../../../types";
-import { Wrapper } from "../../../components/Wrapper";
+import { ImageWithFallback } from "../../../components/ImageWithFallback";
+import { CurrencyProps } from "../../../types";
 import styles from "./currency.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-type CurrencyProps = {
-  currency: CurrencyType;
-  setPresentCurrency: React.Dispatch<React.SetStateAction<null | CurrencyType>>;
-};
-
-export const Currency: FC<CurrencyProps> = ({ currency, setPresentCurrency }) => {
+export const Currency: FC<CurrencyProps> = ({ currencyCode, currencyRate, currencyNames, currencyButtonHandler }) => {
   return (
-    <Wrapper
-      className={styles.currency}
+    <button
+      className={styles["currency__Button"]}
       onClick={() => {
-        setPresentCurrency(currency);
+        currencyButtonHandler(currencyCode);
       }}
     >
-      <div>{currency.name}</div>
-      <div>{currency.currencyCode}</div>
-      <div>{currency.country}</div>
-      <div>{currency.countryCode}</div>
-      <div>
-        {Object.entries(currency.exchangeRates).map(([key, value]) => {
-          return <div>{`${currency.currencyCode} exchange rate to ${key} is ${value}`}</div>;
-        })}
-      </div>
-      <div>
-        <FontAwesomeIcon icon={["fas", currency.iconName]} />
-      </div>
-
-      <button
-        onClick={() => {
-          setPresentCurrency(currency);
-        }}
-      >
-        Show Currency
-      </button>
-    </Wrapper>
+      <ImageWithFallback currencyCode={currencyCode} className={styles["currency__Flag"]} />
+      <span className={styles["currency__ItemSmall"]}>{`${currencyCode} `}</span>
+      <span className={styles["currency__Name"]}>{currencyNames[`${currencyCode}`]}</span>
+      <span className={styles["currency__ItemSmall"]}>{currencyRate.toFixed(2)}</span>
+    </button>
   );
 };

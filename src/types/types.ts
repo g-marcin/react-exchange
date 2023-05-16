@@ -1,14 +1,66 @@
-import { IconName } from "@fortawesome/fontawesome-svg-core";
-
+import { PropsWithChildren } from "react";
+export interface WrapperProps extends PropsWithChildren {
+  className?: string;
+  onClick?: () => void;
+}
 export type CurrencyType = {
-  name: string;
   currencyCode: string;
-  country: string;
-  countryCode: string | null;
-  exchangeRates: {
-    PLN?: number;
-    EUR?: number;
-    USD?: number;
-  };
-  iconName: IconName;
+  rate: number;
+} | null;
+interface ICurrenciesData {
+  amount: number;
+  base: string;
+  date: string;
+}
+export interface FetchedCurrenciesProps extends ICurrenciesData {
+  rates: rates;
+}
+export interface FetchedCurrenciesHistoryProps extends ICurrenciesData {
+  rates: { [date: string]: rates };
+}
+export type rates = { [k: string]: number };
+export interface CurrencyExchangeProps extends PropsWithChildren {
+  className?: string;
+}
+export type CurrencyDisplayProps = {
+  presentCurrency: CurrencyType;
+  fetchedCurrenciesHistory: FetchedCurrenciesHistoryProps;
+  currencyBaseHandler: (currencyCode: string) => void;
+  baseCurrency: string;
+  currencyNames: { [k: string]: string };
+};
+export type CurrencyListProps = {
+  currencyButtonHandler: (currencyCode: string) => void;
+  fetchedCurrencies: FetchedCurrenciesProps;
+  currencyNames: { [k: string]: string };
+};
+export type CurrencyProps = {
+  currencyCode: string;
+  currencyRate: number;
+  currencyButtonHandler: (currencyCode: string) => void;
+  currencyNames: { [k: string]: string };
+  key: string;
+};
+export type CurrencyLatestProps = {
+  presentCurrency: CurrencyType;
+  baseCurrency: string;
+};
+export type CurrencyHistoryProps = {
+  presentCurrency: CurrencyType;
+  fetchedCurrenciesHistory: FetchedCurrenciesHistoryProps;
+};
+export type HistoryItemProps = {
+  index: number;
+  date: string;
+  presentCurrency: CurrencyType;
+  currencyRates: rates;
+};
+export type CurrencyBaseProps = {
+  currencyBaseHandler: (currencyCode: string) => void;
+  presentCurrency: CurrencyType;
+  currencyNames: { [k: string]: string };
+};
+export type ImageWithFallbackProps = {
+  currencyCode: string;
+  className: string;
 };

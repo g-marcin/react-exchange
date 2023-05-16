@@ -1,0 +1,12 @@
+.list__Wrapper {
+  border: 1px solid black;
+  max-height: 450px;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+@media (max-width: 450px) {
+  .List__wrapper {
+    width: auto;
+  }
+}

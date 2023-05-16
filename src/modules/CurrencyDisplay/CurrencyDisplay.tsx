@@ -1,15 +1,27 @@
 import { FC } from "react";
-import { Wrapper } from "../../components/Wrapper";
-import { CurrencyType } from "../../types";
+import { Wrapper } from "../../components";
+import { CurrencyBase } from "./CurrencyBase";
+import { CurrencyLatest } from "./CurrencyLatest";
+import { CurrencyHistory } from "./CurrencyHistory";
+import { CurrencyDisplayProps } from "../../types";
+import styles from "./currencyDisplay.module.css";
 
-type CurrencyDisplayProps = {
-  presentCurrency: CurrencyType | null;
-};
-
-export const CurrencyDisplay: FC<CurrencyDisplayProps> = ({ presentCurrency }) => {
+export const CurrencyDisplay: FC<CurrencyDisplayProps> = ({
+  presentCurrency,
+  fetchedCurrenciesHistory,
+  currencyBaseHandler,
+  baseCurrency,
+  currencyNames,
+}) => {
   return (
-    <Wrapper>
-      <p>{`present currency is ${JSON.stringify(presentCurrency)}`}</p>
+    <Wrapper className={styles["display__Wrapper"]}>
+      <CurrencyBase
+        currencyNames={currencyNames}
+        presentCurrency={presentCurrency}
+        currencyBaseHandler={currencyBaseHandler}
+      />
+      <CurrencyLatest presentCurrency={presentCurrency} baseCurrency={baseCurrency} />
+      <CurrencyHistory fetchedCurrenciesHistory={fetchedCurrenciesHistory} presentCurrency={presentCurrency} />
     </Wrapper>
   );
 };

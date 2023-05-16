@@ -1,19 +1,24 @@
 import { FC } from "react";
-import { CurrencyType } from "../../types";
-import { Wrapper } from "../../components/Wrapper";
+import { Wrapper } from "../../components";
 import { Currency } from "./Currency";
+import { CurrencyListProps } from "../../types";
+import styles from "./currencyList.module.css";
 
-type CurrencyListProps = {
-  currencyData: CurrencyType[];
-  setPresentCurrency: React.Dispatch<React.SetStateAction<null | CurrencyType>>;
-};
-
-export const CurrencyList: FC<CurrencyListProps> = ({ currencyData, setPresentCurrency }) => {
+export const CurrencyList: FC<CurrencyListProps> = ({ currencyButtonHandler, fetchedCurrencies, currencyNames }) => {
   return (
-    <Wrapper>
-      {currencyData.map((currency) => {
-        return <Currency currency={currency} setPresentCurrency={setPresentCurrency} />;
-      })}
+    <Wrapper className={styles["list__Wrapper"]}>
+      {fetchedCurrencies &&
+        Object.entries(fetchedCurrencies.rates).map(([currencyCode, currencyRate]) => {
+          return (
+            <Currency
+              currencyCode={currencyCode}
+              currencyRate={currencyRate}
+              currencyNames={currencyNames}
+              currencyButtonHandler={currencyButtonHandler}
+              key={currencyCode}
+            />
+          );
+        })}
     </Wrapper>
   );
 };
