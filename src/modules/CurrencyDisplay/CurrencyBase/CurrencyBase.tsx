@@ -1,9 +1,9 @@
-import { FC, useContext } from "react";
+import { FC, memo, useContext } from "react";
 import { CurrencyContext } from "../../../contexts";
 import { Container } from "../../../components";
 import styles from "./currencyBase.module.css";
 
-export const CurrencyBase: FC = () => {
+const CurrencyBase: FC = () => {
   const contextObject = useContext(CurrencyContext);
   if (!contextObject) {
     return <p>No context!</p>;
@@ -37,3 +37,5 @@ export const CurrencyBase: FC = () => {
     </Container>
   );
 };
+
+export const CurrencyBaseMemo = memo(CurrencyBase);
