@@ -1,12 +1,13 @@
 import { FC, memo, useContext } from "react";
 import { CurrencyContext } from "../../../contexts";
-import { Container } from "../../../components";
+import { Container, Loader } from "../../../components";
+
 import styles from "./currencyBase.module.css";
 
 const CurrencyBaseMemo: FC = () => {
   const contextObject = useContext(CurrencyContext);
   if (!contextObject) {
-    return <p>No context!</p>;
+    return <Loader />;
   }
   const { currencyBaseHandler, presentCurrency, fetchedCurrencyNames: currencyNames } = contextObject;
 
@@ -18,9 +19,6 @@ const CurrencyBaseMemo: FC = () => {
         name="baseCurrency"
         id="baseCurrency"
         onChange={(e) => {
-          if (!currencyBaseHandler) {
-            return;
-          }
           currencyBaseHandler(e.target.value);
         }}
       >

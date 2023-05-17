@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Container } from "../../../components";
+import { Container,Loader } from "../../../components";
 import { ImageWithFallback } from "../../../components/ImageWithFallback";
 import styles from "./currencyLatest.module.css";
 import { CurrencyContext } from "../../../contexts";
@@ -7,7 +7,7 @@ import { CurrencyContext } from "../../../contexts";
 export const CurrencyLatest: FC = () => {
   const currencyContextObject = useContext(CurrencyContext);
   if (!currencyContextObject) {
-    return <p>No context!</p>;
+    return <Loader/>;
   }
   const { presentCurrency, baseCurrency } = currencyContextObject;
   return (

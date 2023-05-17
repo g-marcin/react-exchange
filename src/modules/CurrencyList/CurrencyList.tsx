@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Wrapper } from "../../components";
+import { Wrapper, Loader } from "../../components";
 import { Currency } from "./Currency";
 import styles from "./currencyList.module.css";
 import { CurrencyContext } from "../../contexts";
@@ -7,7 +7,7 @@ import { CurrencyContext } from "../../contexts";
 export const CurrencyList: FC = () => {
   const currencyContextObject = useContext(CurrencyContext);
   if (!currencyContextObject) {
-    return <p>No context!</p>;
+    return <Loader />;
   }
   const latestCurrencyRates = currencyContextObject.latestCurrencyRates;
   return (

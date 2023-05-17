@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Container } from "../../../components";
+import { Container, Loader } from "../../../components";
 import { HistoryItem } from "./HistoryItem";
 import { CurrencyContext } from "../../../contexts";
 import styles from "./currencyHistory.module.css";
@@ -7,7 +7,7 @@ import styles from "./currencyHistory.module.css";
 export const CurrencyHistory: FC = () => {
   const currencyContextObject = useContext(CurrencyContext);
   if (!currencyContextObject) {
-    return <p>No context!</p>;
+    return <Loader />;
   }
   const { presentCurrency, pastCurrenciesRates } = currencyContextObject;
   return (
