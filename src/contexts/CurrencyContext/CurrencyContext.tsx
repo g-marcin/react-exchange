@@ -41,38 +41,25 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
       }
     });
   }, [baseCurrency]);
+
   useEffect(() => {
     const date = new Date();
-    const currentDate = format(date, "yyyy-MM-dd");
-    const weekAgoDate = format(subDays(date, 12), "yyyy-MM-dd");
-    httpClient.get(`/${weekAgoDate}..${currentDate}?from=${baseCurrency}`).then((response: AxiosResponse) => {
+    const dateFrom = format(date, "yyyy-MM-dd");
+    const dateTo = format(subDays(date, 12), "yyyy-MM-dd");
+    httpClient.get(`/${dateTo}..${dateFrom}?from=${baseCurrency}`).then((response: AxiosResponse) => {
       setPastCurrencyRates(fetchedDataMapper(response.data));
       function fetchedDataMapper(fetchedData: FetchedCurrenciesHistoryDTO) {
         return fetchedData.rates;
       }
     });
   }, [baseCurrency]);
+
   useEffect(() => {
     httpClient.get(`/currencies`).then((response: AxiosResponse) => {
       setCurrencyNames(response.data);
     });
   }, []);
 
-  return (
-    <CurrencyContext.Provider
-      value={{
-        latestCurrencyRates: latestCurrencyRates,
-        pastCurrenciesRates: pastCurrencyRates,
-        fetchedCurrencyNames: fetchedCurrencyNames,
-        presentCurrency: presentCurrency,
-        baseCurrency: baseCurrency,
-        currencyButtonHandler: currencyButtonHandler,
-        currencyBaseHandler: currencyBaseHandler,
-      }}
-    >
-      {children}
-    </CurrencyContext.Provider>
-  );
   function currencyButtonHandler(currencyCode: string): void {
     if (!latestCurrencyRates) {
       return;
@@ -91,4 +78,20 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
     }
     setBaseCurrency(currencyCode);
   }
+
+  return (
+    <CurrencyContext.Provider
+      value={{
+        latestCurrencyRates: latestCurrencyRates,
+        pastCurrenciesRates: pastCurrencyRates,
+        fetchedCurrencyNames: fetchedCurrencyNames,
+        presentCurrency: presentCurrency,
+        baseCurrency: baseCurrency,
+        currencyButtonHandler: currencyButtonHandler,
+        currencyBaseHandler: currencyBaseHandler,
+      }}
+    >
+      {children}
+    </CurrencyContext.Provider>
+  );
 };
