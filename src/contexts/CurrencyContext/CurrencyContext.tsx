@@ -1,15 +1,12 @@
 import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
 import { httpClient } from "../../common";
 import { AxiosResponse } from "axios";
-import { format, subDays } from "date-fns";
 import {
   FetchedCurrenciesDTO,
-  FetchedCurrenciesHistoryDTO,
   CurrencyType,
   FetchedCurrencyNamesType,
   CurrencyContextType,
   CurrencyRates,
-  PastCurrencyRates,
 } from "../../types";
 
 export const CurrencyContext = createContext<CurrencyContextType>(null);
@@ -19,7 +16,6 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
   const [latestCurrencyRates, setLatestCurrencyRates] = useState<CurrencyRates>({
     currencyCode: 0,
   });
-  const [pastCurrencyRates, setPastCurrencyRates] = useState<PastCurrencyRates>({ "": { currencyCode: 0 } });
   const [presentCurrency, setPresentCurrency] = useState<CurrencyType>(null);
   const [baseCurrency, setBaseCurrency] = useState("AUD");
 
@@ -38,18 +34,6 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
             rate: latestCurrencyRates[`${presentCurrency.currencyCode}`],
           });
         }
-      }
-    });
-  }, [baseCurrency]);
-
-  useEffect(() => {
-    const date = new Date();
-    const dateFrom = format(date, "yyyy-MM-dd");
-    const dateTo = format(subDays(date, 12), "yyyy-MM-dd");
-    httpClient.get(`/${dateTo}..${dateFrom}?from=${baseCurrency}`).then((response: AxiosResponse) => {
-      setPastCurrencyRates(fetchedDataMapper(response.data));
-      function fetchedDataMapper(fetchedData: FetchedCurrenciesHistoryDTO) {
-        return fetchedData.rates;
       }
     });
   }, [baseCurrency]);
@@ -83,7 +67,6 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
     <CurrencyContext.Provider
       value={{
         latestCurrencyRates: latestCurrencyRates,
-        pastCurrenciesRates: pastCurrencyRates,
         fetchedCurrencyNames: fetchedCurrencyNames,
         presentCurrency: presentCurrency,
         baseCurrency: baseCurrency,
