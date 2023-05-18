@@ -9,7 +9,18 @@ import {
   CurrencyRates,
 } from "../../types";
 
-export const CurrencyContext = createContext<CurrencyContextType>(null);
+export const CurrencyContext = createContext<CurrencyContextType>({
+  latestCurrencyRates: { code: 0 },
+  fetchedCurrencyNames: { name: "name" },
+  presentCurrency: { currencyCode: "", rate: 0 },
+  baseCurrency: "",
+  currencyButtonHandler: () => {
+    return;
+  },
+  currencyBaseHandler: () => {
+    return;
+  },
+});
 
 export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [fetchedCurrencyNames, setCurrencyNames] = useState<FetchedCurrencyNamesType>({ currencyCode: "" });

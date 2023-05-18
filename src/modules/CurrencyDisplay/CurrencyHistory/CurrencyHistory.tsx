@@ -7,6 +7,7 @@ import styles from "./currencyHistory.module.css";
 
 export const CurrencyHistory: FC = () => {
   const currencyContextObject = useContext(CurrencyContext);
+
   const { presentCurrency, baseCurrency } = currencyContextObject;
   const { currencyHistory, inProgress } = useCurrencyHistory(baseCurrency, presentCurrency);
   if (!currencyHistory) {
