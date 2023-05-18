@@ -6,9 +6,9 @@ import { CurrencyType, PastCurrencyRates } from "../../types";
 
 export const useCurrencyHistory = (baseCurrency: string, presentCurrency: CurrencyType) => {
   const [currencyHistory, setCurrencyHistory] = useState<PastCurrencyRates>({ date: { code: 0 } });
-  const [isLoading, setIsLoading] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
   useEffect(() => {
-    setIsLoading(true);
+    setInProgress(true);
     const date = new Date();
     const dateFrom = format(date, "yyyy-MM-dd");
     const dateTo = format(subDays(date, 12), "yyyy-MM-dd");
@@ -16,10 +16,8 @@ export const useCurrencyHistory = (baseCurrency: string, presentCurrency: Curren
       .get(`/${dateTo}..${dateFrom}?from=${baseCurrency}&to=${presentCurrency ? presentCurrency.currencyCode : "USD"}`)
       .then((response: AxiosResponse) => {
         setCurrencyHistory(response.data.rates);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1500);
+        setInProgress(false);
       });
   }, [baseCurrency, presentCurrency]);
-  return { currencyHistory, isLoading };
+  return { currencyHistory, inProgress };
 };
