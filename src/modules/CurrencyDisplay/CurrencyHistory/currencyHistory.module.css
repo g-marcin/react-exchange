@@ -20,3 +20,8 @@
 .display__History {
   overflow-x: scroll;
 }
+
+.center {
+  align-items: center;
+  justify-content: center;
+}

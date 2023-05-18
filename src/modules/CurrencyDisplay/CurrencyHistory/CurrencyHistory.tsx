@@ -11,19 +11,23 @@ export const CurrencyHistory: FC = () => {
     presentCurrency: { currencyCode: "BGN", rate: 0 },
     baseCurrency: "AUD",
   };
-  const pastCurrenciesRates = useCurrencyHistory(baseCurrency, presentCurrency);
-  if (!pastCurrenciesRates) {
+  const { currencyHistory, isLoading } = useCurrencyHistory(baseCurrency, presentCurrency);
+  if (!currencyHistory) {
     return <Loader />;
   }
   return (
     <>
-      {presentCurrency && (
+      {!isLoading ? (
         <Container className={styles["display__History"]}>
-          {Object.entries(pastCurrenciesRates)
+          {Object.entries(currencyHistory)
             .map(([date, currencyRates], index) => {
               return <HistoryItem date={date} presentCurrency={presentCurrency} currencyRates={currencyRates} key={index} />;
             })
             .reverse()}
+        </Container>
+      ) : (
+        <Container className={styles.center}>
+          <Loader />
         </Container>
       )}
     </>
