@@ -16,7 +16,7 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
   const [latestCurrencyRates, setLatestCurrencyRates] = useState<CurrencyRates>({
     currencyCode: 0,
   });
-  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>(null);
+  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({ currencyCode: "BGN", rate: 0 });
   const [baseCurrency, setBaseCurrency] = useState("AUD");
 
   useEffect(() => {

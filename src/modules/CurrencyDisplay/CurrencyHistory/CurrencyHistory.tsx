@@ -7,17 +7,14 @@ import styles from "./currencyHistory.module.css";
 
 export const CurrencyHistory: FC = () => {
   const currencyContextObject = useContext(CurrencyContext);
-  const { presentCurrency, baseCurrency } = currencyContextObject || {
-    presentCurrency: { currencyCode: "BGN", rate: 0 },
-    baseCurrency: "AUD",
-  };
-  const { currencyHistory, isLoading } = useCurrencyHistory(baseCurrency, presentCurrency);
+  const { presentCurrency, baseCurrency } = currencyContextObject;
+  const { currencyHistory, inProgress } = useCurrencyHistory(baseCurrency, presentCurrency);
   if (!currencyHistory) {
     return <Loader />;
   }
   return (
     <>
-      {!isLoading ? (
+      {!inProgress ? (
         <Container className={styles["display__History"]}>
           {Object.entries(currencyHistory)
             .map(([date, currencyRates], index) => {
