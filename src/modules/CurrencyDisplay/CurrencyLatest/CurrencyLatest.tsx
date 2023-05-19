@@ -1,10 +1,15 @@
-import { FC } from "react";
-import { Container } from "../../../components";
+import { FC, useContext } from "react";
+import { Container,Loader } from "../../../components";
 import { ImageWithFallback } from "../../../components/ImageWithFallback";
-import { CurrencyLatestProps } from "../../../types";
 import styles from "./currencyLatest.module.css";
+import { CurrencyContext } from "../../../contexts";
 
-export const CurrencyLatest: FC<CurrencyLatestProps> = ({ presentCurrency, baseCurrency }) => {
+export const CurrencyLatest: FC = () => {
+  const currencyContextObject = useContext(CurrencyContext);
+  if (!currencyContextObject) {
+    return <Loader/>;
+  }
+  const { presentCurrency, baseCurrency } = currencyContextObject;
   return (
     <>
       <Container className={styles["display__Latest"]}>

@@ -1,11 +1,18 @@
-import { FC } from "react";
-import { Container } from "../../../components";
-import { CurrencyBaseProps } from "../../../types";
+import { FC, memo, useContext } from "react";
+import { CurrencyContext } from "../../../contexts";
+import { Container, Loader } from "../../../components";
+
 import styles from "./currencyBase.module.css";
 
-export const CurrencyBase: FC<CurrencyBaseProps> = ({ currencyBaseHandler, presentCurrency, currencyNames }) => {
+const CurrencyBaseMemo: FC = () => {
+  const contextObject = useContext(CurrencyContext);
+  if (!contextObject) {
+    return <Loader />;
+  }
+  const { currencyBaseHandler, presentCurrency, fetchedCurrencyNames: currencyNames } = contextObject;
+
   return (
-    <Container className={styles["base__Wrapper"]}>
+    <Container className={styles["display__Wrapper"]}>
       <p className={styles["base__Label"]}> Please choose your base currency... </p>
       <select
         className={styles["base__Select"]}
@@ -28,3 +35,5 @@ export const CurrencyBase: FC<CurrencyBaseProps> = ({ currencyBaseHandler, prese
     </Container>
   );
 };
+
+export const CurrencyBase = memo(CurrencyBaseMemo);

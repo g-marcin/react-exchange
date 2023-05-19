@@ -1,3 +1,4 @@
+import { CurrencyContextProvider } from "./contexts";
 import { Header, Footer } from "./layout";
 import { CurrencyExchange } from "./modules";
 import "./common/FontAwesomeLibrary";
@@ -5,9 +6,11 @@ import "./common/FontAwesomeLibrary";
 function App() {
   return (
     <>
-      <Header />
-      <CurrencyExchange />
-      <Footer />
+      <CurrencyContextProvider>
+        <Header />
+        <CurrencyExchange />
+        <Footer />
+      </CurrencyContextProvider>
     </>
   );
 }

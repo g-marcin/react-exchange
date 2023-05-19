@@ -1,6 +1,11 @@
-import { FC } from "react";
-import { WrapperProps } from "../../types";
+import { FC, PropsWithChildren } from "react";
+
 import styles from "./wrapper.module.css";
+
+export interface WrapperProps extends PropsWithChildren {
+  className?: string;
+  onClick?: () => void;
+}
 
 export const Wrapper: FC<WrapperProps> = ({ className, children }, { ...delegated }) => {
   return (

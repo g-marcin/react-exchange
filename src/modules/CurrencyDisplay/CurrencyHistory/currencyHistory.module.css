@@ -16,3 +16,12 @@
   border: 1px solid black;
   overflow-y: scroll;
 }
+
+.display__History {
+  overflow-x: scroll;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}

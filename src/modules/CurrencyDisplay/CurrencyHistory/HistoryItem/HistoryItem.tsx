@@ -1,17 +1,25 @@
 import { FC } from "react";
 import { Wrapper } from "../../../../components";
-import { HistoryItemProps } from "../../../../types";
+import { CurrencyType, CurrencyRates } from "../../../../types";
 import styles from "./HistoryItem.module.css";
 
-export const HistoryItem: FC<HistoryItemProps> = ({ index, date, presentCurrency, currencyRates }) => {
+export type HistoryItemProps = {
+  date: string;
+  presentCurrency: CurrencyType;
+  currencyRates: CurrencyRates;
+};
+
+export const HistoryItem: FC<HistoryItemProps> = ({ date, presentCurrency, currencyRates }) => {
   return (
-    <Wrapper className={styles["history__Item"]} key={index}>
-      {presentCurrency && (
+    <Wrapper className={styles["history__Item"]}>
+      {
         <>
-          <div>{date}</div>
-          <div>{presentCurrency && JSON.stringify(currencyRates[presentCurrency.currencyCode])}</div>
+          <div className={styles["History__date"]}>{date}</div>
+          <div className={styles["History__rate"]}>
+            {presentCurrency && JSON.stringify(currencyRates[presentCurrency.currencyCode])}
+          </div>
         </>
-      )}
+      }
     </Wrapper>
   );
 };
