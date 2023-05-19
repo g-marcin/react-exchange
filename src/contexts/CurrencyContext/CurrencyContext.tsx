@@ -1,5 +1,5 @@
 import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
-import { httpClient } from "../../common";
+import { getDefaultCurrency, httpClient } from "../../common";
 import { AxiosResponse } from "axios";
 import {
   FetchedCurrenciesDTO,
@@ -28,7 +28,8 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
     currencyCode: 0,
   });
   const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({ currencyCode: "BGN", rate: 0 });
-  const [baseCurrency, setBaseCurrency] = useState("AUD");
+  const defaultCurrency: string = getDefaultCurrency();
+  const [baseCurrency, setBaseCurrency] = useState(defaultCurrency);
 
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
