@@ -1,3 +1,9 @@
 .Outlet__wrapper {
   min-height: 750px;
 }
+
+@media (max-width: 660px) {
+  .Outlet__wrapper {
+    min-height: 660px;
+  }
+}
