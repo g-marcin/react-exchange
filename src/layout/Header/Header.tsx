@@ -10,20 +10,6 @@ export const Header: FC = () => {
         react-exchange
       </NavLink>
       <div className={styles["wrapper__Navbar"]}>
-        <div className={styles["wrapper__Links"]}>
-          <a
-            className={`${styles["separator-3"]} ${styles["Inter"]}`}
-            title="Support"
-            aria-label="link to support page"
-            href="#"
-          >
-            Support
-          </a>
-          <div className={styles["separator-3"]}></div>
-          <a className="Inter" href="#" title="Services" aria-label="link to services page">
-            Services
-          </a>
-        </div>
         <div className={styles["separator-5"]}></div>
         <NavLink to="/admin" className={styles["dropdown__Account"]} aria-label="open account menu">
           Admin
