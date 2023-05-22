@@ -1,17 +1,22 @@
-import { FC, memo, useContext } from "react";
+import { FC, memo, useContext, useEffect, useState } from "react";
+import { Container, CurrencySelect } from "../../../components";
 import { CurrencyContext } from "../../../contexts";
-import { Container } from "../../../components";
-
 import styles from "./currencyBase.module.css";
-import { CurrencySelect } from "../../../components/CurrencySelect";
 
 const CurrencyBaseMemo: FC = () => {
-  const { currencyBaseHandler } = useContext(CurrencyContext);
+  const { currencyBaseHandler, baseCurrency } = useContext(CurrencyContext);
+  const [selectValue, setSelectValue] = useState("");
+  useEffect(() => {
+    setSelectValue(baseCurrency);
+  }, [baseCurrency]);
   return (
     <Container className={styles["display__Wrapper"]}>
-      <CurrencySelect selectHandler={currencyBaseHandler} label={"Please choose your base currency..."} />
+      <CurrencySelect
+        value={selectValue}
+        selectHandler={currencyBaseHandler}
+        label={"Please choose your base currency..."}
+      />
     </Container>
   );
 };
-
 export const CurrencyBase = memo(CurrencyBaseMemo);

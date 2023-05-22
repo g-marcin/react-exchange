@@ -27,6 +27,7 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
   const [latestCurrencyRates, setLatestCurrencyRates] = useState<CurrencyRates>({
     currencyCode: 0,
   });
+
   const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({ currencyCode: "BGN", rate: 0 });
   const defaultCurrency: string = getDefaultCurrency();
   const [baseCurrency, setBaseCurrency] = useState(defaultCurrency);

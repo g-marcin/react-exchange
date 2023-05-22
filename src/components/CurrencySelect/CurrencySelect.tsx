@@ -1,16 +1,18 @@
 import { FC, useContext } from "react";
-import { CurrencyContext } from "../../contexts";
-import styles from "./currencySelect.module.css";
 import { Container } from "..";
+import { CurrencyContext } from "../../contexts";
 import { CurrencyBaseHandlerType } from "../../types";
+import styles from "./currencySelect.module.css";
 
 type CurrencySelectProps = {
   label: string;
+  value: string;
   selectHandler: CurrencyBaseHandlerType | (() => void);
 };
 
-export const CurrencySelect: FC<CurrencySelectProps> = ({ label, selectHandler }) => {
+export const CurrencySelect: FC<CurrencySelectProps> = ({ label, value, selectHandler }) => {
   const { presentCurrency, fetchedCurrencyNames: currencyNames, baseCurrency } = useContext(CurrencyContext);
+
   return (
     <Container>
       <p className={styles.label}> {label}:</p>
@@ -18,7 +20,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = ({ label, selectHandler }
         className={styles.select}
         name="baseCurrency"
         id="baseCurrency"
-        value={baseCurrency}
+        value={value}
         onChange={(e) => {
           selectHandler(e.target.value);
         }}
