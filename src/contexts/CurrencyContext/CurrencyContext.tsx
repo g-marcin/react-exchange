@@ -50,6 +50,7 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
         }
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [baseCurrency]);
   useEffect(() => {
     httpClient.get(`/currencies`).then((response: AxiosResponse) => {

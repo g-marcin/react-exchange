@@ -7,7 +7,7 @@ export const Admin: FC = () => {
   const defaultCurrency = getDefaultCurrency();
   useEffect(() => {
     setSelectValue(defaultCurrency);
-  }, [selectValue]);
+  }, [selectValue, defaultCurrency]);
   return (
     <Card title={"Admin Panel"}>
       <Container>

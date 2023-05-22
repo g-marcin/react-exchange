@@ -11,7 +11,7 @@ type CurrencySelectProps = {
 };
 
 export const CurrencySelect: FC<CurrencySelectProps> = ({ label, value, selectHandler }) => {
-  const { presentCurrency, fetchedCurrencyNames: currencyNames, baseCurrency } = useContext(CurrencyContext);
+  const { presentCurrency, fetchedCurrencyNames: currencyNames } = useContext(CurrencyContext);
 
   return (
     <Container>
