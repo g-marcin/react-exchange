@@ -1,6 +1,10 @@
-import { FC, useEffect, useState } from "react";
-import { Card, Container, CurrencySelect } from "../../components";
+import { FC, useEffect, useState, useContext } from "react";
+import { Formik, Field, Form } from "formik";
+import { Card, Container } from "../../components";
 import { setDefaultCurrency, getDefaultCurrency } from "../../common";
+import { CurrencyContext } from "../../contexts";
+import styles from "./admin.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const Admin: FC = () => {
   const [selectValue, setSelectValue] = useState("");
@@ -8,17 +12,53 @@ export const Admin: FC = () => {
   useEffect(() => {
     setSelectValue(defaultCurrency);
   }, [selectValue, defaultCurrency]);
+  const { presentCurrency, fetchedCurrencyNames: currencyNames } = useContext(CurrencyContext);
+  const navigate = useNavigate();
   return (
     <Card title={"Admin Panel"}>
       <Container>
-        <CurrencySelect
-          value={selectValue}
-          selectHandler={(targetValue) => {
-            setDefaultCurrency(targetValue);
-            setSelectValue(targetValue);
+        <Formik
+          initialValues={{ name: "", email: "", defaultCurrency: "AUD" }}
+          onSubmit={async (values) => {
+            setDefaultCurrency(values.defaultCurrency);
+            // alert(JSON.stringify(values, null, 2));
           }}
-          label={"Please choose your default currency"}
-        />
+        >
+          <Form>
+            {/* <Field name="name" type="text" />
+            <Field name="email" type="email" /> */}
+            <label>
+              Please choose your default currency
+              <Field
+                name="defaultCurrency"
+                as="select"
+                className={styles.select}
+                label="Please choose your default currency"
+              >
+                {Object.keys(currencyNames)
+                  .filter((currencyCode) => currencyCode !== presentCurrency?.currencyCode)
+                  .map((currencyCode) => {
+                    return (
+                      <option key={currencyCode} value={currencyCode}>
+                        {`${currencyCode} - ${currencyNames[currencyCode]}`}
+                      </option>
+                    );
+                  })}
+              </Field>
+            </label>
+            <button type="submit">Save</button>
+            <button
+              type="submit"
+              onClick={() => {
+                setTimeout(() => {
+                  navigate("/");
+                }, 1);
+              }}
+            >
+              Save & return
+            </button>
+          </Form>
+        </Formik>
       </Container>
     </Card>
   );
