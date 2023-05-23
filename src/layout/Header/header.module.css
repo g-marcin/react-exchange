@@ -27,6 +27,16 @@ header {
   font-size: 26px;
   font-family: Poppins-SemiBold;
 }
+.pending {
+  text-decoration: underline;
+  color: #1a1818;
+  font-size: 28px;
+}
+.active {
+  text-decoration: underline;
+  color: #1a1818;
+  font-size: 28px;
+}
 .wrapper__Navbar {
   font-family: Inter;
   font-size: 24px;

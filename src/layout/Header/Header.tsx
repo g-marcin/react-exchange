@@ -7,17 +7,34 @@ export const Header: FC = () => {
   const navigate = useNavigate();
   return (
     <header>
-      <NavLink to="/" className={styles["logo"]} title="logo" aria-label="link to homepage">
+      <NavLink
+        to="/"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? `${styles["logo"]} ${styles["pending"]}`
+            : isActive
+            ? `${styles["logo"]} ${styles["active"]}`
+            : styles["logo"]
+        }
+        title="logo"
+        aria-label="link to homepage"
+      >
         react-exchange
       </NavLink>
       <div className={styles["wrapper__Navbar"]}>
         <div className={styles["separator-5"]}></div>
-        <NavLink to="/admin" className={styles["dropdown__Account"]} aria-label="open account menu">
+        <NavLink
+          to="/admin"
+          className={({ isActive, isPending }) =>
+            isPending ? ` ${styles["pending"]}` : isActive ? `${styles["active"]}` : styles["dropdown__Account"]
+          }
+          aria-label="open account menu"
+        >
           Admin
-          <div className={styles["wrapper__Icon"]}></div>
           <FontAwesomeIcon icon={["fas", "caret-down"]} size={"2xs"} />
         </NavLink>
       </div>
+
       <button
         className={styles["button__Hamburger"]}
         title="hamburger-menu"
