@@ -1,14 +1,16 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CurrencyContext } from "../../contexts";
 import styles from "./header.module.css";
 
 export const Header: FC = () => {
   const navigate = useNavigate();
+  const { presentCurrency } = useContext(CurrencyContext);
   return (
     <header>
       <NavLink
-        to="/"
+        to={"/"}
         className={({ isActive, isPending }) =>
           isPending
             ? `${styles["logo"]} ${styles["pending"]}`
@@ -22,6 +24,16 @@ export const Header: FC = () => {
         react-exchange
       </NavLink>
       <div className={styles["wrapper__Navbar"]}>
+        <NavLink
+          to={`/details/${presentCurrency?.currencyCode}`}
+          className={({ isActive, isPending }) =>
+            isPending ? ` ${styles["pending"]}` : isActive ? `${styles["active"]}` : styles["dropdown__Account"]
+          }
+          aria-label="open account menu"
+        >
+          Details
+          <FontAwesomeIcon icon={["fas", "gear"]} size={"2xs"} />
+        </NavLink>
         <div className={styles["separator-5"]}></div>
         <NavLink
           to="/admin"

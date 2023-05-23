@@ -3,6 +3,8 @@ import { ErrorPage } from "./ErrorPage";
 import { CurrencyExchange } from "../modules";
 import { Admin } from "../modules/Admin";
 import App from "../App";
+import { CurrencyHistory } from "../modules/CurrencyDisplay/CurrencyHistory";
+import { CurrencyDetails } from "../modules/CurrencyDetails";
 
 export const Router = createBrowserRouter([
   {
@@ -13,10 +15,22 @@ export const Router = createBrowserRouter([
       {
         errorElement: <ErrorPage />,
         children: [
-          { index: true, element: <CurrencyExchange /> },
           {
-            path: "admin",
-            element: <Admin />,
+            children: [
+              { index: true, element: <CurrencyExchange /> },
+              {
+                path: "admin",
+                element: <Admin />,
+              },
+            ],
+          },
+          {
+            children: [
+              {
+                path: "details/:currencyCode",
+                element: <CurrencyDetails />,
+              },
+            ],
           },
         ],
       },
