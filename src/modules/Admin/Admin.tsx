@@ -1,6 +1,6 @@
 import { FC, useEffect, useState, useContext } from "react";
 import { Formik, Field, Form } from "formik";
-import { Card, Container, Wrapper } from "../../components";
+import { Card, Wrapper } from "../../components";
 import { setDefaultCurrency, getDefaultCurrency } from "../../common";
 import { CurrencyContext } from "../../contexts";
 import styles from "./admin.module.css";

@@ -1,5 +1,5 @@
 import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
-import { getDefaultCurrency, httpClient, setDefaultCurrency } from "../../common";
+import { getDefaultCurrency, httpClient } from "../../common";
 import { AxiosResponse } from "axios";
 import {
   FetchedCurrenciesDTO,
