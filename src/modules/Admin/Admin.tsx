@@ -1,6 +1,6 @@
 import { FC, useEffect, useState, useContext } from "react";
 import { Formik, Field, Form } from "formik";
-import { Card, Container } from "../../components";
+import { Card, Container, Wrapper } from "../../components";
 import { setDefaultCurrency, getDefaultCurrency } from "../../common";
 import { CurrencyContext } from "../../contexts";
 import styles from "./admin.module.css";
@@ -16,15 +16,15 @@ export const Admin: FC = () => {
   const navigate = useNavigate();
   return (
     <Card title={"Admin Panel"}>
-      <Container>
-        <Formik
-          initialValues={{ name: "", email: "", defaultCurrency: "AUD" }}
-          onSubmit={async (values) => {
-            setDefaultCurrency(values.defaultCurrency);
-            // alert(JSON.stringify(values, null, 2));
-          }}
-        >
-          <Form>
+      <Formik
+        initialValues={{ name: "", email: "", defaultCurrency: "AUD" }}
+        onSubmit={async (values) => {
+          setDefaultCurrency(values.defaultCurrency);
+          // alert(JSON.stringify(values, null, 2));
+        }}
+      >
+        <Form>
+          <Wrapper>
             {/* <Field name="name" type="text" />
             <Field name="email" type="email" /> */}
             <label>
@@ -57,9 +57,9 @@ export const Admin: FC = () => {
             >
               Save & return
             </button>
-          </Form>
-        </Formik>
-      </Container>
+          </Wrapper>
+        </Form>
+      </Formik>
     </Card>
   );
 };

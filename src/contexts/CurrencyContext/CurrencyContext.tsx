@@ -1,5 +1,5 @@
 import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
-import { getDefaultCurrency, httpClient } from "../../common";
+import { getDefaultCurrency, httpClient, setDefaultCurrency } from "../../common";
 import { AxiosResponse } from "axios";
 import {
   FetchedCurrenciesDTO,
@@ -32,7 +32,7 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
     currencyCode: defaultCurrency,
     rate: latestCurrencyRates[defaultCurrency],
   });
-  const [baseCurrency, setBaseCurrency] = useState("USD");
+  const [baseCurrency, setBaseCurrency] = useState("AUD");
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
       const fetchedCurrenciesDTO: FetchedCurrenciesDTO = response.data;
@@ -57,6 +57,7 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
       setCurrencyNames(response.data);
     });
   }, []);
+
   function currencyButtonHandler(currencyCode: string): void {
     if (!latestCurrencyRates) {
       return;
