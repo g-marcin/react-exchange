@@ -1,6 +1,7 @@
 import { FC, useEffect, useState, useContext } from "react";
 import { Formik, Field, Form } from "formik";
-import { Card, Wrapper } from "../../components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Card, Container, Wrapper } from "../../components";
 import { setDefaultCurrency, getDefaultCurrency } from "../../common";
 import { CurrencyContext } from "../../contexts";
 import styles from "./admin.module.css";
@@ -20,13 +21,11 @@ export const Admin: FC = () => {
         initialValues={{ name: "", email: "", defaultCurrency: "AUD" }}
         onSubmit={async (values) => {
           setDefaultCurrency(values.defaultCurrency);
-          // alert(JSON.stringify(values, null, 2));
+          alert(JSON.stringify(values, null, 2));
         }}
       >
-        <Form>
-          <Wrapper>
-            {/* <Field name="name" type="text" />
-            <Field name="email" type="email" /> */}
+        <Form className={styles["wrapper-form"]}>
+          <Wrapper className={styles["wrapper-textfields"]}>
             <label>
               Please choose your default currency
               <Field
@@ -46,7 +45,16 @@ export const Admin: FC = () => {
                   })}
               </Field>
             </label>
-            <button type="submit">Save</button>
+            <Field name="name" type="text" className={styles["field"]} />
+            <Field name="email" type="email" className={styles["field"]} />
+            <Field name="date" type="date" className={styles["field"]} />
+            <Field name="phone" type="phone" className={styles["field"]} />
+          </Wrapper>
+          <Container className={styles["button-group"]}>
+            <button type="submit" className={styles["button-black"]}>
+              Save
+              <FontAwesomeIcon icon={["fas", "floppy-disk"]} size={"lg"} />
+            </button>
             <button
               type="submit"
               onClick={() => {
@@ -54,10 +62,12 @@ export const Admin: FC = () => {
                   navigate("/");
                 }, 1);
               }}
+              className={styles["button-black"]}
             >
-              Save & return
+              Save & Return
+              <FontAwesomeIcon icon={["fas", "share-from-square"]} size={"lg"} />
             </button>
-          </Wrapper>
+          </Container>
         </Form>
       </Formik>
     </Card>

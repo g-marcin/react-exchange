@@ -1,5 +1,22 @@
+.wrapper {
+  justify-content: center;
+  align-content: space-between;
+}
+.wrapper-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 50px 0px;
+  padding: 20px;
+  align-content: space-around;
+}
+
+.field {
+  height: 35px;
+  margin: 10px;
+}
+
 .select {
-  flex: 3;
   text-align: center;
   background: gainsboro;
   opacity: 0.6;
@@ -18,9 +35,22 @@
   .exchange__Wrapper {
     margin: auto 10px;
   }
+  .select {
+    font-size: 18px;
+  }
 }
 
-button {
+.button-black {
+  font-size: 18px;
   padding: 12px;
-  background: none;
+  border-radius: 12px;
+  background: black;
+  color: white;
+  display: flex;
+
+  gap: 10px;
+  justify-content: center;
+}
+.button-group {
+  justify-content: end;
 }
