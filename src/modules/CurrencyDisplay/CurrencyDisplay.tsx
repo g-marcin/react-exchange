@@ -8,9 +8,9 @@ import styles from "./currencyDisplay.module.css";
 export const CurrencyDisplay: FC = () => {
   return (
     <Wrapper className={styles["display__Wrapper"]}>
-      <CurrencyBase />
       <CurrencyLatest />
       <CurrencyHistory />
+      <CurrencyBase />
     </Wrapper>
   );
 };

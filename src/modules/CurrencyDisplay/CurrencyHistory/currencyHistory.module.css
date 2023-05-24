@@ -1,28 +1,20 @@
-.history__Item {
-  display: flex;
-  border: 1px solid black;
-  padding: 5px;
-  justify-content: space-between;
-  max-width: 350px;
-  justify-self: center;
-  margin: 5px auto;
-  font-size: 18px;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.display__Wrapper {
-  min-height: 250px;
-  border: 1px solid black;
-  overflow-y: scroll;
-}
-
 .display__History {
-  overflow-x: scroll;
+  max-height: 300px;
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .display__History {
+    flex-flow: column;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 660px) {
+  .display__History {
+    max-height: 300px;
+  }
 }
 
 .center {
-  align-items: center;
   justify-content: center;
 }

@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from "react";
-import { Wrapper } from "..";
+import { Container, Wrapper } from "..";
 import styles from "./card.module.css";
 
 interface CardProps extends PropsWithChildren {
@@ -9,7 +9,9 @@ interface CardProps extends PropsWithChildren {
 export const Card: FC<CardProps> = ({ title, children }) => {
   return (
     <Wrapper className={styles["card__Wrapper"]}>
-      <h1 style={{ textAlign: "center" }}>{title}</h1>
+      <Container className={styles["container"]}>
+        <h1 style={{ textAlign: "center" }}>{title}</h1>
+      </Container>
       {children}
     </Wrapper>
   );

@@ -1,14 +1,11 @@
-.exchange__Wrapper {
-  display: flex;
-  flex-direction: column;
+.wrapper {
+  padding: 0px 10px;
   gap: 10px;
-
-  margin: auto;
 }
 @media (max-width: 450px) {
   .wrapper {
     max-width: 700px;
-    margin: 0px;
+    margin: 5px;
   }
   .exchange__Wrapper {
     margin: auto 10px;

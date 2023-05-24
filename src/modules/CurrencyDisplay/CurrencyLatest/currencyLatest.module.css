@@ -1,15 +1,12 @@
 .display__Latest {
   padding: 5px;
   font-size: 24px;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 }
-
 .display__Flag {
   max-width: 32px;
   max-height: 32px;
 }
-
 @media (max-width: 450px) {
   .display__Latest {
     min-width: 320px;

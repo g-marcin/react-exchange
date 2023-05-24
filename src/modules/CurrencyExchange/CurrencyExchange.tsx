@@ -1,7 +1,8 @@
 import { FC, PropsWithChildren, useEffect } from "react";
-import { Card } from "../../components";
+import { Card, Wrapper } from "../../components";
 import { CurrencyDisplay, CurrencyList } from "..";
 import { setDefaultCurrency, getDefaultCurrency } from "../../common";
+import styles from "./currencyExchange.module.css";
 
 export interface CurrencyExchangeProps extends PropsWithChildren {
   className?: string;
@@ -17,8 +18,10 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
   }, []);
   return (
     <Card title={"Currency Exchange"}>
-      <CurrencyDisplay />
-      <CurrencyList />
+      <Wrapper className={styles["wrapper"]}>
+        <CurrencyDisplay />
+        <CurrencyList />
+      </Wrapper>
     </Card>
   );
 };

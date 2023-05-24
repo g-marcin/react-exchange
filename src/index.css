@@ -73,6 +73,19 @@ a:hover {
 a:active {
   opacity: 1;
 }
+.button-black {
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 12px;
+  background: black;
+  color: white;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.button-group {
+  justify-content: end;
+}
 
 @media (max-width: 660px) {
   .footer {

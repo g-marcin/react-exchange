@@ -14,7 +14,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = ({ label, value, selectHa
   const { presentCurrency, fetchedCurrencyNames: currencyNames } = useContext(CurrencyContext);
 
   return (
-    <Container>
+    <Container className={styles["container"]}>
       <p className={styles.label}> {label}:</p>
       <select
         className={styles.select}

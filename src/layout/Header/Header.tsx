@@ -32,7 +32,7 @@ export const Header: FC = () => {
           aria-label="open account menu"
         >
           Details
-          <FontAwesomeIcon icon={["fas", "gear"]} size={"2xs"} />
+          <FontAwesomeIcon icon={["fas", "caret-down"]} size={"2xs"} />
         </NavLink>
         <div className={styles["separator-5"]}></div>
         <NavLink
@@ -43,7 +43,7 @@ export const Header: FC = () => {
           aria-label="open account menu"
         >
           Admin
-          <FontAwesomeIcon icon={["fas", "caret-down"]} size={"2xs"} />
+          <FontAwesomeIcon icon={["fas", "gear"]} size={"2xs"} />
         </NavLink>
       </div>
 

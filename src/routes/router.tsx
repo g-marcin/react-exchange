@@ -3,7 +3,6 @@ import { ErrorPage } from "./ErrorPage";
 import { CurrencyExchange } from "../modules";
 import { Admin } from "../modules/Admin";
 import App from "../App";
-import { CurrencyHistory } from "../modules/CurrencyDisplay/CurrencyHistory";
 import { CurrencyDetails } from "../modules/CurrencyDetails";
 
 export const Router = createBrowserRouter([

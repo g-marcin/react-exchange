@@ -7,12 +7,13 @@ export const Footer: FC = () => {
     <footer className={styles["footer"]}>
       <a
         className={`${styles["wrapper__Footer__Item"]} ${styles["Inter"]} ${styles["opaque"]}`}
-        href="#"
+        href="https://github.com/g-marcin"
         aria-label="link to contacts"
         title="Contact us"
       >
         Contact us
       </a>
+
       <a
         className={`${styles["wrapper__Footer__Item"]} ${styles["Poppins"]} ${styles["opaque"]} ${styles["weight600"]}`}
         href="/"
