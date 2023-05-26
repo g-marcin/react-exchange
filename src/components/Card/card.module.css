@@ -1,0 +1,9 @@
+.card__Wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 750px;
+  height: 500px;
+  margin: auto;
+  border: 1px solid black;
+}

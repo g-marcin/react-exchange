@@ -1,13 +1,14 @@
 import { FC } from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./header.module.css";
 
 export const Header: FC = () => {
   return (
     <header>
-      <a className={styles["logo"]} href="/" title="logo" aria-label="link to homepage">
+      <NavLink to="/" className={styles["logo"]} title="logo" aria-label="link to homepage">
         react-exchange
-      </a>
+      </NavLink>
       <div className={styles["wrapper__Navbar"]}>
         <div className={styles["wrapper__Links"]}>
           <a
@@ -24,11 +25,11 @@ export const Header: FC = () => {
           </a>
         </div>
         <div className={styles["separator-5"]}></div>
-        <a className={styles["dropdown__Account"]} aria-label="open account menu">
-          Account
+        <NavLink to="/admin" className={styles["dropdown__Account"]} aria-label="open account menu">
+          Admin
           <div className={styles["wrapper__Icon"]}></div>
           <FontAwesomeIcon icon={["fas", "caret-down"]} size={"2xs"} />
-        </a>
+        </NavLink>
       </div>
       <button className={styles["button__Hamburger"]} title="hamburger-menu" aria-label="open mobile menu">
         <FontAwesomeIcon icon={["fas", "bars"]} size={"lg"} />

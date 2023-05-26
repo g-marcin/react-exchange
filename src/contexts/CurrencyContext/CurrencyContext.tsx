@@ -1,5 +1,5 @@
 import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
-import { httpClient } from "../../common";
+import { getDefaultCurrency, httpClient } from "../../common";
 import { AxiosResponse } from "axios";
 import {
   FetchedCurrenciesDTO,
@@ -27,9 +27,12 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
   const [latestCurrencyRates, setLatestCurrencyRates] = useState<CurrencyRates>({
     currencyCode: 0,
   });
-  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({ currencyCode: "BGN", rate: 0 });
-  const [baseCurrency, setBaseCurrency] = useState("AUD");
-
+  const defaultCurrency: string = getDefaultCurrency();
+  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({
+    currencyCode: defaultCurrency,
+    rate: latestCurrencyRates[defaultCurrency],
+  });
+  const [baseCurrency, setBaseCurrency] = useState("USD");
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
       const fetchedCurrenciesDTO: FetchedCurrenciesDTO = response.data;
@@ -47,14 +50,13 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
         }
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [baseCurrency]);
-
   useEffect(() => {
     httpClient.get(`/currencies`).then((response: AxiosResponse) => {
       setCurrencyNames(response.data);
     });
   }, []);
-
   function currencyButtonHandler(currencyCode: string): void {
     if (!latestCurrencyRates) {
       return;
@@ -73,7 +75,6 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
     }
     setBaseCurrency(currencyCode);
   }
-
   return (
     <CurrencyContext.Provider
       value={{

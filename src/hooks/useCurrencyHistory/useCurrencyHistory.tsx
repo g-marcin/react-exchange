@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { format, subDays } from "date-fns";
 import { AxiosResponse } from "axios";
 import { httpClient } from "../../common";
-import { CurrencyType, PastCurrencyRates } from "../../types";
+import { PastCurrencyRates } from "../../types";
+import { CurrencyContext } from "../../contexts";
 
-export const useCurrencyHistory = (baseCurrency: string, presentCurrency: CurrencyType) => {
+export const useCurrencyHistory = () => {
+  const { presentCurrency, baseCurrency } = useContext(CurrencyContext);
   const [currencyHistory, setCurrencyHistory] = useState<PastCurrencyRates>({ date: { code: 0 } });
   const [inProgress, setInProgress] = useState(false);
   useEffect(() => {
