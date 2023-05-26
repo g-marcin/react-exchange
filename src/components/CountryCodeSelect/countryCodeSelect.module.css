@@ -1,0 +1,5 @@
+.select {
+  display: flex;
+  align-self: center;
+  min-width: 200px;
+}
