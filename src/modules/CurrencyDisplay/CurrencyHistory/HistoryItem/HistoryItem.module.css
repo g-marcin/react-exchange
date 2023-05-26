@@ -13,9 +13,14 @@
 
 .History__rate {
   font-size: 18px;
+  font-weight: bold;
+  opacity: 0.9;
+}
+.History__date {
+  font-size: 16px;
 }
 
-@media (max-width: 660px) {
+@media (max-width: 960px) {
   .history__Item {
     flex-direction: row;
     justify-content: space-around;

@@ -1,17 +1,14 @@
 .display__History {
-  max-height: 300px;
+  max-height: 350px;
   text-align: center;
+  flex-wrap: nowrap;
 }
 
 @media (max-width: 960px) {
   .display__History {
     flex-flow: column;
-    flex-wrap: wrap;
-  }
-}
-@media (max-width: 660px) {
-  .display__History {
-    max-height: 300px;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
   }
 }
 

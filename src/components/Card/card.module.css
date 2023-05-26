@@ -1,7 +1,7 @@
 .card__Wrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
   max-width: 960px;
 
   margin: auto;
@@ -11,6 +11,7 @@
 .container {
   justify-content: center;
   align-content: center;
+  padding: 5px;
 }
 
 h1 {
@@ -19,4 +20,8 @@ h1 {
 }
 
 @media (max-width: 660px) {
+}
+
+.card__Header {
+  text-align: center;
 }
