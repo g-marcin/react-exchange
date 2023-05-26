@@ -32,7 +32,7 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
     currencyCode: defaultCurrency,
     rate: latestCurrencyRates[defaultCurrency],
   });
-  const [baseCurrency, setBaseCurrency] = useState("AUD");
+  const [baseCurrency, setBaseCurrency] = useState(presentCurrency?.currencyCode === "AUD" ? "USD" : "AUD");
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
       const fetchedCurrenciesDTO: FetchedCurrenciesDTO = response.data;
