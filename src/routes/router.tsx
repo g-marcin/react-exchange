@@ -12,24 +12,17 @@ export const Router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: "",
         errorElement: <ErrorPage />,
         children: [
+          { index: true, element: <CurrencyExchange /> },
           {
-            children: [
-              { index: true, element: <CurrencyExchange /> },
-              {
-                path: "admin",
-                element: <Admin />,
-              },
-            ],
+            path: "admin",
+            element: <Admin />,
           },
           {
-            children: [
-              {
-                path: "details/:currencyCode",
-                element: <CurrencyDetails />,
-              },
-            ],
+            path: "details/:currencyCode",
+            element: <CurrencyDetails />,
           },
         ],
       },
