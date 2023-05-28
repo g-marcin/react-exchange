@@ -20,11 +20,14 @@ export type FetchedCurrencyNamesType = {
 };
 export type CurrencyBaseHandlerType = (currencyCode: string) => void;
 export type CurrencyButtonHandlerType = (currencyCode: string) => void;
+export type StateHandler = () => void;
 export type CurrencyContextType = {
   latestCurrencyRates: CurrencyRates;
   fetchedCurrencyNames: FetchedCurrencyNamesType;
   presentCurrency: CurrencyType;
   baseCurrency: string;
+  isDark: boolean;
   currencyButtonHandler: CurrencyButtonHandlerType;
   currencyBaseHandler: CurrencyBaseHandlerType;
+  themeButtonHandler: StateHandler;
 };

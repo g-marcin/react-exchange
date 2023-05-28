@@ -6,7 +6,8 @@ import styles from "./header.module.css";
 
 export const Header: FC = () => {
   const navigate = useNavigate();
-  const { presentCurrency } = useContext(CurrencyContext);
+  const { presentCurrency, isDark, themeButtonHandler } = useContext(CurrencyContext);
+
   return (
     <header>
       <NavLink
@@ -24,6 +25,21 @@ export const Header: FC = () => {
         react-exchange
       </NavLink>
       <div className={styles["wrapper__Navbar"]}>
+        <button
+          onClick={() => {
+            themeButtonHandler();
+            console.log("theme change", isDark);
+          }}
+        >
+          {isDark ? (
+            <FontAwesomeIcon icon={["far", "moon"]} size={"2xl"} />
+          ) : (
+            <FontAwesomeIcon icon={["far", "sun"]} size={"2xl"} />
+          )}
+        </button>
+
+        <div className={styles["separator-5"]}></div>
+
         <NavLink
           to={`/details/${presentCurrency?.currencyCode}`}
           className={({ isActive, isPending }) =>

@@ -2,15 +2,15 @@ export const setDefaultCurrency = (currencyCode: string) => {
   window.localStorage.setItem("defaultCurrency", currencyCode);
 };
 export const getDefaultCurrency = () => {
-  return window.localStorage.getItem("defaultCurrency") || "USD";
+  return window.localStorage.getItem("defaultCurrency");
 };
-function validate(value: string) {
-  let error;
-  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = "invalid email shape";
-    if (value.length === 0) {
-      error = "Required";
-    }
-  }
-  return error;
-}
+
+export const setTheme = (themeName: string) => {
+  window.localStorage.setItem("theme", themeName);
+};
+const getThemePreference = () => {
+  return window.matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light";
+};
+export const getTheme = () => {
+  return window.localStorage.getItem("theme");
+};
