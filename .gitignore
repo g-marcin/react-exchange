@@ -13,6 +13,7 @@ dist-ssr
 *.local
 model.js
 data\*
+scratchbook.js
 
 
 # Editor directories and files
