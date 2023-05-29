@@ -2,27 +2,22 @@
   color: red;
 }
 
-.wrapper {
-  justify-content: center;
-  align-content: space-between;
-}
 .wrapper-form {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 20px;
+  padding: 10px;
   align-content: space-around;
 }
 
 .field {
-  display: flex;
   height: 35px;
-  margin: 5px;
+
   padding: 5px;
 }
 
 .phone {
-  min-height: 35px;
+  max-height: 35px;
   font-size: 18px;
   flex: 1;
 }
@@ -32,26 +27,13 @@
   margin: auto;
 }
 
-@media (max-width: 450px) {
-  .wrapper {
-    max-width: 700px;
-    margin: 0px;
-  }
-  .exchange__Wrapper {
-    margin: auto 10px;
-  }
-  .select {
-    font-size: 18px;
-  }
-}
-
 .button-black {
   font-size: 18px;
   padding: 12px;
   border-radius: 12px;
   background: black;
   color: white;
-  display: flex;
+
   gap: 10px;
   justify-content: center;
 }
@@ -60,11 +42,4 @@
 }
 .country-name {
   font-size: 12px;
-}
-.select {
-  display: flex;
-}
-
-.phone__Wrapper {
-  gap: 10px;
 }

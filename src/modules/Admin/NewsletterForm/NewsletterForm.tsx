@@ -72,7 +72,7 @@ export const NewsletterForm: FC = () => {
   });
 
   return (
-    <Card title={"Join the newsletter!"} className="space-between">
+    <Card title={"Join the newsletter!"}>
       <Formik
         initialValues={{ name: "", email: "", date: format(new Date(), "yyyy-MM-dd"), countryCode: "", phoneNumber: "" }}
         onSubmit={handleSubmit}

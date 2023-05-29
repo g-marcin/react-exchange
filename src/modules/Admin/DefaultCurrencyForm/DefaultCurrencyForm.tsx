@@ -9,7 +9,7 @@ import { Container, Wrapper, Card } from "../../../components";
 import styles from "./defaultCurrencyForm.module.css";
 
 export const DefaultCurrencyForm: FC = () => {
-  const [selectValue, setSelectValue] = useState("");
+  const [selectValue, setSelectValue] = useState<string | null>("");
   const defaultCurrency = getDefaultCurrency();
   useEffect(() => {
     setSelectValue(defaultCurrency);

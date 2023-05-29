@@ -2,3 +2,18 @@
   max-height: 150px;
   max-width: 150px;
 }
+
+.gearsvg {
+  z-index: 2;
+
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
+
+.details:nth-child(2) {
+  font-weight: bold;
+}
+
+.details {
+}
