@@ -3,26 +3,19 @@ import { FC } from "react";
 import { default as Select } from "react-select";
 import styles from "./countryCodeSelect.module.css";
 
-// components/FormikReactSelect.tsx
-// define the OptionType for your app
+
 type MyOption = {
   label: string;
   value: string;
 };
-//define the group option type
-type GroupedOption = {
-  label: string; // group label
-  options: MyOption[];
-};
-// component props
-type Props = {
+type FormikSelectProps = {
 options:MyOption[];
 field: FieldInputProps<any>,
 form:FormikProps<any>
 
 }
 
-export const FormikSelect:FC<Props> = ({ options, field, form }) => (
+export const FormikSelect:FC<FormikSelectProps> = ({ options, field, form }) => (
   <Select
     options={options}
     name={field.name}

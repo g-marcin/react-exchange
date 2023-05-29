@@ -1,11 +1,10 @@
 import { FC, useContext } from "react";
-import { CurrencyContext } from "../../contexts";
-import { Card, Loader, ImageWithFallback } from "../../components";
 import { useParams } from "react-router-dom";
-import styles from "./currencyDetails.module.css";
+import { Card, ImageWithFallback, Loader } from "../../components";
 import { ReturnButton } from "../../components/ReturnButton";
-import { ReactComponent as GearSvg } from "../../assets/img/gearsvg.svg";
+import { CurrencyContext } from "../../contexts";
 import { useCountryDetails } from "../../hooks";
+import styles from "./currencyDetails.module.css";
 
 export const CurrencyDetails: FC = () => {
   const { currencyCode } = useParams();
@@ -17,7 +16,6 @@ export const CurrencyDetails: FC = () => {
   }
   return (
     <Card title={"Details"} className={styles["details"]}>
-      <GearSvg className={styles["gearsvg"]} />
       <label>Currency Code:</label>
       <p>{currencyCode}</p>
       <label>Currency Name:</label>
