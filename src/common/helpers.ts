@@ -8,9 +8,8 @@ export const getDefaultCurrency = () => {
 export const setTheme = (themeName: string) => {
   window.localStorage.setItem("theme", themeName);
 };
-const getThemePreference = () => {
-  return window.matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light";
-};
-export const getTheme = () => {
-  return window.localStorage.getItem("theme");
+
+export const isThemeDark = () => {
+  const theme = window.localStorage.getItem("theme");
+  return theme === "dark";
 };

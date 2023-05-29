@@ -1,5 +1,5 @@
 import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
-import { getDefaultCurrency, getTheme, httpClient } from "../../common";
+import { getDefaultCurrency, isThemeDark, httpClient, setTheme } from "../../common";
 import { AxiosResponse } from "axios";
 import {
   FetchedCurrenciesDTO,
@@ -8,9 +8,8 @@ import {
   CurrencyContextType,
   CurrencyRates,
 } from "../../types";
-import { set } from "date-fns";
 
-export const CurrencyContext = createContext<CurrencyContextType>({
+const initialContextValues = {
   latestCurrencyRates: { code: 0 },
   fetchedCurrencyNames: { name: "name" },
   presentCurrency: { currencyCode: "", rate: 0 },
@@ -25,49 +24,52 @@ export const CurrencyContext = createContext<CurrencyContextType>({
   themeButtonHandler: () => {
     return;
   },
-});
+};
 
+export const CurrencyContext = createContext<CurrencyContextType>(initialContextValues);
 export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [fetchedCurrencyNames, setCurrencyNames] = useState<FetchedCurrencyNamesType>({ currencyCode: "" });
+  const [fetchedCurrencyNames, setFetchedCurrencyNames] = useState<FetchedCurrencyNamesType>({ currencyCode: "" });
   const [latestCurrencyRates, setLatestCurrencyRates] = useState<CurrencyRates>({
     currencyCode: 0,
   });
-  const defaultCurrency: string = getDefaultCurrency() || "USD";
-  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({
-    currencyCode: defaultCurrency,
-    rate: latestCurrencyRates[defaultCurrency],
-  });
+  const defaultCurrency: string | null = getDefaultCurrency();
+  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>(
+    defaultCurrency
+      ? {
+          currencyCode: defaultCurrency,
+          rate: latestCurrencyRates[defaultCurrency],
+        }
+      : null
+  );
   const [baseCurrency, setBaseCurrency] = useState(presentCurrency?.currencyCode === "AUD" ? "USD" : "AUD");
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(isThemeDark());
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
       const fetchedCurrenciesDTO: FetchedCurrenciesDTO = response.data;
       setLatestCurrencyRates(fetchedDataMapper(fetchedCurrenciesDTO));
-      updatePresentCurrency();
+      if (presentCurrency) {
+        setPresentCurrency({
+          currencyCode: presentCurrency.currencyCode,
+          rate: latestCurrencyRates[`${presentCurrency.currencyCode}`],
+        });
+      }
       function fetchedDataMapper(fetchedCurrencies: FetchedCurrenciesDTO) {
         return fetchedCurrencies.rates;
-      }
-      function updatePresentCurrency() {
-        if (presentCurrency) {
-          setPresentCurrency({
-            currencyCode: presentCurrency.currencyCode,
-            rate: latestCurrencyRates[`${presentCurrency.currencyCode}`],
-          });
-        }
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [baseCurrency]);
   useEffect(() => {
     httpClient.get(`/currencies`).then((response: AxiosResponse) => {
-      setCurrencyNames(response.data);
+      setFetchedCurrencyNames(response.data);
     });
   }, []);
   useEffect(() => {
-    const currentTheme = getTheme();
-    currentTheme === "dark" ? setIsDark(true) : setIsDark(false);
-    console.log("use effect gives", isDark);
-  }, []);
+    const body = document.getElementsByTagName("body")[0];
+    const theme = isDark ? "dark" : "light";
+    body.className = theme;
+    setTheme(theme);
+  }, [isDark]);
 
   function currencyButtonHandler(currencyCode: string): void {
     if (!latestCurrencyRates) {
@@ -82,15 +84,15 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
     if (!latestCurrencyRates) {
       return;
     }
-    if (!presentCurrency) {
-      return;
-    }
+
     setBaseCurrency(currencyCode);
   }
   function themeButtonHandler() {
     setIsDark(!isDark);
     const body = document.getElementsByTagName("body")[0];
     body.className = isDark ? "dark" : "light";
+    setTheme(isDark ? "dark" : "light");
+    console.log(isThemeDark());
   }
   return (
     <CurrencyContext.Provider

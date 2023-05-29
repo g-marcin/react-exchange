@@ -98,21 +98,6 @@ label {
   opacity: 0.6;
 }
 
-/* @media (prefers-color-scheme: light) {
-  body {
-    --text-color: #222;
-    --bkg-color: #fff;
-    --anchor-color: #000000;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  body {
-    --text-color: #eee;
-    --bkg-color: #121212;
-    --anchor-color: #ffffff;
-  }
-} */
-
 .light {
   --text-color: #222;
   --bkg-color: #fff;
@@ -129,7 +114,6 @@ body {
   color: var(--text-color);
   background: var(--bkg-color);
   border-color: var(--text-color);
-  padding: 40px;
 }
 a {
   color: var(--anchor-color);
@@ -149,8 +133,4 @@ button {
 .details {
   padding: 40px;
   color: var(--text-color);
-}
-.light {
-}
-.dark {
 }
