@@ -1,10 +1,9 @@
-import { FC, useContext, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FC, useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Slider } from "../../components/Slider/Slider";
 import { CurrencyContext } from "../../contexts";
 import styles from "./header.module.css";
-
-import Slider from "../../components/Slider/Slider";
 
 export const Header: FC = () => {
   const { presentCurrency, isDark, themeButtonHandler } = useContext(CurrencyContext);

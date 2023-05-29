@@ -1,12 +1,17 @@
-import { useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FC, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CurrencyContext } from "../../contexts";
 import { Container } from "..";
+import { CurrencyContext } from "../../contexts";
 import styles from "./slider.module.css";
 
-const SlidingMenu = ({ isOpen, closeMenu }) => {
+type SlidingMenuProps = {
+  isOpen:boolean, 
+  closeMenu: ()=>void
+}
+
+export const Slider: FC<SlidingMenuProps> = ({ isOpen, closeMenu }) => {
   const { presentCurrency, themeButtonHandler, isDark } = useContext(CurrencyContext);
 
   return (
@@ -32,7 +37,7 @@ const SlidingMenu = ({ isOpen, closeMenu }) => {
             <Container className={styles["end"]}></Container>
           </li>
           <li>
-            <NavLink to="/" activeClassName="active" onClick={closeMenu}>
+            <NavLink to="/" onClick={closeMenu}>
               Home
             </NavLink>
           </li>
@@ -52,4 +57,4 @@ const SlidingMenu = ({ isOpen, closeMenu }) => {
   );
 };
 
-export default SlidingMenu;
+
