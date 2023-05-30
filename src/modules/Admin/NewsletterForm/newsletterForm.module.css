@@ -43,3 +43,8 @@
 .country-name {
   font-size: 12px;
 }
+
+.card__Wrapper {
+  max-width: 600px;
+  margin: 10px;
+}

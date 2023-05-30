@@ -19,7 +19,10 @@ export const CurrencyLatest: FC = () => {
             <div>
               <ImageWithFallback currencyCode={presentCurrency.currencyCode} className={styles["display__Flag"]} />
             </div>
-            <span>{`Latest ${presentCurrency?.currencyCode} to ${baseCurrency} rate:  ${
+            <span className={styles["latest-big"]}>{`Latest ${presentCurrency?.currencyCode} to ${baseCurrency} rate:  ${
+              latestCurrencyRates[presentCurrency.currencyCode]
+            }`}</span>
+            <span className={styles["latest-small"]}>{`${presentCurrency?.currencyCode} to ${baseCurrency} ${
               latestCurrencyRates[presentCurrency.currencyCode]
             }`}</span>
             <div>

@@ -1,5 +1,6 @@
 .Outlet__wrapper {
-  min-height: 750px;
+  height: 750px;
+  justify-content: center;
 }
 
 @media (max-width: 660px) {

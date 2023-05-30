@@ -17,12 +17,10 @@ const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
     };
   }, []);
   return (
-    <Card title={"Currency Exchange"}>
-      <Wrapper className={styles["wrapper"]}>
-        <CurrencyDisplay />
-        <CurrencyList />
-      </Wrapper>
-    </Card>
+    <Wrapper className={styles["wrapper"]}>
+      <CurrencyDisplay />
+      <CurrencyList />
+    </Wrapper>
   );
 };
 

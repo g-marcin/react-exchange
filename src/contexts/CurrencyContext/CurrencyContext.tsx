@@ -1,5 +1,5 @@
 import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
-import { getDefaultCurrency, isThemeDark, httpClient, setTheme } from "../../common";
+import { getDefaultCurrency, httpClient } from "../../common";
 import { AxiosResponse } from "axios";
 import {
   FetchedCurrenciesDTO,
@@ -8,7 +8,6 @@ import {
   CurrencyContextType,
   CurrencyRates,
 } from "../../types";
-
 const initialContextValues = {
   latestCurrencyRates: { code: 0 },
   fetchedCurrencyNames: { name: "name" },
@@ -21,7 +20,6 @@ const initialContextValues = {
     return;
   },
 };
-
 export const CurrencyContext = createContext<CurrencyContextType>(initialContextValues);
 export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [fetchedCurrencyNames, setFetchedCurrencyNames] = useState<FetchedCurrencyNamesType>({ currencyCode: "" });
@@ -38,7 +36,6 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
       : null
   );
   const [baseCurrency, setBaseCurrency] = useState(presentCurrency?.currencyCode === "AUD" ? "USD" : "AUD");
-  const [isDark, setIsDark] = useState(isThemeDark());
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
       const fetchedCurrenciesDTO: FetchedCurrenciesDTO = response.data;

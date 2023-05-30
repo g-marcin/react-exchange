@@ -1,5 +1,6 @@
 import { FC } from "react";
+import { Card } from "../components";
 
 export const ErrorPage: FC = () => {
-  return <p>This is error handling </p>;
+  return <Card title="This is error handling"> </Card>;
 };

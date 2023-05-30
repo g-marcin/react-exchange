@@ -7,9 +7,15 @@
   max-width: 32px;
   max-height: 32px;
 }
+.latest-small {
+  display: none;
+}
+.latest-big {
+  display: block;
+}
 @media (max-width: 450px) {
   .display__Latest {
-    font-size: 12px;
+    font-size: 18px;
 
     padding: 3px;
   }
@@ -17,5 +23,12 @@
   .display__Flag {
     max-width: 32px;
     max-height: 32px;
+  }
+
+  .latest-small {
+    display: block;
+  }
+  .latest-big {
+    display: none;
   }
 }

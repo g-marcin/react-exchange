@@ -1,11 +1,9 @@
 .display__History {
-  max-height: 350px;
-  text-align: center;
-  flex-wrap: nowrap;
 }
 
 @media (max-width: 960px) {
   .display__History {
+    max-height: 100px;
     flex-flow: column;
     flex-wrap: nowrap;
     overflow-y: scroll;

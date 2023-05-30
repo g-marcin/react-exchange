@@ -10,9 +10,8 @@ interface CardProps extends PropsWithChildren {
 export const Card: FC<CardProps> = ({ title, children, className = "" }) => {
   return (
     <Wrapper className={`${styles["card__Wrapper"]} ${className}`}>
-      <Container className={styles["container"]}>
-        <h1 className={styles["card__Header"]}>{title}</h1>
-      </Container>
+      <h1 className={styles["card__Header"]}>{title}</h1>
+
       {children}
     </Wrapper>
   );
