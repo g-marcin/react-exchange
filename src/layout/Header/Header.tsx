@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Slider } from "../../components/Slider/Slider";
+import { Slider } from "../Slider";
 import { CurrencyContext } from "../../contexts";
 import styles from "./header.module.css";
 

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import { Container } from "..";
+import { Container } from "../../components";
 import { CurrencyContext } from "../../contexts";
 import styles from "./slider.module.css";
 
@@ -42,7 +42,10 @@ export const Slider: FC<SlidingMenuProps> = ({ isOpen, closeMenu }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={`/details${"/" + presentCurrency?.currencyCode}` || ""} onClick={closeMenu}>
+            <NavLink
+              to={presentCurrency?.currencyCode ? `/details/${presentCurrency.currencyCode}` : "/details"}
+              onClick={closeMenu}
+            >
               Details
             </NavLink>
           </li>
