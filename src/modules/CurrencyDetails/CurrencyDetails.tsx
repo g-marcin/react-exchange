@@ -9,7 +9,7 @@ import styles from "./currencyDetails.module.css";
 const CurrencyDetails: FC = () => {
   const { currencyCode } = useParams();
   const { fetchedCurrencyNames } = useContext(CurrencyContext);
-  console.log(useCountryDetails(currencyCode || ""));
+  const countryDetails = useCountryDetails(currencyCode || "");
 
   if (!currencyCode) {
     return <Loader />;
@@ -24,6 +24,7 @@ const CurrencyDetails: FC = () => {
         <label>Currency Flag:</label>
       </Wrapper>
       <ImageWithFallback currencyCode={currencyCode} className={styles["flag__wrapper"]} />
+
       <ReturnButton />
       {/* TODO insert chart component and 1day/5day/week/month/3month/6month/year/full form */}
     </Card>

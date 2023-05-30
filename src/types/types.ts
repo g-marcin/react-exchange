@@ -24,7 +24,7 @@ export type StateHandler = () => void;
 export type CurrencyContextType = {
   latestCurrencyRates: CurrencyRates;
   fetchedCurrencyNames: FetchedCurrencyNamesType;
-  presentCurrency: CurrencyType;
+
   baseCurrency: string;
   currencyButtonHandler: CurrencyButtonHandlerType;
   currencyBaseHandler: CurrencyBaseHandlerType;

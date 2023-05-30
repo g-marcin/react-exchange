@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CurrencyContext } from "../../../contexts";
 import { setDefaultCurrency, getDefaultCurrency } from "../../../common";
 import { Container, Wrapper, Card } from "../../../components";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
 import styles from "./defaultCurrencyForm.module.css";
 
@@ -14,7 +16,9 @@ export const DefaultCurrencyForm: FC = () => {
   useEffect(() => {
     setSelectValue(defaultCurrency);
   }, [selectValue, defaultCurrency]);
-  const { presentCurrency, fetchedCurrencyNames: currencyNames } = useContext(CurrencyContext);
+  const { fetchedCurrencyNames: currencyNames } = useContext(CurrencyContext);
+  const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
+
   const navigate = useNavigate();
   return (
     <Card title={"Admin Panel"}>
@@ -35,7 +39,7 @@ export const DefaultCurrencyForm: FC = () => {
               label="Please choose your default currency"
             >
               {Object.keys(currencyNames)
-                .filter((currencyCode) => currencyCode !== presentCurrency?.currencyCode)
+                .filter((currencyCode) => currencyCode !== presentCurrency)
                 .map((currencyCode) => {
                   return (
                     <option key={currencyCode} value={currencyCode}>

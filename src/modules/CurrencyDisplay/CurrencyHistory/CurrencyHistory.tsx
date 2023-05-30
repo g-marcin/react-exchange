@@ -1,13 +1,13 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { Container, Loader } from "../../../components";
-import { CurrencyContext } from "../../../contexts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 import { useCurrencyHistory } from "../../../hooks";
 import { HistoryItem } from "./HistoryItem";
 import styles from "./currencyHistory.module.css";
 
 export const CurrencyHistory: FC = () => {
-  const currencyContextObject = useContext(CurrencyContext);
-  const { presentCurrency } = currencyContextObject;
+  const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
   const { currencyHistory, inProgress } = useCurrencyHistory();
   if (!currencyHistory) {
     return <Loader />;

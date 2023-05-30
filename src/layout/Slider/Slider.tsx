@@ -2,7 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import { CurrencyContext, ThemeContext } from "../../contexts";
+import { ThemeContext } from "../../contexts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 import { Container } from "../../components";
 import styles from "./slider.module.css";
 
@@ -12,7 +14,8 @@ type SliderProps = {
 };
 
 export const Slider: FC<SliderProps> = ({ isOpen, closeMenu }) => {
-  const { presentCurrency } = useContext(CurrencyContext);
+  const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
+
   const { isDark, themeButtonHandler } = useContext(ThemeContext);
 
   return (
@@ -43,10 +46,7 @@ export const Slider: FC<SliderProps> = ({ isOpen, closeMenu }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to={presentCurrency?.currencyCode ? `/details/${presentCurrency.currencyCode}` : "/details"}
-              onClick={closeMenu}
-            >
+            <NavLink to={presentCurrency ? `/details/${presentCurrency}` : "/details"} onClick={closeMenu}>
               Details
             </NavLink>
           </li>

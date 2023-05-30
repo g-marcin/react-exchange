@@ -2,11 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Slider } from "../Slider";
-import { CurrencyContext, ThemeContext } from "../../contexts";
+import { ThemeContext } from "../../contexts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 import styles from "./header.module.css";
 
 export const Header: FC = () => {
-  const { presentCurrency } = useContext(CurrencyContext);
+  const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
+
   const { isDark, themeButtonHandler } = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
@@ -34,7 +37,7 @@ export const Header: FC = () => {
         </NavLink>
         <div className={styles["wrapper__Navbar"]}>
           <NavLink
-            to={presentCurrency?.currencyCode ? `/details/${presentCurrency.currencyCode}` : "/details"}
+            to={presentCurrency ? `/details/${presentCurrency}` : "/details"}
             className={({ isActive, isPending }) =>
               isPending ? ` ${styles["pending"]}` : isActive ? `${styles["active"]}` : styles["dropdown__Account"]
             }

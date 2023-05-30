@@ -79,7 +79,6 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
       value={{
         latestCurrencyRates: latestCurrencyRates,
         fetchedCurrencyNames: fetchedCurrencyNames,
-        presentCurrency: presentCurrency,
         baseCurrency: baseCurrency,
         currencyButtonHandler: currencyButtonHandler,
         currencyBaseHandler: currencyBaseHandler,
