@@ -11,11 +11,11 @@ export const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage errorMessage="Page not found" />,
     children: [
       {
         path: "",
-        errorElement: <ErrorPage />,
+        errorElement: <ErrorPage errorMessage="Page not found" />,
         children: [
           {
             index: true,
@@ -31,7 +31,7 @@ export const AppRouter = createBrowserRouter([
           },
           {
             path: "details",
-            element: <div>Choose the currency from currency list</div>,
+            element: <ErrorPage errorMessage="Choose the currency from currency list" />,
           },
           {
             path: "details/:currencyCode",

@@ -91,11 +91,11 @@ export const NewsletterForm: FC = () => {
             <ErrorMessage name="date" component="div" className={styles["error-field"]} />
             <label>Phone:</label>
             <Container className={styles["phone__Wrapper"]}>
-              <Field name={"countryCode"} component={FormikSelect} options={options} className={styles["select"]} />
+              <Field name={"countryCode"} component={FormikSelect} options={options} className={styles["select__code"]} />
               <Field
                 name="phoneNumber"
                 type="phone"
-                className={`${styles["field"]} ${styles["phone"]}`}
+                className={` ${styles["field__Phone"]}`}
                 placeholder="Type your phone number..."
                 maxLength="9"
                 validate={validatePhoneNumber}

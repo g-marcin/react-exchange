@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Card, ImageWithFallback, Loader } from "../../components";
+import { Card, Container, ImageWithFallback, Loader, Wrapper } from "../../components";
 import { ReturnButton } from "../../components/ReturnButton";
 import { CurrencyContext } from "../../contexts";
 import { useCountryDetails } from "../../hooks";
@@ -16,11 +16,13 @@ const CurrencyDetails: FC = () => {
   }
   return (
     <Card title={"Details"} className={styles["details"]}>
-      <label>Currency Code:</label>
-      <p>{currencyCode}</p>
-      <label>Currency Name:</label>
-      <p>{fetchedCurrencyNames[currencyCode]}</p>
-      <label>Currency Flag:</label>
+      <Wrapper className={styles["text-info"]}>
+        <label>Currency Code:</label>
+        <p>{currencyCode}</p>
+        <label>Currency Name:</label>
+        <p>{fetchedCurrencyNames[currencyCode]}</p>
+        <label>Currency Flag:</label>
+      </Wrapper>
       <ImageWithFallback currencyCode={currencyCode} className={styles["flag__wrapper"]} />
       <ReturnButton />
       {/* TODO insert chart component and 1day/5day/week/month/3month/6month/year/full form */}

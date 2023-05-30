@@ -1,7 +1,6 @@
 .error-field {
   color: red;
 }
-
 .wrapper-form {
   display: flex;
   flex-direction: column;
@@ -9,31 +8,20 @@
   padding: 10px;
   align-content: space-around;
 }
-
 .field {
   height: 35px;
-
   padding: 5px;
 }
-
-.phone {
-  max-height: 35px;
-  font-size: 18px;
-  flex: 1;
-}
-
 .label {
   font-size: 24px;
   margin: auto;
 }
-
 .button-black {
   font-size: 18px;
   padding: 12px;
   border-radius: 12px;
   background: black;
   color: white;
-
   gap: 10px;
   justify-content: center;
 }
@@ -43,8 +31,14 @@
 .country-name {
   font-size: 12px;
 }
-
 .card__Wrapper {
   max-width: 600px;
   margin: 10px;
+}
+
+.field__Phone {
+  flex: 1;
+}
+.select__Code {
+  flex: 1;
 }

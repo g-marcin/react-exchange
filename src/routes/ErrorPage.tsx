@@ -1,6 +1,15 @@
 import { FC } from "react";
 import { Card } from "../components";
+import { ReturnButton } from "../components/ReturnButton";
 
-export const ErrorPage: FC = () => {
-  return <Card title="This is error handling"> </Card>;
+type ErrorPageProps = {
+  errorMessage: string;
+};
+
+export const ErrorPage: FC<ErrorPageProps> = ({ errorMessage }) => {
+  return (
+    <Card title={errorMessage}>
+      <ReturnButton />
+    </Card>
+  );
 };
