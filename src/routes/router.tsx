@@ -21,6 +21,10 @@ export const Router = createBrowserRouter([
             element: <Admin />,
           },
           {
+            path: "details",
+            element: <div>Choose the currency from currency list</div>,
+          },
+          {
             path: "details/:currencyCode",
             element: <CurrencyDetails />,
           },

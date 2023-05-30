@@ -33,7 +33,7 @@ export const Header: FC = () => {
         </NavLink>
         <div className={styles["wrapper__Navbar"]}>
           <NavLink
-            to={`/details/${presentCurrency?.currencyCode}`}
+            to={presentCurrency?.currencyCode ? `/details/${presentCurrency.currencyCode}` : "/details"}
             className={({ isActive, isPending }) =>
               isPending ? ` ${styles["pending"]}` : isActive ? `${styles["active"]}` : styles["dropdown__Account"]
             }
@@ -54,7 +54,6 @@ export const Header: FC = () => {
             <FontAwesomeIcon icon={["fas", "gear"]} size={"2xs"} />
           </NavLink>
           <div className={styles["separator-5"]}></div>
-
           <button
             onClick={() => {
               themeButtonHandler();
@@ -75,7 +74,6 @@ export const Header: FC = () => {
             </p>
           </button>
         </div>
-
         <button
           className={`${styles["button__Hamburger"]}`}
           title="hamburger-menu"

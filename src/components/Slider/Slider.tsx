@@ -7,9 +7,9 @@ import { CurrencyContext } from "../../contexts";
 import styles from "./slider.module.css";
 
 type SlidingMenuProps = {
-  isOpen:boolean, 
-  closeMenu: ()=>void
-}
+  isOpen: boolean;
+  closeMenu: () => void;
+};
 
 export const Slider: FC<SlidingMenuProps> = ({ isOpen, closeMenu }) => {
   const { presentCurrency, themeButtonHandler, isDark } = useContext(CurrencyContext);
@@ -42,7 +42,7 @@ export const Slider: FC<SlidingMenuProps> = ({ isOpen, closeMenu }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={`/details/${presentCurrency?.currencyCode}`} onClick={closeMenu}>
+            <NavLink to={`/details${"/" + presentCurrency?.currencyCode}` || ""} onClick={closeMenu}>
               Details
             </NavLink>
           </li>
@@ -56,5 +56,3 @@ export const Slider: FC<SlidingMenuProps> = ({ isOpen, closeMenu }) => {
     </CSSTransition>
   );
 };
-
-
