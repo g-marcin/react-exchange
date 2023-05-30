@@ -1,12 +1,12 @@
+import { AppRouter } from "./routes";
+import { RouterProvider } from "react-router-dom";
 import { CurrencyContextProvider } from "./contexts";
-import { Layout } from "./layout";
-import "./common/FontAwesomeLibrary";
 
 function App() {
   return (
     <>
       <CurrencyContextProvider>
-        <Layout />
+        <RouterProvider router={AppRouter} />
       </CurrencyContextProvider>
     </>
   );

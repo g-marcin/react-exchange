@@ -2,14 +2,15 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { ErrorPage } from "./ErrorPage";
 import { Admin } from "../modules/Admin";
-import App from "../App";
+
+import { Layout } from "../layout";
 const CurrencyDetails = lazy(() => import("../modules/CurrencyDetails/CurrencyDetails"));
 const CurrencyExchange = lazy(() => import("../modules/CurrencyExchange/CurrencyExchange"));
 
-export const Router = createBrowserRouter([
+export const AppRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
