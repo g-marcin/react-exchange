@@ -26,8 +26,10 @@ export type CurrencyContextType = {
   fetchedCurrencyNames: FetchedCurrencyNamesType;
   presentCurrency: CurrencyType;
   baseCurrency: string;
-  isDark: boolean;
   currencyButtonHandler: CurrencyButtonHandlerType;
   currencyBaseHandler: CurrencyBaseHandlerType;
+};
+export type ThemeContextType = {
+  isDark: boolean;
   themeButtonHandler: StateHandler;
 };

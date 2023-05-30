@@ -2,11 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Slider } from "../Slider";
-import { CurrencyContext } from "../../contexts";
+import { CurrencyContext, ThemeContext } from "../../contexts";
 import styles from "./header.module.css";
 
 export const Header: FC = () => {
-  const { presentCurrency, isDark, themeButtonHandler } = useContext(CurrencyContext);
+  const { presentCurrency } = useContext(CurrencyContext);
+  const { isDark, themeButtonHandler } = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);

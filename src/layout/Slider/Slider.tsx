@@ -2,17 +2,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import { CurrencyContext, ThemeContext } from "../../contexts";
 import { Container } from "../../components";
-import { CurrencyContext } from "../../contexts";
 import styles from "./slider.module.css";
 
-type SlidingMenuProps = {
+type SliderProps = {
   isOpen: boolean;
   closeMenu: () => void;
 };
 
-export const Slider: FC<SlidingMenuProps> = ({ isOpen, closeMenu }) => {
-  const { presentCurrency, themeButtonHandler, isDark } = useContext(CurrencyContext);
+export const Slider: FC<SliderProps> = ({ isOpen, closeMenu }) => {
+  const { presentCurrency } = useContext(CurrencyContext);
+  const { isDark, themeButtonHandler } = useContext(ThemeContext);
 
   return (
     <CSSTransition in={isOpen} timeout={300} classNames={styles["menu-transition"]} unmountOnExit>

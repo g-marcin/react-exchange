@@ -14,14 +14,10 @@ const initialContextValues = {
   fetchedCurrencyNames: { name: "name" },
   presentCurrency: { currencyCode: "", rate: 0 },
   baseCurrency: "",
-  isDark: false,
   currencyButtonHandler: () => {
     return;
   },
   currencyBaseHandler: () => {
-    return;
-  },
-  themeButtonHandler: () => {
     return;
   },
 };
@@ -64,13 +60,6 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
       setFetchedCurrencyNames(response.data);
     });
   }, []);
-  useEffect(() => {
-    const body = document.getElementsByTagName("body")[0];
-    const theme = isDark ? "dark" : "light";
-    body.className = theme;
-    setTheme(theme);
-  }, [isDark]);
-
   function currencyButtonHandler(currencyCode: string): void {
     if (!latestCurrencyRates) {
       return;
@@ -87,13 +76,7 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
 
     setBaseCurrency(currencyCode);
   }
-  function themeButtonHandler() {
-    setIsDark(!isDark);
-    const body = document.getElementsByTagName("body")[0];
-    body.className = isDark ? "dark" : "light";
-    setTheme(isDark ? "dark" : "light");
-    console.log(isThemeDark());
-  }
+
   return (
     <CurrencyContext.Provider
       value={{
@@ -101,10 +84,8 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
         fetchedCurrencyNames: fetchedCurrencyNames,
         presentCurrency: presentCurrency,
         baseCurrency: baseCurrency,
-        isDark: isDark,
         currencyButtonHandler: currencyButtonHandler,
         currencyBaseHandler: currencyBaseHandler,
-        themeButtonHandler: themeButtonHandler,
       }}
     >
       {children}
