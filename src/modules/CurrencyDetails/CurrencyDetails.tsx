@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Container, ImageWithFallback, Loader, Wrapper } from "../../components";
+import { Card, ImageWithFallback, Loader, Wrapper } from "../../components";
 import { ReturnButton } from "../../components/ReturnButton";
 import { CurrencyContext } from "../../contexts";
 import { useCountryDetails } from "../../hooks";
