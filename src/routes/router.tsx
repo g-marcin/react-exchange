@@ -1,9 +1,10 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { ErrorPage } from "./ErrorPage";
-import { CurrencyExchange } from "../modules";
 import { Admin } from "../modules/Admin";
 import App from "../App";
-import { CurrencyDetails } from "../modules/CurrencyDetails";
+const CurrencyDetails = lazy(() => import("../modules/CurrencyDetails/CurrencyDetails"));
+const CurrencyExchange = lazy(() => import("../modules/CurrencyExchange/CurrencyExchange"));
 
 export const Router = createBrowserRouter([
   {
@@ -15,7 +16,14 @@ export const Router = createBrowserRouter([
         path: "",
         errorElement: <ErrorPage />,
         children: [
-          { index: true, element: <CurrencyExchange /> },
+          {
+            index: true,
+            element: (
+              <Suspense>
+                <CurrencyExchange />{" "}
+              </Suspense>
+            ),
+          },
           {
             path: "admin",
             element: <Admin />,
@@ -26,7 +34,11 @@ export const Router = createBrowserRouter([
           },
           {
             path: "details/:currencyCode",
-            element: <CurrencyDetails />,
+            element: (
+              <Suspense>
+                <CurrencyDetails />
+              </Suspense>
+            ),
           },
         ],
       },

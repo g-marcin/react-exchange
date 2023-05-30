@@ -6,7 +6,7 @@ import { CurrencyContext } from "../../contexts";
 import { useCountryDetails } from "../../hooks";
 import styles from "./currencyDetails.module.css";
 
-export const CurrencyDetails: FC = () => {
+const CurrencyDetails: FC = () => {
   const { currencyCode } = useParams();
   const { fetchedCurrencyNames } = useContext(CurrencyContext);
   console.log(useCountryDetails(currencyCode || ""));
@@ -27,3 +27,5 @@ export const CurrencyDetails: FC = () => {
     </Card>
   );
 };
+
+export default CurrencyDetails;

@@ -7,7 +7,7 @@ import styles from "./currencyExchange.module.css";
 export interface CurrencyExchangeProps extends PropsWithChildren {
   className?: string;
 }
-export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
+const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
   useEffect(() => {
     async () => {
       const defaultCurrency = await getDefaultCurrency();
@@ -25,3 +25,5 @@ export const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
     </Card>
   );
 };
+
+export default CurrencyExchange;
