@@ -1,17 +1,14 @@
 import { AppRouter } from "./routes";
 import { RouterProvider } from "react-router-dom";
-import { CurrencyContextProvider } from "./contexts";
 import { ThemeContextProvider } from "./contexts/ThemeContext";
-import { ReduxProvider } from "./store/ReduxProvider";
+import { ReduxProvider } from "./redux/ReduxProvider";
 
 function App() {
   return (
     <>
       <ReduxProvider>
         <ThemeContextProvider>
-          <CurrencyContextProvider>
-            <RouterProvider router={AppRouter} />
-          </CurrencyContextProvider>
+          <RouterProvider router={AppRouter} />
         </ThemeContextProvider>
       </ReduxProvider>
     </>
