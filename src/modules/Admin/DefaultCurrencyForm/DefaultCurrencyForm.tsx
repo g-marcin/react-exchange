@@ -1,12 +1,12 @@
-import { FC, useEffect, useState, useContext } from "react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CurrencyContext } from "../../../contexts";
 import { setDefaultCurrency, getDefaultCurrency } from "../../../common";
-import { Container, Wrapper, Card } from "../../../components";
+import { Container, Wrapper, Card, Loader } from "../../../components";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
+import { RootState } from "../../../redux";
+import { useGetCurrencyNamesQuery } from "../../../redux";
 
 import styles from "./defaultCurrencyForm.module.css";
 
@@ -16,10 +16,14 @@ export const DefaultCurrencyForm: FC = () => {
   useEffect(() => {
     setSelectValue(defaultCurrency);
   }, [selectValue, defaultCurrency]);
-  const { fetchedCurrencyNames: currencyNames } = useContext(CurrencyContext);
-  const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
 
+  const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
+  const { data: currencyNames, isLoading } = useGetCurrencyNamesQuery();
   const navigate = useNavigate();
+  if (isLoading || !currencyNames) {
+    return <Loader />;
+  }
+
   return (
     <Card title={"Admin Panel"}>
       <Formik

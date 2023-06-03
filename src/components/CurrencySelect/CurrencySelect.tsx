@@ -1,11 +1,10 @@
-import { FC, useContext } from "react";
-import { Container } from "..";
-import { CurrencyContext } from "../../contexts";
+import { FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../store";
-import { CurrencyBaseHandlerType } from "../../types";
-import { setBaseCurrency } from "../../store";
+import { Container, Loader } from "..";
+import { RootState } from "../../redux/store";
+import { setBaseCurrency } from "../../redux/currencySlice";
 import styles from "./currencySelect.module.css";
+import { useGetCurrencyNamesQuery } from "../../redux";
 
 type CurrencySelectProps = {
   label: string;
@@ -13,13 +12,12 @@ type CurrencySelectProps = {
 };
 
 export const CurrencySelect: FC<CurrencySelectProps> = ({ label, value }) => {
-  const { fetchedCurrencyNames: currencyNames } = useContext(CurrencyContext);
-  const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
   const dispatch = useDispatch();
-
-  const handleBaseCurrencyChange = (currencyCode: string) => {
-    dispatch(setBaseCurrency(currencyCode));
-  };
+  const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
+  const { data: currencyNames, isLoading } = useGetCurrencyNamesQuery();
+  if (isLoading || !currencyNames) {
+    return <Loader />;
+  }
   return (
     <Container className={styles["container"]}>
       <label className={styles.label}> {label}:</label>
@@ -29,7 +27,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = ({ label, value }) => {
         id="baseCurrency"
         value={value}
         onChange={(e) => {
-          handleBaseCurrencyChange(e.target.value);
+          dispatch(setBaseCurrency(e.target.value));
         }}
       >
         {Object.keys(currencyNames)
