@@ -15,17 +15,13 @@ export type CurrencyType = {
 } | null;
 export type CurrencyRates = { [k: string]: number };
 export type PastCurrencyRates = { [date: string]: CurrencyRates };
-export type FetchedCurrencyNamesType = {
-  [k: string]: string;
-};
+
 export type CurrencyBaseHandlerType = (currencyCode: string) => void;
 export type CurrencyButtonHandlerType = (currencyCode: string) => void;
 export type StateHandler = () => void;
 export type CurrencyContextType = {
   latestCurrencyRates: CurrencyRates;
-  fetchedCurrencyNames: FetchedCurrencyNamesType;
 
-  baseCurrency: string;
   currencyButtonHandler: CurrencyButtonHandlerType;
   currencyBaseHandler: CurrencyBaseHandlerType;
 };

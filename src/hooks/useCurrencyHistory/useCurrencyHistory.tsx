@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios";
 import { httpClient } from "../../common";
 import { PastCurrencyRates } from "../../types";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../../redux/store";
 
 export const useCurrencyHistory = () => {
   const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
@@ -17,7 +17,7 @@ export const useCurrencyHistory = () => {
     const dateFrom = format(date, "yyyy-MM-dd");
     const dateTo = format(subDays(date, 12), "yyyy-MM-dd");
     httpClient.get(`/${dateTo}..${dateFrom}?from=${baseCurrency}&to=${presentCurrency}`).then((response: AxiosResponse) => {
-      setCurrencyHistory(response.data.rates);
+      setCurrencyHistory(() => response.data.rates);
       setInProgress(false);
     });
   }, [baseCurrency, presentCurrency]);

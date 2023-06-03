@@ -3,19 +3,13 @@ import { Wrapper } from "../../components";
 import { CurrencyDisplay, CurrencyList } from "..";
 import { setDefaultCurrency, getDefaultCurrency } from "../../common";
 import styles from "./currencyExchange.module.css";
+import { useGetCurrencyNamesQuery } from "../../redux";
 
 export interface CurrencyExchangeProps extends PropsWithChildren {
   className?: string;
 }
+
 const CurrencyExchange: FC<CurrencyExchangeProps> = () => {
-  useEffect(() => {
-    async () => {
-      const defaultCurrency = await getDefaultCurrency();
-      if (!defaultCurrency) {
-        setDefaultCurrency("EUR");
-      }
-    };
-  }, []);
   return (
     <Wrapper className={styles["wrapper"]}>
       <CurrencyDisplay />

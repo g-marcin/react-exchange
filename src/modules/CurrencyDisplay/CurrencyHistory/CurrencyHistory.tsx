@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Container, Loader } from "../../../components";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
+import { RootState } from "../../../redux/store";
 import { useCurrencyHistory } from "../../../hooks";
 import { HistoryItem } from "./HistoryItem";
 import styles from "./currencyHistory.module.css";
