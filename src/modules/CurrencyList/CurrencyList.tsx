@@ -1,15 +1,19 @@
-import { FC, useContext } from "react";
-import { Wrapper, Loader } from "../../components";
+import { FC } from "react";
+
 import { Currency } from "./Currency";
+import { Wrapper, Loader } from "../../components";
 import styles from "./currencyList.module.css";
-import { CurrencyContext } from "../../contexts";
+import { useGetLatestRatesQuery } from "../../redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux";
 
 export const CurrencyList: FC = () => {
-  const currencyContextObject = useContext(CurrencyContext);
-  if (!currencyContextObject) {
+  const baseCurrency = useSelector((state: RootState) => state.currency.baseCurrency);
+  const data = useGetLatestRatesQuery(baseCurrency).data;
+  if (!data) {
     return <Loader />;
   }
-  const latestCurrencyRates = currencyContextObject.latestCurrencyRates;
+  const latestCurrencyRates = data.rates;
   return (
     <Wrapper className={styles["list__Wrapper"]}>
       {Object.entries(latestCurrencyRates).map(([currencyCode, currencyRate]) => {
