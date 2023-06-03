@@ -1,52 +1,23 @@
-import { FC, useContext, useState } from "react";
+import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CurrencyContext } from "../../../contexts";
-import { RootState, setPresentCurrency } from "../../../store";
+import { RootState, setPresentCurrency } from "../../../redux/";
 import { Container, Loader, ImageWithFallback } from "../../../components";
 import styles from "./currencyLatest.module.css";
+import { useGetLatestRatesQuery } from "../../../redux/";
 
 export const CurrencyLatest: FC = () => {
   const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
   const baseCurrency = useSelector((state: RootState) => state.currency.baseCurrency);
-  const dispatch = useDispatch();
-  const [inputText, setInputText] = useState("");
-  const currencyContextObject = useContext(CurrencyContext);
-
-  if (!currencyContextObject) {
+  const data = useGetLatestRatesQuery(baseCurrency).data;
+  if (!data) {
     return <Loader />;
   }
-  const { latestCurrencyRates } = currencyContextObject;
-
-  const handleReduxCurrencyChange = (currencyCode: string) => {
-    dispatch(setPresentCurrency(currencyCode));
-  };
+  const latestCurrencyRates = data.rates;
   return (
     <>
       <Container className={styles["display__Latest"]}>
         {presentCurrency ? (
           <>
-            <input
-              type="text"
-              id="input"
-              value={inputText || ""}
-              onChange={async (e) => {
-                await setInputText(e.target.value);
-              }}
-            />
-            <p>{JSON.stringify(presentCurrency)}</p>
-            <p>{JSON.stringify(baseCurrency)}</p>
-            <button
-              onClick={() => {
-                const input = document.getElementById("input");
-                if (!input) {
-                  return;
-                }
-                handleReduxCurrencyChange(inputText);
-                console.log(presentCurrency);
-              }}
-            >
-              Redux
-            </button>
             <div>
               <ImageWithFallback currencyCode={presentCurrency} className={styles["display__Flag"]} />
             </div>
