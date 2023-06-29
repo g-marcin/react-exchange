@@ -14,6 +14,7 @@ type CurrencySelectProps = {
 export const CurrencySelect: FC<CurrencySelectProps> = ({ label, value }) => {
   const dispatch = useDispatch();
   const presentCurrency = useSelector((state: RootState) => state.currency.presentCurrency);
+  //createSelector
   const { data: currencyNames, isLoading } = useGetCurrencyNamesQuery();
   if (isLoading || !currencyNames) {
     return <Loader />;

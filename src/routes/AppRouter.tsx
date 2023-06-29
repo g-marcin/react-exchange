@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { ErrorPage } from "./ErrorPage";
 import { Admin } from "../modules/Admin";
 import { Layout } from "../layout";
-
+import { ComponentsDisplay } from "../components/ComponentsDisplay";
 const CurrencyDetails = lazy(() => import("../modules/CurrencyDetails/CurrencyDetails"));
 const CurrencyExchange = lazy(() => import("../modules/CurrencyExchange/CurrencyExchange"));
 
@@ -46,6 +46,11 @@ export const AppRouter = createBrowserRouter([
             ),
           },
         ],
+      },
+      {
+        path: "/components",
+        errorElement: <ErrorPage errorMessage="Page not found" />,
+        element: <ComponentsDisplay />,
       },
     ],
   },

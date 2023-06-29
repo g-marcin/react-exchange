@@ -8,7 +8,8 @@ export const store: Store = configureStore({
     currency: currencyReducer,
     [frankfurterApiSlice.reducerPath]: frankfurterApiSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(frankfurterApiSlice.middleware).concat(logger),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(frankfurterApiSlice.middleware).concat(logger).concat(),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -29,3 +29,8 @@ export type ThemeContextType = {
   isDark: boolean;
   themeButtonHandler: StateHandler;
 };
+
+export type CurrencyState = {
+  presentCurrency: string;
+  baseCurrency: string;
+};

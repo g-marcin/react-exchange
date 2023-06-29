@@ -7,20 +7,20 @@ type MyOption = {
   label: string;
   value: string;
 };
-type FormikSelectProps = {
-  options: MyOption[];
-  field: FieldInputProps<string>;
-  form: FormikProps<string>;
+type CountryCodeSelectProps = {
+  options?: MyOption[];
+  field?: FieldInputProps<string>;
+  form?: FormikProps<string>;
 };
 
-export const FormikSelect: FC<FormikSelectProps> = ({ options, field, form }) => (
+export const CountryCodeSelect: FC<CountryCodeSelectProps> = ({ options, field, form }) => (
   <Select
     options={options}
-    name={field.name}
-    value={options ? options.find((option: MyOption) => option.value === field.value) : ""}
+    name={field?.name}
+    value={options ? options.find((option: MyOption) => option.value === field?.value) : ""}
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onChange={(option: any) => form.setFieldValue(field.name, option?.value)}
-    onBlur={field.onBlur}
+    onChange={(option: any) => form?.setFieldValue(field?.name || "", option?.value)}
+    onBlur={field?.onBlur}
     className={styles["select"]}
   />
 );
