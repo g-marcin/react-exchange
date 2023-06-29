@@ -1,9 +1,7 @@
-import { FC, PropsWithChildren, useEffect } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Wrapper } from "../../components";
 import { CurrencyDisplay, CurrencyList } from "..";
-import { setDefaultCurrency, getDefaultCurrency } from "../../common";
 import styles from "./currencyExchange.module.css";
-import { useGetCurrencyNamesQuery } from "../../redux";
 
 export interface CurrencyExchangeProps extends PropsWithChildren {
   className?: string;

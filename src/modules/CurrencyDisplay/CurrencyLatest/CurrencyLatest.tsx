@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, setPresentCurrency } from "../../../redux/";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/";
 import { Container, Loader, ImageWithFallback } from "../../../components";
 import styles from "./currencyLatest.module.css";
 import { useGetLatestRatesQuery } from "../../../redux/";

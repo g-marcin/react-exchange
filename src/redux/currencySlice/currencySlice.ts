@@ -1,14 +1,15 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { getDefaultCurrency } from "../../common";
 
 const initialState: CurrencyState = {
   presentCurrency: getDefaultCurrency() || "",
   baseCurrency: "USD",
 };
-const fetchLatest = createAsyncThunk("currency/fetchLatest", async () => {
-  const response = await fetch(`https://api.frankfurter.app/latest`).then((response) => response.json());
-  return response;
-});
+
+type CurrencyState = {
+  presentCurrency: string;
+  baseCurrency: string;
+};
 const currencySlice = createSlice({
   name: "currency",
   initialState: initialState,
@@ -20,16 +21,19 @@ const currencySlice = createSlice({
       state.baseCurrency = action.payload;
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchLatest.rejected, (state, action) => {
-      console.log(state, action);
-    });
-  },
 });
 export const { setPresentCurrency, setBaseCurrency } = currencySlice.actions;
 export const currencyReducer = currencySlice.reducer;
 
-type CurrencyState = {
-  presentCurrency: string;
-  baseCurrency: string;
-};
+// const fetchLatest = createAsyncThunk("currency/fetchLatest", async () => {
+//   console.log(fetchLatest);
+
+//   const response = await fetch(`https://api.frankfurter.app/latest`).then((response) => response.json());
+//   return Promise.reject("thunk");
+// });
+
+// extraReducers: (builder) => {
+//   builder.addCase(fetchLatest.rejected, (state, action) => {
+//     console.log("THUNK");
+//   });
+// },

@@ -10,10 +10,10 @@ const CurrencyDetails: FC = () => {
   const { currencyCode } = useParams();
   const countryDetails = useCountryDetails(currencyCode || "");
   const { data: currencyNames, isLoading } = useGetCurrencyNamesQuery();
+
   if (isLoading || !currencyNames) {
     return <Loader />;
   }
-
   if (!currencyCode) {
     return <Loader />;
   }
@@ -25,10 +25,9 @@ const CurrencyDetails: FC = () => {
         <label>Currency Name:</label>
         <p>{currencyNames[currencyCode]}</p>
         <label>Currency Flag:</label>
-        {JSON.stringify(countryDetails)}
       </Wrapper>
       <ImageWithFallback currencyCode={currencyCode} className={styles["flag__wrapper"]} />
-
+      {JSON.stringify(countryDetails)}
       <ReturnButton />
       {/* TODO insert chart component and 1day/5day/week/month/3month/6month/year/full form */}
     </Card>

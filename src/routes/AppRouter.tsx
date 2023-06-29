@@ -2,10 +2,14 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { ErrorPage } from "./ErrorPage";
 import { Admin } from "../modules/Admin";
-
 import { Layout } from "../layout";
+
 const CurrencyDetails = lazy(() => import("../modules/CurrencyDetails/CurrencyDetails"));
 const CurrencyExchange = lazy(() => import("../modules/CurrencyExchange/CurrencyExchange"));
+
+const Loading = () => {
+  return <div>loading...</div>;
+};
 
 export const AppRouter = createBrowserRouter([
   {
@@ -20,7 +24,7 @@ export const AppRouter = createBrowserRouter([
           {
             index: true,
             element: (
-              <Suspense>
+              <Suspense fallback={<Loading />}>
                 <CurrencyExchange />{" "}
               </Suspense>
             ),
