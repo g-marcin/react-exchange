@@ -1,7 +1,9 @@
+import { useMutation } from "@tanstack/react-query";
 import { FC, useContext } from "react";
+import { queryClient } from "../../../common/ReactQuery";
+import { Loader } from "../../../components";
 import { ImageWithFallback } from "../../../components/ImageWithFallback";
 import { CurrencyContext } from "../../../contexts";
-import { Loader } from "../../../components";
 import styles from "./currency.module.css";
 
 export type CurrencyProps = {
@@ -11,6 +13,12 @@ export type CurrencyProps = {
 
 export const Currency: FC<CurrencyProps> = ({ currencyCode, currencyRate }) => {
   const currencyContextObject = useContext(CurrencyContext);
+  const mutation = useMutation({
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["currencyLatest"] });
+    },
+  });
   if (!currencyContextObject) {
     return <Loader />;
   }
@@ -27,7 +35,10 @@ export const Currency: FC<CurrencyProps> = ({ currencyCode, currencyRate }) => {
         currencyButtonHandler(currencyCode);
       }}
     >
-      <ImageWithFallback currencyCode={currencyCode} className={styles["currency__Flag"]} />
+      <ImageWithFallback
+        currencyCode={currencyCode}
+        className={styles["currency__Flag"]}
+      />
       <span className={styles["currency__ItemSmall"]}>{`${currencyCode} `}</span>
       <span className={styles["currency__Name"]}>{currencyNames[`${currencyCode}`]}</span>
       <span className={styles["currency__ItemSmall"]}>{currencyRate.toFixed(2)}</span>

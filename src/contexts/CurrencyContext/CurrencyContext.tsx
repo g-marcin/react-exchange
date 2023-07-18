@@ -1,12 +1,13 @@
-import { FC, createContext, useEffect, useState, PropsWithChildren } from "react";
-import { getDefaultCurrency, httpClient } from "../../common";
+import { useQuery } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
+import { FC, PropsWithChildren, createContext, useState } from "react";
+import { getDefaultCurrency, httpClient } from "../../common";
 import {
-  FetchedCurrenciesDTO,
-  CurrencyType,
-  FetchedCurrencyNamesType,
   CurrencyContextType,
   CurrencyRates,
+  CurrencyType,
+  FetchedCurrenciesDTO,
+  FetchedCurrencyNamesType,
 } from "../../types";
 const initialContextValues = {
   latestCurrencyRates: { code: 0 },
@@ -22,7 +23,8 @@ const initialContextValues = {
 };
 export const CurrencyContext = createContext<CurrencyContextType>(initialContextValues);
 export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [fetchedCurrencyNames, setFetchedCurrencyNames] = useState<FetchedCurrencyNamesType>({ currencyCode: "" });
+  const [fetchedCurrencyNames, setFetchedCurrencyNames] =
+    useState<FetchedCurrencyNamesType>({ currencyCode: "" });
   const [latestCurrencyRates, setLatestCurrencyRates] = useState<CurrencyRates>({
     currencyCode: 0,
   });
@@ -35,28 +37,46 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
         }
       : null
   );
-  const [baseCurrency, setBaseCurrency] = useState(presentCurrency?.currencyCode === "AUD" ? "USD" : "AUD");
-  useEffect(() => {
-    httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
-      const fetchedCurrenciesDTO: FetchedCurrenciesDTO = response.data;
-      setLatestCurrencyRates(fetchedDataMapper(fetchedCurrenciesDTO));
-      if (presentCurrency) {
-        setPresentCurrency({
-          currencyCode: presentCurrency.currencyCode,
-          rate: latestCurrencyRates[`${presentCurrency.currencyCode}`],
-        });
-      }
-      function fetchedDataMapper(fetchedCurrencies: FetchedCurrenciesDTO) {
-        return fetchedCurrencies.rates;
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [baseCurrency]);
-  useEffect(() => {
-    httpClient.get(`/currencies`).then((response: AxiosResponse) => {
-      setFetchedCurrencyNames(response.data);
-    });
-  }, []);
+  const [baseCurrency, setBaseCurrency] = useState(
+    presentCurrency?.currencyCode === "AUD" ? "USD" : "AUD"
+  );
+
+  const currencyLatestQuery = useQuery({
+    queryKey: ["currencyLatest"],
+    queryFn: () => {
+      httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
+        const fetchedCurrenciesDTO: FetchedCurrenciesDTO = response.data;
+        setLatestCurrencyRates(fetchedDataMapper(fetchedCurrenciesDTO));
+        if (presentCurrency) {
+          setPresentCurrency({
+            currencyCode: presentCurrency.currencyCode,
+            rate: latestCurrencyRates[`${presentCurrency.currencyCode}`],
+          });
+        }
+        function fetchedDataMapper(fetchedCurrencies: FetchedCurrenciesDTO) {
+          return fetchedCurrencies.rates;
+        }
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+  const currencyNamesQuery = useQuery({
+    queryKey: ["currencyNames"],
+    queryFn: () => {
+      let data = [""];
+      httpClient.get("/currencies").then((response: AxiosResponse) => {
+        setFetchedCurrencyNames(response.data);
+        data = response.data;
+      });
+      return data;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
   function currencyButtonHandler(currencyCode: string): void {
     if (!latestCurrencyRates) {
       return;
