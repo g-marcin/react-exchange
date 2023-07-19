@@ -1,7 +1,8 @@
 import { FC, PropsWithChildren, useEffect } from "react";
-import { Wrapper } from "../../components";
+
 import { CurrencyDisplay, CurrencyList } from "..";
-import { setDefaultCurrency, getDefaultCurrency } from "../../common";
+import { getDefaultCurrency, setDefaultCurrency } from "../../common";
+import { Wrapper } from "../../components";
 import styles from "./currencyExchange.module.css";
 
 export interface CurrencyExchangeProps extends PropsWithChildren {

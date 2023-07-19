@@ -22,10 +22,11 @@ export type CurrencyBaseHandlerType = (currencyCode: string) => void;
 export type CurrencyButtonHandlerType = (currencyCode: string) => void;
 export type StateHandler = () => void;
 export type CurrencyContextType = {
-  latestCurrencyRates: CurrencyRates;
+  currencyLatest: CurrencyRates;
   fetchedCurrencyNames: FetchedCurrencyNamesType;
   presentCurrency: CurrencyType;
   baseCurrency: string;
+  currencyHistory: { [k: string]: CurrencyRates };
   currencyButtonHandler: CurrencyButtonHandlerType;
   currencyBaseHandler: CurrencyBaseHandlerType;
 };

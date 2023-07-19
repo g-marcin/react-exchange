@@ -8,11 +8,11 @@ function App() {
   return (
     <>
       <ReactQueryProvider>
-        <ThemeContextProvider>
-          <CurrencyContextProvider>
+        <CurrencyContextProvider>
+          <ThemeContextProvider>
             <RouterProvider router={AppRouter} />
-          </CurrencyContextProvider>
-        </ThemeContextProvider>
+          </ThemeContextProvider>
+        </CurrencyContextProvider>
       </ReactQueryProvider>
     </>
   );

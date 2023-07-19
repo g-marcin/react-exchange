@@ -15,7 +15,7 @@ export const useCurrencyHistory = () => {
     setInProgress(true);
     const date = new Date();
     const dateFrom = format(date, "yyyy-MM-dd");
-    const dateTo = format(subDays(date, 12), "yyyy-MM-dd");
+    const dateTo = format(subDays(date, 8), "yyyy-MM-dd");
     httpClient
       .get(
         `/${dateTo}..${dateFrom}?from=${baseCurrency}&to=${
