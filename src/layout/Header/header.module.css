@@ -1,82 +1,87 @@
 @font-face {
-  font-family: Inter;
-  src: url(./assets/fonts/Inter/static/Inter-Regular.ttf);
+    font-family: Inter;
+    src: url(./assets/fonts/Inter/static/Inter-Regular.ttf);
 }
+
+:host {
+    color: black;
+}
+
 .Inter {
-  font-family: Inter;
+    font-family: Inter;
 }
 
 .separator-5 {
-  margin: auto;
-  min-width: 5vw;
+    margin: auto;
+    min-width: 5vw;
 }
 .separator-3 {
-  margin: auto;
-  min-width: 3vw;
+    margin: auto;
+    min-width: 3vw;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 3vw;
-  height: 77px;
-  opacity: 0.8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 3vw;
+    height: 77px;
+    opacity: 0.8;
 }
 .logo {
-  font-size: 26px;
-  font-family: Poppins-SemiBold;
+    font-size: 26px;
+    font-family: Poppins-SemiBold;
 }
 .pending {
-  text-decoration: underline;
-  color: #1a1818;
-  font-size: 28px;
+    text-decoration: underline;
+    color: #1a1818;
+    font-size: 28px;
 }
 .active {
-  text-decoration: underline;
-  color: #1a1818;
-  font-size: 28px;
+    text-decoration: underline;
+    color: #1a1818;
+    font-size: 28px;
 }
 .wrapper__Navbar {
-  font-family: Inter;
-  font-size: 24px;
-  padding-right: 2vw;
-  display: flex;
-  justify-content: space-around;
+    font-family: Inter;
+    font-size: 24px;
+    padding-right: 2vw;
+    display: flex;
+    justify-content: space-around;
 }
 .wrapper__Links {
-  display: flex;
-  margin-right: 1vw;
+    display: flex;
+    margin-right: 1vw;
 }
 .dropdown__Account {
-  display: flex;
-  align-items: center;
-  border: none;
-  background: none;
-  font-family: Inter;
-  font-size: 24px;
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    font-family: Inter;
+    font-size: 24px;
 }
 
 .button__Hamburger {
-  display: none;
-  border: none;
-  background: none;
+    display: none;
+    border: none;
+    background: none;
 }
 
 @media (max-width: 660px) {
-  .navbar {
-    padding: 0 10px;
-  }
-  .wrapper__Navbar {
-    display: none !important;
-  }
-  .button__Hamburger {
-    display: block !important;
-    cursor: pointer;
-  }
+    .navbar {
+        padding: 0 10px;
+    }
+    .wrapper__Navbar {
+        display: none !important;
+    }
+    .button__Hamburger {
+        display: block !important;
+        cursor: pointer;
+    }
 }
 
 button {
-  background: none;
-  border: none;
+    background: none;
+    border: none;
 }

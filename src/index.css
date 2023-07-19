@@ -1,136 +1,141 @@
 /* fonts */
 @font-face {
-  font-family: Poppins-SemiBold;
-  src: url(./assets/fonts/Poppins/Poppins-SemiBold.ttf);
+    font-family: Poppins-SemiBold;
+    src: url(./assets/fonts/Poppins/Poppins-SemiBold.ttf);
 }
 @font-face {
-  font-family: Inter;
-  src: url(./assets/fonts/Inter/static/Inter-Regular.ttf);
+    font-family: Inter;
+    src: url(./assets/fonts/Inter/static/Inter-Regular.ttf);
 }
 @font-face {
-  font-family: Hind-Regular;
-  src: url(./assets/fonts/Hind/Hind-Regular.ttf);
+    font-family: Hind-Regular;
+    src: url(./assets/fonts/Hind/Hind-Regular.ttf);
 }
 @font-face {
-  font-family: Hind-Bold;
-  src: url(./assets/fonts/Hind/Hind-Bold.ttf);
+    font-family: Hind-Bold;
+    src: url(./assets/fonts/Hind/Hind-Bold.ttf);
 }
 @font-face {
-  font-family: Hind-Medium;
-  src: url(./assets/fonts/Hind/Hind-Medium.ttf);
+    font-family: Hind-Medium;
+    src: url(./assets/fonts/Hind/Hind-Medium.ttf);
+}
+
+* {
+    font-family: Roboto;
+    color: black;
 }
 
 .Poppins {
-  font-family: Poppins-SemiBold;
+    font-family: Poppins-SemiBold;
 }
 .Inter {
-  font-family: Inter;
+    font-family: Inter;
 }
 .Hind-Bold {
-  font-family: Hind-Bold;
+    font-family: Hind-Bold;
 }
 .Hind-Regular {
-  font-family: Hind-Regular;
-  font-weight: 400;
+    font-family: Hind-Regular;
+    font-weight: 400;
 }
 .Hind-Medium {
-  font-family: Hind-Medium;
+    font-family: Hind-Medium;
 }
 * {
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .flex {
-  display: flex;
+    display: flex;
 }
 .column {
-  flex-direction: column;
+    flex-direction: column;
 }
 button {
-  background: none;
-  padding: 0px;
-  cursor: pointer;
+    background: none;
+    padding: 0px;
+    cursor: pointer;
 }
 p,
 body,
 main,
 a {
-  margin: 0px;
-  padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 a {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 a:visited {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 a:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 a:active {
-  opacity: 1;
+    opacity: 1;
 }
 .button-black {
-  font-size: 18px;
-  padding: 12px;
-  border-radius: 12px;
-  background: black;
-  color: white;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
+    font-size: 18px;
+    padding: 12px;
+    border-radius: 12px;
+    background: black;
+    color: white;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 .button-group {
-  justify-content: end;
+    justify-content: end;
 }
 @media (max-width: 660px) {
-  .footer {
-    flex-direction: column;
-    gap: 35px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
+    .footer {
+        flex-direction: column;
+        gap: 35px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
 }
 
 label {
-  font-weight: bold;
-  opacity: 0.6;
+    font-weight: bold;
+    opacity: 0.6;
 }
 
 .light {
-  --text-color: #222;
-  --bkg-color: #fff;
-  --anchor-color: #000000;
+    --text-color: #222;
+    --bkg-color: #fff;
+    --anchor-color: #000000;
 }
 
 .dark {
-  --text-color: #eee;
-  --bkg-color: #121212db;
-  --anchor-color: #ffffff;
+    --text-color: #eee;
+    --bkg-color: #121212db;
+    --anchor-color: #ffffff;
 }
 
 body {
-  color: var(--text-color);
-  background: var(--bkg-color);
-  border-color: var(--text-color);
+    color: var(--text-color);
+    background: var(--bkg-color);
+    border-color: var(--text-color);
 }
 a {
-  color: var(--anchor-color);
+    color: var(--anchor-color);
 }
 a:hover {
-  color: var(--anchor-color);
+    color: var(--anchor-color);
 }
 a:active {
-  color: var(--anchor-color);
+    color: var(--anchor-color);
 }
 a:visited {
-  color: var(--anchor-color);
+    color: var(--anchor-color);
 }
 button {
-  color: var(--text-color);
+    color: var(--text-color);
 }
 .details {
-  padding: 40px;
-  color: var(--text-color);
+    padding: 40px;
+    color: var(--text-color);
 }
