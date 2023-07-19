@@ -1,18 +1,32 @@
 .flag__wrapper {
-  max-height: 150px;
-  max-width: 150px;
+    max-height: 150px;
+    max-width: 150px;
 }
 
 .details:nth-child(2) {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .details {
-  align-items: center;
-  align-self: center;
-  padding: 20px;
+    align-items: center;
+    align-self: center;
+    padding: 20px;
 }
 
 .text-info {
-  justify-content: center;
+    justify-content: center;
+}
+
+.table {
+    overflow-y: scroll;
+    max-height: 500px;
+}
+.item:nth-child(even) {
+    background: gray !important;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
 }
