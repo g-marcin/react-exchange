@@ -4,7 +4,7 @@ import { NewsletterForm } from "./NewsletterForm";
 import styles from "./admin.module.css";
 import { DefaultCurrencyForm } from "./DefaultCurrencyForm";
 
-export const Admin: FC = () => {
+const Admin: FC = () => {
   return (
     <Wrapper className={styles["main-wrapper"]}>
       <DefaultCurrencyForm />
@@ -12,3 +12,5 @@ export const Admin: FC = () => {
     </Wrapper>
   );
 };
+
+export default Admin;

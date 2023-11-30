@@ -1,42 +1,58 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { ErrorPage } from "./ErrorPage";
-import { Admin } from "../modules/Admin";
-
 import { Layout } from "../layout";
-const CurrencyDetails = lazy(() => import("../modules/CurrencyDetails/CurrencyDetails"));
-const CurrencyExchange = lazy(() => import("../modules/CurrencyExchange/CurrencyExchange"));
+import { Loader } from "../components";
+import { ERROR_MESSAGES } from "../constants";
+import { routes } from "./routes";
+
+//Lazy imports
+const ErrorPage = lazy(() => import("../routes/ErrorPage"));
+const Admin = lazy(() => import("../modules/Admin/Admin"));
+const CurrencyDetails = lazy(
+  () => import("../modules/CurrencyDetails/CurrencyDetails")
+);
+const CurrencyExchange = lazy(
+  () => import("../modules/CurrencyExchange/CurrencyExchange")
+);
 
 export const AppRouter = createBrowserRouter([
   {
-    path: "/",
+    path: routes.base,
     element: <Layout />,
-    errorElement: <ErrorPage errorMessage="Page not found" />,
+    errorElement: <ErrorPage errorMessage={ERROR_MESSAGES.default} />,
     children: [
       {
-        path: "",
-        errorElement: <ErrorPage errorMessage="Page not found" />,
+        path: routes.empty,
+        errorElement: <ErrorPage errorMessage={ERROR_MESSAGES.default} />,
         children: [
           {
             index: true,
             element: (
-              <Suspense>
-                <CurrencyExchange />{" "}
+              <Suspense fallback={<Loader />}>
+                <CurrencyExchange />
               </Suspense>
             ),
           },
           {
-            path: "admin",
-            element: <Admin />,
+            path: routes.admin,
+            element: (
+              <Suspense fallback={<Loader />}>
+                <Admin />
+              </Suspense>
+            ),
           },
           {
-            path: "details",
-            element: <ErrorPage errorMessage="Choose the currency from currency list" />,
+            path: routes.details,
+            element: (
+              <Suspense fallback={<Loader />}>
+                <ErrorPage errorMessage={ERROR_MESSAGES.chooseCurrency} />
+              </Suspense>
+            ),
           },
           {
             path: "details/:currencyCode",
             element: (
-              <Suspense>
+              <Suspense fallback={<Loader />}>
                 <CurrencyDetails />
               </Suspense>
             ),

@@ -6,10 +6,12 @@ type ErrorPageProps = {
   errorMessage: string;
 };
 
-export const ErrorPage: FC<ErrorPageProps> = ({ errorMessage }) => {
+const ErrorPage: FC<ErrorPageProps> = ({ errorMessage }) => {
   return (
     <Card title={errorMessage}>
       <ReturnButton />
     </Card>
   );
 };
+
+export default ErrorPage;
