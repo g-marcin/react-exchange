@@ -1,7 +1,13 @@
 .Outlet__wrapper {
   height: 750px;
   justify-content: center;
+  margin: 0 150px;
 }
 
 @media (max-width: 660px) {
+  .Outlet__wrapper {
+    height: 750px;
+    justify-content: center;
+    margin: 0 50px;
+  }
 }
