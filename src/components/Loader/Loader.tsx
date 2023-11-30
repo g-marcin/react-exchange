@@ -8,7 +8,7 @@ type SpinnerProps = {
 
 export const Loader: FC<SpinnerProps> = ({ className }) => {
   return (
-    <Container className="Quiz__spinner">
+    <Container className={style["Loader__wrapper"]}>
       <div className={`${style.ldsSpinner} ${className}`}>
         <div></div>
         <div></div>

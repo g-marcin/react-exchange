@@ -1,17 +1,10 @@
-.exchange__Wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 750px;
-  max-height: 500px;
-  margin: auto;
-}
 @media (max-width: 450px) {
   .wrapper {
     max-width: 700px;
-    margin: 0px;
   }
   .exchange__Wrapper {
     margin: auto 10px;
   }
+}
+.wrapper {
 }

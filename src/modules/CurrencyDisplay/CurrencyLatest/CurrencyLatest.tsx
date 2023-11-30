@@ -16,11 +16,18 @@ export const CurrencyLatest: FC = () => {
       <Container className={styles["display__Latest"]}>
         {presentCurrency ? (
           <>
-            <ImageWithFallback currencyCode={presentCurrency.currencyCode} className={styles["display__Flag"]} />
-            <span>{`Latest ${presentCurrency?.currencyCode} to ${baseCurrency} rate:${
+            <div>
+              <ImageWithFallback currencyCode={presentCurrency.currencyCode} className={styles["display__Flag"]} />
+            </div>
+            <span className={styles["latest-big"]}>{`Latest ${presentCurrency?.currencyCode} to ${baseCurrency} rate:  ${
               latestCurrencyRates[presentCurrency.currencyCode]
             }`}</span>
-            <ImageWithFallback currencyCode={baseCurrency} className={styles["display__Flag"]} />
+            <span className={styles["latest-small"]}>{`${presentCurrency?.currencyCode} to ${baseCurrency} ${
+              latestCurrencyRates[presentCurrency.currencyCode]
+            }`}</span>
+            <div>
+              <ImageWithFallback currencyCode={baseCurrency} className={styles["display__Flag"]} />
+            </div>
           </>
         ) : (
           `Please choose currency to compare...`

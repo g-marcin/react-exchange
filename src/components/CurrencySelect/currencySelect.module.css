@@ -1,12 +1,23 @@
 .select {
-  flex: 3;
   text-align: center;
   background: gainsboro;
   opacity: 0.6;
-  font-size: 24px;
-  width: 100%;
+  font-size: 15px;
 }
 .label {
-  font-size: 24px;
-  margin: auto;
+  font-size: 18px;
+}
+
+.container {
+}
+
+@media (max-width: 860px) {
+  .container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 660px) {
+  .label {
+    font-size: 18px;
+  }
 }

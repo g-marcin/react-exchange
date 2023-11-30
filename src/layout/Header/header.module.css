@@ -27,12 +27,22 @@ header {
   font-size: 26px;
   font-family: Poppins-SemiBold;
 }
+.pending {
+  text-decoration: underline;
+  color: #1a1818;
+  font-size: 28px;
+}
+.active {
+  text-decoration: underline;
+  color: #1a1818;
+  font-size: 28px;
+}
 .wrapper__Navbar {
   font-family: Inter;
   font-size: 24px;
   padding-right: 2vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .wrapper__Links {
   display: flex;
@@ -64,4 +74,9 @@ header {
     display: block !important;
     cursor: pointer;
   }
+}
+
+button {
+  background: none;
+  border: none;
 }

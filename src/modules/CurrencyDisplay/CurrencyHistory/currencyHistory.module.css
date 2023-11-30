@@ -1,27 +1,12 @@
-.history__Item {
-  display: flex;
-  border: 1px solid black;
-  padding: 5px;
-  justify-content: space-between;
-  width: 350px;
-  justify-self: center;
-  margin: 5px auto;
-  font-size: 18px;
-  align-items: center;
-  gap: 5px;
-}
-
-.display__Wrapper {
-  min-height: 250px;
-  border: 1px solid black;
-  overflow-y: scroll;
-}
-
-.display__History {
-  overflow-x: scroll;
+@media (max-width: 960px) {
+  .display__History {
+    max-height: 100px;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+  }
 }
 
 .center {
-  align-items: center;
   justify-content: center;
 }

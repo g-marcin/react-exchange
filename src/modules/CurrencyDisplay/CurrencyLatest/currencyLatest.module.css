@@ -1,25 +1,34 @@
 .display__Latest {
   padding: 5px;
   font-size: 24px;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 }
-
 .display__Flag {
   max-width: 32px;
   max-height: 32px;
 }
-
+.latest-small {
+  display: none;
+}
+.latest-big {
+  display: block;
+}
 @media (max-width: 450px) {
   .display__Latest {
-    min-width: 320px;
-    font-size: 12px;
-    margin: auto;
+    font-size: 18px;
+
     padding: 3px;
   }
 
   .display__Flag {
-    max-width: 48px;
-    max-height: 48px;
+    max-width: 32px;
+    max-height: 32px;
+  }
+
+  .latest-small {
+    display: block;
+  }
+  .latest-big {
+    display: none;
   }
 }

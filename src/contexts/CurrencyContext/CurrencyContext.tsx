@@ -8,8 +8,7 @@ import {
   CurrencyContextType,
   CurrencyRates,
 } from "../../types";
-
-export const CurrencyContext = createContext<CurrencyContextType>({
+const initialContextValues = {
   latestCurrencyRates: { code: 0 },
   fetchedCurrencyNames: { name: "name" },
   presentCurrency: { currencyCode: "", rate: 0 },
@@ -20,41 +19,42 @@ export const CurrencyContext = createContext<CurrencyContextType>({
   currencyBaseHandler: () => {
     return;
   },
-});
-
+};
+export const CurrencyContext = createContext<CurrencyContextType>(initialContextValues);
 export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [fetchedCurrencyNames, setCurrencyNames] = useState<FetchedCurrencyNamesType>({ currencyCode: "" });
+  const [fetchedCurrencyNames, setFetchedCurrencyNames] = useState<FetchedCurrencyNamesType>({ currencyCode: "" });
   const [latestCurrencyRates, setLatestCurrencyRates] = useState<CurrencyRates>({
     currencyCode: 0,
   });
-  const defaultCurrency: string = getDefaultCurrency();
-  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>({
-    currencyCode: defaultCurrency,
-    rate: latestCurrencyRates[defaultCurrency],
-  });
-  const [baseCurrency, setBaseCurrency] = useState("USD");
+  const defaultCurrency: string | null = getDefaultCurrency();
+  const [presentCurrency, setPresentCurrency] = useState<CurrencyType>(
+    defaultCurrency
+      ? {
+          currencyCode: defaultCurrency,
+          rate: latestCurrencyRates[defaultCurrency],
+        }
+      : null
+  );
+  const [baseCurrency, setBaseCurrency] = useState(presentCurrency?.currencyCode === "AUD" ? "USD" : "AUD");
   useEffect(() => {
     httpClient.get(`/latest?from=${baseCurrency}`).then((response: AxiosResponse) => {
       const fetchedCurrenciesDTO: FetchedCurrenciesDTO = response.data;
       setLatestCurrencyRates(fetchedDataMapper(fetchedCurrenciesDTO));
-      updatePresentCurrency();
+      if (presentCurrency) {
+        setPresentCurrency({
+          currencyCode: presentCurrency.currencyCode,
+          rate: latestCurrencyRates[`${presentCurrency.currencyCode}`],
+        });
+      }
       function fetchedDataMapper(fetchedCurrencies: FetchedCurrenciesDTO) {
         return fetchedCurrencies.rates;
-      }
-      function updatePresentCurrency() {
-        if (presentCurrency) {
-          setPresentCurrency({
-            currencyCode: presentCurrency.currencyCode,
-            rate: latestCurrencyRates[`${presentCurrency.currencyCode}`],
-          });
-        }
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [baseCurrency]);
   useEffect(() => {
     httpClient.get(`/currencies`).then((response: AxiosResponse) => {
-      setCurrencyNames(response.data);
+      setFetchedCurrencyNames(response.data);
     });
   }, []);
   function currencyButtonHandler(currencyCode: string): void {
@@ -70,11 +70,10 @@ export const CurrencyContextProvider: FC<PropsWithChildren> = ({ children }) => 
     if (!latestCurrencyRates) {
       return;
     }
-    if (!presentCurrency) {
-      return;
-    }
+
     setBaseCurrency(currencyCode);
   }
+
   return (
     <CurrencyContext.Provider
       value={{
